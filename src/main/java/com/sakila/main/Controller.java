@@ -1,15 +1,14 @@
 package com.sakila.main;
 
-import javafx.event.ActionEvent;
+import com.sakila.utility.SceneView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
-import javax.persistence.criteria.Root;
 import java.io.IOException;
 
 public class Controller {
@@ -81,58 +80,51 @@ public class Controller {
     @FXML
     private Button updatefilmBtn;
 
-    // Create customer FXML
-    @FXML
-    private ChoiceBox<?> addressChoice;
-
-    @FXML
-    private Button cancelBtn;
-
-    @FXML
-    private Button doneBtn;
-
-    @FXML
-    private TextField emailTxt;
-
-    @FXML
-    private TextField firstnameTxt;
-
-    @FXML
-    private TextField lastnameTxt;
-
-    @FXML
-    private ChoiceBox<?> storeChoice;
 
 
     @FXML
-    void changeSceneButtonAction(ActionEvent event) throws IOException {
+    void createCustomerButton(MouseEvent event) throws IOException {
+        changeScene(event, SceneView.CREATECUSTOMER);
+    }
+    @FXML
+    public void updateCustomerButton(MouseEvent event) throws IOException {
+        changeScene(event, SceneView.UPDATECUSTOMER);
+    }
+    @FXML
+    public void createFilmButton(MouseEvent event) throws IOException {
+        changeScene(event, SceneView.CREATEFILM);
+    }
+    @FXML
+    public void updateFilmButton(MouseEvent event) throws IOException {
+        changeScene(event, SceneView.UPDATEFILM);
+    }
 
-        Stage stage;
-        Parent root;
+    public void changeScene(MouseEvent event, SceneView view) throws IOException {
+        String fxml = "";
+        switch (view) {
 
-        if (event.getSource() == createcustomerBtn){
-            root = FXMLLoader.load(getClass().getResource("sakilacreatecustomer.fxml"));
-            stage = (Stage) createcustomerBtn.getScene().getWindow();
+            case CREATECUSTOMER -> {
+                fxml="sakilacreatecustomer.fxml";
+            }
+            case UPDATECUSTOMER -> {
+                fxml="sakilaupdatecustomer.fxml";
+            }
+            case CREATEFILM -> {
+                fxml="sakilacreatefilm.fxml";
+            }
+            case UPDATEFILM -> {
+                fxml="sakilaupdatefilm.fxml";
+            }
 
-        } else if (event.getSource() == updatecustomerBtn) {
-            root = FXMLLoader.load(getClass().getResource("sakilaupdatecustomer.fxml"));
-            stage = (Stage) updatecustomerBtn.getScene().getWindow();
-
-        } else if (event.getSource() == createfilmBtn) {
-            root = FXMLLoader.load(getClass().getResource("sakilacreatefilm.fxml"));
-            stage = (Stage) createfilmBtn.getScene().getWindow();
-
-        } else if (event.getSource() == updatefilmBtn) {
-            root = FXMLLoader.load(getClass().getResource("sakilaupdatefilm.fxml"));
-            stage = (Stage) updatefilmBtn.getScene().getWindow();
-        } else {
-            root = FXMLLoader.load(getClass().getResource("sakilamain.fxml"));
-            stage = (Stage) cancelBtn.getScene().getWindow();
         }
 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
 
     }
 
