@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="744.0" style="-fx-background-color: #83B185;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sakila.main.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="744.0" style="-fx-background-color: #83B185;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sakila.main.FilmController">
    <children>
       <Text fill="WHITE" layoutX="246.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create film" textAlignment="CENTER" wrappingWidth="251.13671875">
          <font>
@@ -43,8 +43,8 @@
          </font>
       </Text>
       <ChoiceBox fx:id="languageidChoice" layoutX="302.0" layoutY="379.0" prefWidth="150.0" />
-      <Button fx:id="doneBtn" layoutX="305.0" layoutY="441.0" mnemonicParsing="false" text="Done" textFill="#325e34" />
-      <Button fx:id="cancelBtn" layoutX="386.0" layoutY="441.0" mnemonicParsing="false" onAction="#changeSceneButtonAction" text="Cancel" textFill="#325e34" />
+      <Button fx:id="doneBtn" layoutX="305.0" layoutY="441.0" mnemonicParsing="false" onMouseClicked="#createFilmDone" text="Done" textFill="#325e34" />
+      <Button fx:id="cancelBtn" layoutX="386.0" layoutY="441.0" mnemonicParsing="false" onMouseClicked="#cancelFilm" text="Cancel" textFill="#325e34" />
       <TextField fx:id="replacementTxt" layoutX="303.0" layoutY="331.0" promptText="T.ex 19.99" />
       <TextField fx:id="rentalrateTxt1" layoutX="303.0" layoutY="282.0" />
       <Text fx:id="lengthTxt" fill="WHITE" layoutX="154.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Length  " textAlignment="RIGHT" wrappingWidth="149.0">

@@ -81,15 +81,15 @@
             </TabPane>
          </top>
       </BorderPane>
-      <Button fx:id="createcustomerBtn" layoutX="83.0" layoutY="588.0" mnemonicParsing="false" onAction="#changeSceneButtonAction" text="Create" textFill="#325e34" />
+      <Button fx:id="createcustomerBtn" layoutX="83.0" layoutY="588.0" mnemonicParsing="false" onMouseClicked="#createCustomerButton" text="Create" textFill="#325e34" />
       <Button fx:id="deletecustomerBtn" layoutX="477.0" layoutY="588.0" mnemonicParsing="false" text="Delete" textFill="#325e34" />
-      <Button fx:id="updatecustomerBtn" layoutX="403.0" layoutY="588.0" mnemonicParsing="false" onAction="#changeSceneButtonAction" text="Update" textFill="#325e34" />
+      <Button fx:id="updatecustomerBtn" layoutX="403.0" layoutY="588.0" mnemonicParsing="false" onMouseClicked="#updateCustomerButton" text="Update" textFill="#325e34" />
       <Button fx:id="rentmovieBtn" layoutX="545.0" layoutY="588.0" mnemonicParsing="false" text="Rent Movie" textFill="#325e34" />
       <Text fill="WHITE" layoutX="220.0" layoutY="584.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Id" wrappingWidth="65.13671875" />
       <ChoiceBox fx:id="customerChoice" layoutX="210.0" layoutY="588.0" prefWidth="150.0" />
-      <Button fx:id="createfilmBtn" layoutX="83.0" layoutY="650.0" mnemonicParsing="false" onAction="#changeSceneButtonAction" text="Create" textFill="#325e34" />
+      <Button fx:id="createfilmBtn" layoutX="83.0" layoutY="650.0" mnemonicParsing="false" onMouseClicked="#createFilmButton" text="Create" textFill="#325e34" />
       <Button fx:id="deletefilmBtn" layoutX="477.0" layoutY="650.0" mnemonicParsing="false" text="Delete" textFill="#325e34" />
-      <Button fx:id="updatefilmBtn" layoutX="403.0" layoutY="650.0" mnemonicParsing="false" onAction="#changeSceneButtonAction" text="Update" textFill="#325e34" />
+      <Button fx:id="updatefilmBtn" layoutX="403.0" layoutY="650.0" mnemonicParsing="false" onMouseClicked="#updateFilmButton" text="Update" textFill="#325e34" />
       <Text fill="WHITE" layoutX="220.0" layoutY="646.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Film Id" wrappingWidth="65.13671875" />
       <ChoiceBox fx:id="filmChoice" layoutX="210.0" layoutY="650.0" prefWidth="150.0" />
    </children>
