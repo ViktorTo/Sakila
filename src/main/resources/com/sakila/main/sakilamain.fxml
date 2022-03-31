@@ -14,13 +14,13 @@
    <children>
       <BorderPane layoutX="-3.0" prefHeight="546.0" prefWidth="1250.0" style="-fx-background-color: #83B185;">
          <top>
-            <TabPane prefHeight="545.0" prefWidth="1250.0" style="-fx-background-color: #83B185; -fx-text-background-color: #FFFFFF; -fx-border-color: #83B185; -fx-region-background-color: #83B185;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <TabPane prefHeight="545.0" prefWidth="1250.0" style="-fx-background-color: #83B185; -fx-border-color: #83B185; -fx-region-background-color: #83B185; -fx-text-background-color: #FFFFFF;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
               <tabs>
-                <Tab fx:id="customerTab" style="-fx-border-color: #83B185; -fx-background-color: #749D75; -fx-text-background-color: white; -fx-text-base-color: white;" text="Customers">
+                <Tab fx:id="customerTab" style="-fx-border-color: #83B185; -fx-background-color: #749D75; -fx-text-base-color: white;" text="Customers">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #83B185;">
                            <children>
-                              <TableView fx:id="customerTbl" prefHeight="517.0" prefWidth="1244.0" style="-fx-background-color: #749D75; -fx-text-background-color: white; -fx-border-color: #83B185; -fx-border-base-color: #83B185;">
+                              <TableView fx:id="customerTbl" prefHeight="517.0" prefWidth="1244.0" style="-fx-background-color: #749D75; -fx-border-color: #83B185; -fx-border-base-color: #83B185;">
                                 <columns>
                                   <TableColumn fx:id="customeridCol" prefWidth="47.0" style="-fx-background-color: #83B185;" text="Id" />
                                   <TableColumn fx:id="firstnameCol" prefWidth="318.0" style="-fx-background-color: #83B185;" text="First Name" />
@@ -86,7 +86,7 @@
       <Button fx:id="updatecustomerBtn" layoutX="403.0" layoutY="588.0" mnemonicParsing="false" text="Update" textFill="#325e34" />
       <Button fx:id="rentmovieBtn" layoutX="545.0" layoutY="588.0" mnemonicParsing="false" text="Rent Movie" textFill="#325e34" />
       <Text fill="WHITE" layoutX="220.0" layoutY="584.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Id" wrappingWidth="65.13671875" />
-      <ChoiceBox fx:id="customerChoice" layoutX="210.0" layoutY="588.0" prefWidth="150.0" style="-fx-text-background-color: #325e34; : ;" />
+      <ChoiceBox fx:id="customerChoice" layoutX="210.0" layoutY="588.0" prefWidth="150.0" />
       <Button fx:id="createfilmBtn" layoutX="83.0" layoutY="650.0" mnemonicParsing="false" text="Create" textFill="#325e34" />
       <Button fx:id="deletefilmBtn" layoutX="477.0" layoutY="650.0" mnemonicParsing="false" text="Delete" textFill="#325e34" />
       <Button fx:id="updatefilmBtn" layoutX="403.0" layoutY="650.0" mnemonicParsing="false" text="Update" textFill="#325e34" />
