@@ -23,4 +23,5 @@
 hs_err_pid*
 
 # Idea folder
-/.idea/
+.DS_Store
+.idea
