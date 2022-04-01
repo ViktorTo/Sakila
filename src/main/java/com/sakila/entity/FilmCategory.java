@@ -12,7 +12,7 @@ public class FilmCategory {
     private FilmCategoryId id;
 
     @MapsId("filmId")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "film_id", nullable = false)
     private Film film;
 

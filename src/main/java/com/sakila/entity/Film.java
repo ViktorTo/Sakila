@@ -59,13 +59,13 @@ public class Film {
     @Column(name = "last_update", nullable = false)
     private Timestamp lastUpdate;
 
-    @OneToMany(mappedBy = "film")
+    @OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
     private Set<Inventory> inventories = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "film", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "film", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<FilmActor> filmActors = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "film")
+    @OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
     private Set<FilmCategory> filmCategories = new LinkedHashSet<>();
 
     public Set<FilmCategory> getFilmCategories() {
