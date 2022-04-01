@@ -1,7 +1,10 @@
 package com.sakila.entity;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -52,8 +55,9 @@ public class Film {
     @Column(name = "special_features")
     private String specialFeatures;
 
+    @UpdateTimestamp
     @Column(name = "last_update", nullable = false)
-    private Instant lastUpdate;
+    private Timestamp lastUpdate;
 
     @OneToMany(mappedBy = "film")
     private Set<Inventory> inventories = new LinkedHashSet<>();
@@ -88,11 +92,11 @@ public class Film {
         this.inventories = inventories;
     }
 
-    public Instant getLastUpdate() {
+    public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Instant lastUpdate) {
+    public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 

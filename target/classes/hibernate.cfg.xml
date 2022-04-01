@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:mysql://localhost/sakila?serverTimezone=UTC</property>
+        <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+        <property name="connection.pool_size">3</property>
+        <property name="current_session_context_class">thread</property>
+        <property name="hibernate.enhancer.enableLazyInitialization">true</property>
+        <property name="show_sql">true</property>
+        <property name="format_sql">false</property>
+        <property name="hbm2ddl.auto">update</property>
+
+        <mapping class="com.sakila.entity.Actor"/>
+        <mapping class="com.sakila.entity.ActorInfo"/>
+        <mapping class="com.sakila.entity.FilmActor"/>
+        <mapping class="com.sakila.entity.Film"/>
+        <mapping class="com.sakila.entity.Address"/>
+        <mapping class="com.sakila.entity.Category"/>
+        <mapping class="com.sakila.entity.City"/>
+        <mapping class="com.sakila.entity.Country"/>
+        <mapping class="com.sakila.entity.Customer"/>
+        <mapping class="com.sakila.entity.FilmActorId"/>
+        <mapping class="com.sakila.entity.FilmCategory"/>
+        <mapping class="com.sakila.entity.FilmCategoryId"/>
+        <mapping class="com.sakila.entity.FilmList"/>
+        <mapping class="com.sakila.entity.FilmText"/>
+        <mapping class="com.sakila.entity.Inventory"/>
+        <mapping class="com.sakila.entity.Language"/>
+        <mapping class="com.sakila.entity.Staff"/>
+        <mapping class="com.sakila.entity.NicerButSlowerFilmList"/>
+        <mapping class="com.sakila.entity.Payment"/>
+        <mapping class="com.sakila.entity.Rental"/>
+        <mapping class="com.sakila.entity.SalesByFilmCategory"/>
+        <mapping class="com.sakila.entity.SalesByStore"/>
+        <mapping class="com.sakila.entity.Store"/>
+
+
+    </session-factory>
+</hibernate-configuration>

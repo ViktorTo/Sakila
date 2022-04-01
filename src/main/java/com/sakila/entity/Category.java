@@ -1,6 +1,9 @@
 package com.sakila.entity;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -16,8 +19,9 @@ public class Category {
     @Column(name = "name", nullable = false, length = 25)
     private String name;
 
+    @UpdateTimestamp
     @Column(name = "last_update", nullable = false)
-    private Instant lastUpdate;
+    private Timestamp lastUpdate;
 
     @OneToMany(mappedBy = "category")
     private Set<FilmCategory> filmCategories = new LinkedHashSet<>();
@@ -30,11 +34,11 @@ public class Category {
         this.filmCategories = filmCategories;
     }
 
-    public Instant getLastUpdate() {
+    public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Instant lastUpdate) {
+    public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 

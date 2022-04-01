@@ -1,6 +1,10 @@
 package com.sakila.entity;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -34,10 +38,11 @@ public class Customer {
     private Boolean active = false;
 
     @Column(name = "create_date", nullable = false)
-    private Instant createDate;
+    private Timestamp createDate;
 
+    @UpdateTimestamp
     @Column(name = "last_update")
-    private Instant lastUpdate;
+    private Timestamp lastUpdate;
 
     @OneToMany(mappedBy = "customer")
     private Set<Payment> payments = new LinkedHashSet<>();
@@ -61,19 +66,19 @@ public class Customer {
         this.payments = payments;
     }
 
-    public Instant getLastUpdate() {
+    public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Instant lastUpdate) {
+    public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
-    public Instant getCreateDate() {
+    public Timestamp getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Instant createDate) {
+    public void setCreateDate(Timestamp createDate) {
         this.createDate = createDate;
     }
 

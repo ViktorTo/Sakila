@@ -1,7 +1,11 @@
 package com.sakila.entity;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.Instant;
 
 @Entity
@@ -28,24 +32,25 @@ public class Payment {
     private BigDecimal amount;
 
     @Column(name = "payment_date", nullable = false)
-    private Instant paymentDate;
+    private Timestamp paymentDate;
 
+    @UpdateTimestamp
     @Column(name = "last_update")
-    private Instant lastUpdate;
+    private Timestamp lastUpdate;
 
-    public Instant getLastUpdate() {
+    public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Instant lastUpdate) {
+    public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
-    public Instant getPaymentDate() {
+    public Timestamp getPaymentDate() {
         return paymentDate;
     }
 
-    public void setPaymentDate(Instant paymentDate) {
+    public void setPaymentDate(Timestamp paymentDate) {
         this.paymentDate = paymentDate;
     }
 
