@@ -27,7 +27,22 @@ public class Manager {
         return FXCollections.observableArrayList(customerDAO.readAll());
     }
 
+    public void deleteCustomer(int id){
+        Customer customer = customerDAO.read(id);
+        if (customer != null) {
+            customerDAO.delete(id);
+        }
+    }
+
     public ObservableList<Film> getAllFilms() {
         return FXCollections.observableArrayList(filmDAO.readAll());
     }
+
+    public void deleteFilm(int id) {
+        Film film = filmDAO.read(id);
+        if (film != null) {
+            filmDAO.delete(id);
+        }
+    }
+
 }

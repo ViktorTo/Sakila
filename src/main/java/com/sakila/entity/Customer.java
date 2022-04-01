@@ -44,10 +44,10 @@ public class Customer {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private Set<Payment> payments = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private Set<Rental> rentals = new LinkedHashSet<>();
 
     public Set<Rental> getRentals() {

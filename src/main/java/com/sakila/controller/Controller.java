@@ -108,12 +108,26 @@ public class Controller implements Initializable {
         changeScene(event, SceneView.UPDATECUSTOMER);
     }
     @FXML
+    public void deleteCustomerClicked(MouseEvent event) {
+        Customer customer = customerTbl.getSelectionModel().getSelectedItem();
+        if (customer != null) {
+            manager.deleteCustomer(customer.getId());
+        }
+    }
+    @FXML
     public void createFilmButton(MouseEvent event) throws IOException {
         changeScene(event, SceneView.CREATEFILM);
     }
     @FXML
     public void updateFilmButton(MouseEvent event) throws IOException {
         changeScene(event, SceneView.UPDATEFILM);
+    }
+    @FXML
+    public void deleteFilmClicked(MouseEvent event) {
+        Film film = filmTbl.getSelectionModel().getSelectedItem();
+        if (film != null) {
+            manager.deleteFilm(film.getId());
+        }
     }
 
     public void changeScene(MouseEvent event, SceneView view) throws IOException {
@@ -145,6 +159,10 @@ public class Controller implements Initializable {
 
     }
 
+    public void filmLoadTab() {
+
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Show data in customer tab
