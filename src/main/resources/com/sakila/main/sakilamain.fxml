@@ -16,7 +16,7 @@
          <top>
             <TabPane prefHeight="545.0" prefWidth="1250.0" style="-fx-background-color: #83B185; -fx-border-color: #83B185; -fx-region-background-color: #83B185; -fx-text-background-color: #FFFFFF;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
               <tabs>
-                <Tab fx:id="customerTab" style="-fx-border-color: #83B185; -fx-background-color: #749D75; -fx-text-base-color: white;" text="Customers">
+                <Tab fx:id="customerTab" onSelectionChanged="#changeToCustomerTab" style="-fx-border-color: #83B185; -fx-background-color: #749D75; -fx-text-base-color: white;" text="Customers">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #83B185;">
                            <children>
@@ -33,7 +33,7 @@
                         </AnchorPane>
                   </content>
                 </Tab>
-                  <Tab fx:id="filmTab" onSelectionChanged="#filmLoadTab" style="-fx-border-color: #83B185; -fx-background-color: #749D75; -fx-text-base-color: white;" text="Films">
+                  <Tab fx:id="filmTab" onSelectionChanged="#changeToFilmTab" style="-fx-border-color: #83B185; -fx-background-color: #749D75; -fx-text-base-color: white;" text="Films">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
