@@ -159,27 +159,34 @@ public class Controller implements Initializable {
 
     }
 
-    public void filmLoadTab() {
+    public void changeToFilmTab() {
+        //Show data in film tab
+        if (filmTab.isSelected()){
+            filmTbl.getItems().clear();
+            filmidCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("id"));
+            titleCol.setCellValueFactory(new PropertyValueFactory<Film, String>("title"));
+            lengthCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("length"));
+            releaseCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("releaseYear"));
+            actorsCol.setCellValueFactory(new PropertyValueFactory<Film, FilmActor>("filmActors"));
+            filmTbl.setItems(manager.getAllFilms());
+        }
+    }
 
+    public void changeToCustomerTab() {
+        //Show data in customer tab
+        if (customerTab.isSelected()){
+            customerTbl.getItems().clear();
+            customeridCol.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("id"));
+            firstnameCol.setCellValueFactory(new PropertyValueFactory<Customer, String>("firstName"));
+            lastnameCol.setCellValueFactory(new PropertyValueFactory<Customer, String>("lastName"));
+            mailCol.setCellValueFactory(new PropertyValueFactory<Customer, String>("email"));
+            customerUpdateCol.setCellValueFactory(new PropertyValueFactory<Customer, Timestamp>("lastUpdate"));
+            customerTbl.setItems(manager.getAllCustomers());
+        }
     }
     
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //Show data in customer tab
-        customeridCol.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("id"));
-        firstnameCol.setCellValueFactory(new PropertyValueFactory<Customer, String>("firstName"));
-        lastnameCol.setCellValueFactory(new PropertyValueFactory<Customer, String>("lastName"));
-        mailCol.setCellValueFactory(new PropertyValueFactory<Customer, String>("email"));
-        customerUpdateCol.setCellValueFactory(new PropertyValueFactory<Customer, Timestamp>("lastUpdate"));
-        customerTbl.setItems(manager.getAllCustomers());
-
-        //Show data in film tab
-        filmidCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("id"));
-        titleCol.setCellValueFactory(new PropertyValueFactory<Film, String>("title"));
-        lengthCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("length"));
-        releaseCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("releaseYear"));
-        actorsCol.setCellValueFactory(new PropertyValueFactory<Film, FilmActor>("filmActors"));
-        filmTbl.setItems(manager.getAllFilms());
 
     }
 }
