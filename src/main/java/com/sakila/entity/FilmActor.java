@@ -1,21 +1,37 @@
 package com.sakila.entity;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "film_actor")
 public class FilmActor {
     @EmbeddedId
     private FilmActorId id;
+
     @MapsId("actorId")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "actor_id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "actor_id", nullable = false)
     private Actor actor;
 
     @MapsId("filmId")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "film_id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "film_id", nullable = false)
     private Film film;
+
+    @UpdateTimestamp
+    @Column(name = "last_update", nullable = false)
+    private Timestamp lastUpdate;
+
+    public Timestamp getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Timestamp lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
 
     public Film getFilm() {
         return film;
@@ -40,6 +56,4 @@ public class FilmActor {
     public void setId(FilmActorId id) {
         this.id = id;
     }
-
-    //TODO Reverse Engineering! Migrate other columns to the entity
 }
