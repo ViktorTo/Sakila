@@ -24,7 +24,6 @@
         <mapping class="com.sakila.entity.City"/>
         <mapping class="com.sakila.entity.Country"/>
         <mapping class="com.sakila.entity.Customer"/>
-        <mapping class="com.sakila.entity.CustomerList"/>
         <mapping class="com.sakila.entity.FilmActorId"/>
         <mapping class="com.sakila.entity.FilmCategory"/>
         <mapping class="com.sakila.entity.FilmCategoryId"/>
@@ -38,7 +37,6 @@
         <mapping class="com.sakila.entity.Rental"/>
         <mapping class="com.sakila.entity.SalesByFilmCategory"/>
         <mapping class="com.sakila.entity.SalesByStore"/>
-        <mapping class="com.sakila.entity.StaffList"/>
         <mapping class="com.sakila.entity.Store"/>
 
 
