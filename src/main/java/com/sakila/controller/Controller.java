@@ -1,5 +1,6 @@
-package com.sakila.main;
+package com.sakila.controller;
 
+import com.sakila.main.Main;
 import com.sakila.utility.SceneView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -118,7 +119,7 @@ public class Controller {
 
         }
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
