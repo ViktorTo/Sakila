@@ -12,7 +12,7 @@ public class FilmActor {
     private FilmActorId id;
 
     @MapsId("actorId")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "actor_id", nullable = false)
     private Actor actor;
 
@@ -55,5 +55,10 @@ public class FilmActor {
 
     public void setId(FilmActorId id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return   actor.getFirstName() + " " + actor.getLastName() + "\n";
     }
 }

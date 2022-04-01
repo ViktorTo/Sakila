@@ -69,14 +69,5 @@ public class Actor {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "Actor{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", lastUpdate=" + lastUpdate +
-                ", filmActors=" + filmActors +
-                '}';
-    }
+
 }

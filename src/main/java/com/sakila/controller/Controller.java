@@ -1,22 +1,32 @@
 package com.sakila.controller;
 
+import com.sakila.dao.CustomerDAO;
+import com.sakila.dao.FilmDAO;
+import com.sakila.entity.Customer;
+import com.sakila.entity.Film;
+import com.sakila.entity.FilmActor;
 import com.sakila.main.Main;
 import com.sakila.utility.SceneView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.net.URL;
+import java.sql.Timestamp;
+import java.util.ResourceBundle;
 
-public class Controller {
+public class Controller implements Initializable {
 
     //Main FXML
     @FXML
-    private TableColumn<?, ?> actorsCol;
+    private TableColumn<Film, FilmActor> actorsCol;
 
     @FXML
     private Button createcustomerBtn;
@@ -31,10 +41,10 @@ public class Controller {
     private Tab customerTab;
 
     @FXML
-    private TableView<?> customerTbl;
+    private TableView<Customer> customerTbl;
 
     @FXML
-    private TableColumn<?, ?> customeridCol;
+    private TableColumn<Customer, Integer> customeridCol;
 
     @FXML
     private Button deletecustomerBtn;
@@ -49,31 +59,34 @@ public class Controller {
     private Tab filmTab;
 
     @FXML
-    private TableView<?> filmTbl;
+    private TableView<Film> filmTbl;
 
     @FXML
-    private TableColumn<?, ?> filmidCol;
+    private TableColumn<Film, Integer> filmidCol;
 
     @FXML
-    private TableColumn<?, ?> firstnameCol;
+    private TableColumn<Customer, String> firstnameCol;
 
     @FXML
-    private TableColumn<?, ?> lastnameCol;
+    private TableColumn<Customer, String> lastnameCol;
 
     @FXML
-    private TableColumn<?, ?> lengthCol;
+    private TableColumn<Customer, Timestamp> customerUpdateCol;
 
     @FXML
-    private TableColumn<?, ?> mailCol;
+    private TableColumn<Film, Integer> lengthCol;
 
     @FXML
-    private TableColumn<?, ?> releaseCol;
+    private TableColumn<Customer, String> mailCol;
+
+    @FXML
+    private TableColumn<Film, Integer> releaseCol;
 
     @FXML
     private Button rentmovieBtn;
 
     @FXML
-    private TableColumn<?, ?> titleCol;
+    private TableColumn<Film, String> titleCol;
 
     @FXML
     private Button updatecustomerBtn;
@@ -129,4 +142,25 @@ public class Controller {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        //Show data in customer tab
+        CustomerDAO customerDAO = new CustomerDAO();
+        customeridCol.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("id"));
+        firstnameCol.setCellValueFactory(new PropertyValueFactory<Customer, String>("firstName"));
+        lastnameCol.setCellValueFactory(new PropertyValueFactory<Customer, String>("lastName"));
+        mailCol.setCellValueFactory(new PropertyValueFactory<Customer, String>("email"));
+        customerUpdateCol.setCellValueFactory(new PropertyValueFactory<Customer, Timestamp>("lastUpdate"));
+        customerTbl.getItems().addAll(customerDAO.readAll());
+
+        //Show data in film tab
+        FilmDAO filmDAO = new FilmDAO();
+        filmidCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("id"));
+        titleCol.setCellValueFactory(new PropertyValueFactory<Film, String>("title"));
+        lengthCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("length"));
+        releaseCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("releaseYear"));
+        actorsCol.setCellValueFactory(new PropertyValueFactory<Film, FilmActor>("filmActors"));
+        filmTbl.getItems().addAll(filmDAO.readAll());
+
+    }
 }
