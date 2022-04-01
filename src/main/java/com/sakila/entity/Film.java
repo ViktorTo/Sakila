@@ -62,7 +62,7 @@ public class Film {
     @OneToMany(mappedBy = "film")
     private Set<Inventory> inventories = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "film")
+    @OneToMany(mappedBy = "film", fetch = FetchType.EAGER)
     private Set<FilmActor> filmActors = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "film")
@@ -195,4 +195,6 @@ public class Film {
     public void setId(Integer id) {
         this.id = id;
     }
+
+
 }

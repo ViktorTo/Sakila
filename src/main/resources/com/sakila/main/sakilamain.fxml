@@ -22,10 +22,11 @@
                            <children>
                               <TableView fx:id="customerTbl" prefHeight="517.0" prefWidth="1244.0" style="-fx-background-color: #749D75; -fx-border-color: #83B185; -fx-border-base-color: #83B185;">
                                 <columns>
-                                  <TableColumn fx:id="customeridCol" prefWidth="47.0" style="-fx-background-color: #83B185;" text="Id" />
-                                  <TableColumn fx:id="firstnameCol" prefWidth="318.0" style="-fx-background-color: #83B185;" text="First Name" />
-                                    <TableColumn fx:id="lastnameCol" prefWidth="307.0" style="-fx-background-color: #83B185;" text="Last Name" />
-                                    <TableColumn fx:id="mailCol" minWidth="9.0" prefWidth="568.0" style="-fx-background-color: #83B185;" text="Mail" />
+                                  <TableColumn fx:id="customeridCol" prefWidth="47.0" style="-fx-background-color: #749D75;" text="Id" />
+                                  <TableColumn fx:id="firstnameCol" prefWidth="231.0" style="-fx-background-color: #749D75;" text="First Name" />
+                                    <TableColumn fx:id="lastnameCol" prefWidth="221.0" style="-fx-background-color: #749D75;" text="Last Name" />
+                                    <TableColumn fx:id="mailCol" minWidth="9.0" prefWidth="449.0" style="-fx-background-color: #749D75;" text="Mail" />
+                                    <TableColumn fx:id="customerUpdateCol" minWidth="9.0" prefWidth="279.0" style="-fx-background-color: #749D75;" text="Last update" />
                                 </columns>
                               </TableView>
                            </children>
@@ -36,13 +37,13 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView fx:id="filmTbl" prefHeight="517.0" prefWidth="1250.0" style="-fx-background-color: #749D75;">
+                              <TableView fx:id="filmTbl" prefHeight="517.0" prefWidth="1248.0" style="-fx-background-color: #749D75;">
                                  <columns>
-                                    <TableColumn fx:id="filmidCol" prefWidth="53.0" style="-fx-background-color: #83B185;" text="Id" />
-                                    <TableColumn fx:id="titleCol" prefWidth="407.0" style="-fx-background-color: #83B185;" text="Title" />
-                                    <TableColumn fx:id="lengthCol" prefWidth="152.0" style="-fx-background-color: #83B185;" text="Length" />
-                                    <TableColumn fx:id="releaseCol" prefWidth="116.0" style="-fx-background-color: #83B185;" text="Release Year" />
-                                    <TableColumn fx:id="actorsCol" minWidth="0.0" prefWidth="520.0" style="-fx-background-color: #83B185;" text="Actors" />
+                                    <TableColumn fx:id="filmidCol" prefWidth="53.0" style="-fx-background-color: #749D75;" text="Id" />
+                                    <TableColumn fx:id="titleCol" prefWidth="407.0" style="-fx-background-color: #749D75;" text="Title" />
+                                    <TableColumn fx:id="lengthCol" prefWidth="152.0" style="-fx-background-color: #749D75;" text="Length" />
+                                    <TableColumn fx:id="releaseCol" prefWidth="116.0" style="-fx-background-color: #749D75;" text="Release Year" />
+                                    <TableColumn fx:id="actorsCol" minWidth="0.0" prefWidth="505.0" style="-fx-background-color: #749D75;" text="Actors" />
                                  </columns>
                               </TableView>
                            </children>
