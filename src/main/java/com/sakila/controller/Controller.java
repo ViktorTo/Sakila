@@ -5,6 +5,7 @@ import com.sakila.dao.FilmDAO;
 import com.sakila.entity.Customer;
 import com.sakila.entity.Film;
 import com.sakila.entity.FilmActor;
+import com.sakila.logic.Manager;
 import com.sakila.main.Main;
 import com.sakila.utility.SceneView;
 import javafx.fxml.FXML;
@@ -23,6 +24,8 @@ import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
+
+    private final Manager manager = new Manager();
 
     //Main FXML
     @FXML
@@ -145,22 +148,20 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Show data in customer tab
-        CustomerDAO customerDAO = new CustomerDAO();
         customeridCol.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("id"));
         firstnameCol.setCellValueFactory(new PropertyValueFactory<Customer, String>("firstName"));
         lastnameCol.setCellValueFactory(new PropertyValueFactory<Customer, String>("lastName"));
         mailCol.setCellValueFactory(new PropertyValueFactory<Customer, String>("email"));
         customerUpdateCol.setCellValueFactory(new PropertyValueFactory<Customer, Timestamp>("lastUpdate"));
-        customerTbl.getItems().addAll(customerDAO.readAll());
+        customerTbl.setItems(manager.getAllCustomers());
 
         //Show data in film tab
-        FilmDAO filmDAO = new FilmDAO();
         filmidCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("id"));
         titleCol.setCellValueFactory(new PropertyValueFactory<Film, String>("title"));
         lengthCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("length"));
         releaseCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("releaseYear"));
         actorsCol.setCellValueFactory(new PropertyValueFactory<Film, FilmActor>("filmActors"));
-        filmTbl.getItems().addAll(filmDAO.readAll());
+        filmTbl.setItems(manager.getAllFilms());
 
     }
 }

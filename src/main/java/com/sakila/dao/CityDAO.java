@@ -28,6 +28,8 @@ public class CityDAO implements DatabaseAccessObject<City>{
     public void update(City data) {
         Session session = databaseSession.startSession();
         City city = session.find(City.class, data.getId());
+        city.setCity(data.getCity());
+        city.setAddresses(data.getAddresses());
         city.setCountry(data.getCountry());
         databaseSession.endSession(session);
     }
