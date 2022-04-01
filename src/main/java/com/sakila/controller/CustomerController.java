@@ -1,6 +1,7 @@
-package com.sakila.main;
+package com.sakila.controller;
 
 import com.sakila.entity.Customer;
+import com.sakila.main.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -52,7 +53,7 @@ public class CustomerController {
     }
 
     public void changeScene(MouseEvent event) throws  IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("sakilamain.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("sakilamain.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
