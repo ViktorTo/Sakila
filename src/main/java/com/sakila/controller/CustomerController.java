@@ -1,7 +1,11 @@
 package com.sakila.controller;
 
+import com.sakila.entity.Address;
 import com.sakila.entity.Customer;
+import com.sakila.entity.Store;
+import com.sakila.logic.Manager;
 import com.sakila.main.Main;
+import com.sakila.utility.SceneView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,30 +22,30 @@ import java.io.IOException;
 
 public class CustomerController {
 
-    @FXML
-    private ChoiceBox<?> addressChoice;
+    private final Manager manager = new Manager();
+    private Customer customer;
 
     @FXML
-    private Button cancelBtn;
+    private ChoiceBox<Address> addressChoice;
 
     @FXML
-    private Button doneBtn;
+    private Button cancelBtn, doneBtn;
 
     @FXML
-    private TextField emailTxt;
+    private TextField firstnameTxt, lastnameTxt, emailTxt;
 
     @FXML
-    private TextField firstnameTxt;
-
-    @FXML
-    private TextField lastnameTxt;
-
-    @FXML
-    private ChoiceBox<?> storeChoice;
+    private ChoiceBox<Store> storeChoice;
 
     @FXML
     public void createCustomerDone(MouseEvent event) throws IOException {
-
+        Customer customer = new Customer();
+        customer.setAddress(addressChoice.getValue());
+        customer.setStore(storeChoice.getValue());
+        customer.setFirstName(firstnameTxt.getText());
+        customer.setLastName(lastnameTxt.getText());
+        customer.setEmail(emailTxt.getText());
+        manager.createCustomer(customer);
     }
     @FXML
     public void updateCustomerDone(MouseEvent event) throws IOException {
@@ -59,6 +63,33 @@ public class CustomerController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void initData(SceneView view, Customer customer) {
+
+//        addressChoice.setItems(manager.getAddressStreet());
+//        storeChoice.setItems(manager.getStoreName());
+
+        switch (view) {
+            case CREATECUSTOMER -> {
+
+            }
+            case UPDATECUSTOMER -> {
+                this.customer = customer;
+                firstnameTxt.setText(customer.getFirstName());
+                lastnameTxt.setText(customer.getLastName());
+                emailTxt.setText(customer.getEmail());
+
+            }
+        }
+
+    }
+
+    public void initialize() {
+
+        // DESSA SKA LIGGA I INITDATA!!
+        addressChoice.setItems(manager.getAllAddresses());
+        storeChoice.setItems(manager.getAllStores());
     }
 
 }
