@@ -57,7 +57,7 @@ public class FilmDAO implements DatabaseAccessObject<Film> {
     @Override
     public List<Film> readAll() {
         Session session = databaseSession.startSession();
-        List<Film> filmList = session.createQuery("FROM Film", Film.class).getResultList();
+        List<Film> filmList = session.createQuery("FROM Film f ORDER BY f.title", Film.class).getResultList();
         databaseSession.endSession(session);
         return filmList;
     }
