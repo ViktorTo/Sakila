@@ -46,7 +46,7 @@
       <Button fx:id="doneBtn" layoutX="305.0" layoutY="441.0" mnemonicParsing="false" onMouseClicked="#createFilmDone" text="Done" textFill="#325e34" />
       <Button fx:id="cancelBtn" layoutX="386.0" layoutY="441.0" mnemonicParsing="false" onMouseClicked="#cancelFilm" text="Cancel" textFill="#325e34" />
       <TextField fx:id="replacementTxt" layoutX="303.0" layoutY="331.0" promptText="T.ex 19.99" />
-      <TextField fx:id="rentalrateTxt1" layoutX="303.0" layoutY="282.0" />
+      <TextField fx:id="filmlengthTxt" layoutX="303.0" layoutY="282.0" />
       <Text fx:id="lengthTxt" fill="WHITE" layoutX="154.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Length  " textAlignment="RIGHT" wrappingWidth="149.0">
          <font>
             <Font size="14.0" />

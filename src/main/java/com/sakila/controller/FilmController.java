@@ -22,7 +22,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.sql.Timestamp;
 import java.text.DecimalFormat;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 
@@ -69,6 +71,17 @@ public class FilmController implements Initializable {
     }
     @FXML
     public void createFilmDone(MouseEvent event) throws IOException {
+        Film film = new Film();
+        film.setTitle(titleTxt.getText());
+        film.setRentalDuration(Integer.parseInt(rentaldurTxt.getText()));
+        film.setRentalRate(BigDecimal.valueOf(Double.parseDouble(rentalrateTxt.getText())));
+        film.setLength(Integer.parseInt(filmlengthTxt.getText()));
+        film.setReplacementCost(BigDecimal.valueOf(Double.parseDouble(replacementTxt.getText())));
+        film.setLanguage(languageidChoice.getValue());
+        film.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
+        manager.createFilm(film);
+        changeScene(event);
+
 
     }
     @FXML
