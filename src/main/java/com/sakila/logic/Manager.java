@@ -55,5 +55,13 @@ public class Manager {
     }
 
 
-    public ObservableList<Language> getAllLanguages() { return FXCollections.observableArrayList(languageDAO.readAll()); }
+    public ObservableList<Language> getAllLanguages() {
+        return FXCollections.observableArrayList(languageDAO.readAll());
+    }
+
+    public void updateCustomer(Customer customer) {
+        if(customer.getId() != 0) {
+            customerDAO.update(customer);
+        }
+    }
 }
