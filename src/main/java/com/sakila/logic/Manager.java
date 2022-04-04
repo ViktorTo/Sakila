@@ -98,4 +98,12 @@ public class Manager {
         }
         return null;
     }
+
+    public Customer searchEmail(Customer customer) {
+        if (customer!=null){
+            customerDAO.readEmail(customer.getEmail());
+            return customerDAO.readEmail(customer.getEmail());
+        }
+        return null;
+    }
 }
