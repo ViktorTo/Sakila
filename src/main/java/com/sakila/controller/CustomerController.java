@@ -21,6 +21,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Objects;
 
 public class CustomerController {
 
@@ -90,15 +92,17 @@ public class CustomerController {
                 firstnameTxt.setText(customer.getFirstName());
                 lastnameTxt.setText(customer.getLastName());
                 emailTxt.setText(customer.getEmail());
-//                addressChoice
-//                storeChoice.getSelectionModel().select(customer.getStore());
+                Address address = manager.readAddress(customer.getAddress().getId());
+                Store store = manager.readStore(customer.getStore().getId());
+                addressChoice.getSelectionModel().select(address);
+                storeChoice.getSelectionModel().select(store);
             }
         }
 
     }
 
     public void initialize() {
-        
+
 //        storeChoice.getSelectionModel().selectedIndexProperty().addListener(e -> {
 //            System.out.println("Hej");
 //        });

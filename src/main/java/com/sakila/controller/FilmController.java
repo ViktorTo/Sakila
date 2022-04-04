@@ -111,7 +111,8 @@ public class FilmController implements Initializable {
                 rentalrateTxt.setText(film.getRentalRate().toString());
                 filmlengthTxt.setText(film.getLength().toString());
                 replacementTxt.setText(film.getReplacementCost().toString());
-
+                Language language = manager.readLanguage(film.getLanguage().getId());
+                languageidChoice.getSelectionModel().select(language);
             }
         }
 

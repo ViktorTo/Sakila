@@ -21,7 +21,7 @@ public class LanguageDAO implements DatabaseAccessObject<Language> {
     Session session = databaseSession.startSession();
     Language language = session.find(Language.class, id);
     databaseSession.endSession(session);
-    return null;
+    return language;
     }
 
     @Override
