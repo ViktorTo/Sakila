@@ -5,6 +5,7 @@ import com.sakila.entity.Customer;
 import com.sakila.entity.Store;
 import com.sakila.logic.Manager;
 import com.sakila.main.Main;
+import com.sakila.utility.SceneChanger;
 import com.sakila.utility.SceneView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,6 +28,7 @@ import java.util.Objects;
 public class CustomerController {
 
     private final Manager manager = new Manager();
+    private final SceneChanger sceneChanger = new SceneChanger();
     private Customer customer;
 
     @FXML
@@ -52,7 +54,7 @@ public class CustomerController {
         customer.setCreateDate(Timestamp.valueOf(LocalDateTime.now()));
         customer.setActive(true);
         manager.createCustomer(customer);
-        changeScene(event);
+        sceneChanger.mainScene(event);
     }
     @FXML
     public void updateCustomerDone(MouseEvent event) throws IOException {
@@ -62,20 +64,11 @@ public class CustomerController {
         customer.setAddress(addressChoice.getValue());
         customer.setStore(storeChoice.getValue());
         manager.updateCustomer(customer);
-        changeScene(event);
+        sceneChanger.mainScene(event);
     }
     @FXML
     public void cancelCustomer(MouseEvent event) throws IOException {
-        changeScene(event);
-    }
-
-    public void changeScene(MouseEvent event) throws  IOException {
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("sakilamain.fxml"));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        sceneChanger.mainScene(event);
     }
 
     public void initData(SceneView view, Customer customer) {
@@ -103,9 +96,6 @@ public class CustomerController {
 
     public void initialize() {
 
-//        storeChoice.getSelectionModel().selectedIndexProperty().addListener(e -> {
-//            System.out.println("Hej");
-//        });
     }
 
 }

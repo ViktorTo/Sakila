@@ -5,6 +5,7 @@ import com.sakila.entity.Film;
 import com.sakila.entity.Language;
 import com.sakila.logic.Manager;
 import com.sakila.main.Main;
+import com.sakila.utility.SceneChanger;
 import com.sakila.utility.SceneView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +31,7 @@ import java.util.ResourceBundle;
 
 public class FilmController implements Initializable {
     private final Manager manager = new Manager();
+    private final SceneChanger sceneChanger = new SceneChanger();
     private Film film;
     @FXML
     private Button cancelBtn;
@@ -66,8 +68,7 @@ public class FilmController implements Initializable {
         film.setReplacementCost(BigDecimal.valueOf(Double.parseDouble(replacementTxt.getText())));
         film.setLanguage(languageidChoice.getValue());
         manager.updateFilm(film);
-        changeScene(event);
-
+        sceneChanger.mainScene(event);
     }
     @FXML
     public void createFilmDone(MouseEvent event) throws IOException {
@@ -80,22 +81,11 @@ public class FilmController implements Initializable {
         film.setLanguage(languageidChoice.getValue());
         film.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
         manager.createFilm(film);
-        changeScene(event);
-
-
+        sceneChanger.mainScene(event);
     }
     @FXML
     public void cancelFilm(MouseEvent event) throws IOException {
-        changeScene(event);
-    }
-
-    public void changeScene(MouseEvent event) throws  IOException {
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("sakilamain.fxml"));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        sceneChanger.mainScene(event);
     }
 
     public void initData(SceneView view, Film film) {
