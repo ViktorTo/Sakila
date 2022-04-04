@@ -93,5 +93,8 @@
       <Button fx:id="updatefilmBtn" layoutX="403.0" layoutY="650.0" mnemonicParsing="false" onMouseClicked="#updateFilmButton" text="Update" textFill="#325e34" />
       <Text fill="WHITE" layoutX="220.0" layoutY="646.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Film Id" wrappingWidth="65.13671875" />
       <ChoiceBox fx:id="filmChoice" layoutX="210.0" layoutY="650.0" prefWidth="150.0" />
+      <Button fx:id="createBtn" layoutX="83.0" layoutY="718.0" mnemonicParsing="false" onMouseClicked="#createMouseClick" text="Create" textFill="#325e34" />
+      <Button fx:id="deleteBtn" layoutX="477.0" layoutY="718.0" mnemonicParsing="false" onMouseClicked="#deleteMouseClick" text="Delete" textFill="#325e34" />
+      <Button fx:id="updateBtn" layoutX="403.0" layoutY="718.0" mnemonicParsing="false" onMouseClicked="#updateMouseClick" text="Update" textFill="#325e34" />
    </children>
 </AnchorPane>
