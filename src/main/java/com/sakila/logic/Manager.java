@@ -27,7 +27,7 @@ public class Manager {
         return FXCollections.observableArrayList(staffDAO.readAll());
     }
 
-    public void deleteCustomer(int id){
+    public void deleteCustomer(int id) {
         Customer customer = customerDAO.read(id);
         if (customer != null) {
             customerDAO.delete(id);
@@ -35,13 +35,13 @@ public class Manager {
     }
 
     public void createCustomer(Customer customer) {
-        if(customer != null) {
+        if (customer != null) {
             customerDAO.create(customer);
         }
     }
 
     public void updateCustomer(Customer customer) {
-        if(customer.getId() != 0) {
+        if (customer.getId() != 0) {
             customerDAO.update(customer);
         }
     }
@@ -63,8 +63,8 @@ public class Manager {
         }
     }
 
-    public void updateFilm(Film film){
-        if (film != null){
+    public void updateFilm(Film film) {
+        if (film != null) {
             filmDAO.update(film);
         }
     }
@@ -74,7 +74,7 @@ public class Manager {
     }
 
     public Address readAddress(int id) {
-        if(id != 0) {
+        if (id != 0) {
             return addressDAO.read(id);
         }
         return null;
@@ -91,24 +91,21 @@ public class Manager {
 
 
     public Store readStore(int id) {
-        if(id != 0) {
+        if (id != 0) {
             return storeDAO.read(id);
         }
         return null;
     }
 
     public Language readLanguage(int id) {
-        if(id != 0) {
+        if (id != 0) {
             return languageDAO.read(id);
         }
         return null;
     }
 
-    public Customer searchEmail(Customer customer) {
-        if (customer!=null){
-            customerDAO.readEmail(customer.getEmail());
-            return customerDAO.readEmail(customer.getEmail());
-        }
-        return null;
+    public Customer searchedEmail(String email) {
+
+        return customerDAO.readEmail(email);
     }
 }

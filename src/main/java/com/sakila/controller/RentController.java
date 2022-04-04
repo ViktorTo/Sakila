@@ -1,16 +1,28 @@
 package com.sakila.controller;
 
+import com.sakila.dao.CustomerDAO;
+import com.sakila.entity.Customer;
 import com.sakila.entity.Film;
+import com.sakila.logic.Manager;
+import com.sakila.main.Main;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class RentController {
 
+    private Customer customer;
     @FXML
     private TextField emailField, searchField;
 
@@ -24,13 +36,22 @@ public class RentController {
     private Label noEmailLabel;
 
     @FXML
-    void cancelClicked(MouseEvent event) {
-
+    void cancelClicked(MouseEvent event) throws IOException {
+        changeScene(event);
     }
 
     @FXML
     void loginClicked(MouseEvent event) {
-
+        Manager manager = new Manager();
+        customer = manager.searchedEmail(emailField.getText());
+        if (customer!=null){
+            noEmailLabel.setVisible(false);
+            loginBox.setVisible(false);
+            rentBox.setVisible(true);
+            filmList.setItems(manager.getAllFilms());
+        } else {
+            noEmailLabel.setVisible(true);
+        }
     }
 
     @FXML
@@ -46,6 +67,15 @@ public class RentController {
     @FXML
     void searchTyped(KeyEvent event) {
 
+    }
+
+    public void changeScene(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("sakilamain.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 }
