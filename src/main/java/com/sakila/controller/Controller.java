@@ -34,16 +34,10 @@ public class Controller implements Initializable {
     private TableColumn<Film, FilmActor> actorsCol;
 
     @FXML
-    private Button createcustomerBtn;
+    private Tab customerTab, filmTab;
 
     @FXML
-    private Button createfilmBtn;
-
-    @FXML
-    private ChoiceBox<?> customerChoice;
-
-    @FXML
-    private Tab customerTab;
+    private TabPane tabpane;
 
     @FXML
     private TableView<Customer> customerTbl;
@@ -52,95 +46,25 @@ public class Controller implements Initializable {
     private TableColumn<Customer, Integer> customeridCol;
 
     @FXML
-    private Button deletecustomerBtn;
-
-    @FXML
-    private Button deletefilmBtn;
-
-    @FXML
-    private ChoiceBox<?> filmChoice;
-
-    @FXML
-    private Tab filmTab;
-
-    @FXML
     private TableView<Film> filmTbl;
 
     @FXML
-    private TableColumn<Film, Integer> filmidCol;
-
-    @FXML
-    private TableColumn<Customer, String> firstnameCol;
-
-    @FXML
-    private TableColumn<Customer, String> lastnameCol;
+    private TableColumn<Customer, String> firstnameCol, lastnameCol, mailCol;
 
     @FXML
     private TableColumn<Customer, Timestamp> customerUpdateCol;
 
     @FXML
-    private TableColumn<Film, Integer> lengthCol;
+    private TableColumn<Film, Timestamp> lastupdateCol;
 
     @FXML
-    private TableColumn<Customer, String> mailCol;
-
-    @FXML
-    private TableColumn<Film, Integer> releaseCol;
-
-    @FXML
-    private Button rentmovieBtn;
+    private TableColumn<Film, Integer> lengthCol, releaseCol, filmidCol;
 
     @FXML
     private TableColumn<Film, String> titleCol;
 
-    @FXML
-    private Button updatecustomerBtn;
-
-    @FXML
-    private Button updatefilmBtn;
 
 
-    @FXML
-    void createCustomerButton(MouseEvent event) throws IOException {
-        changeSceneCustomer(event, SceneView.CREATECUSTOMER, new Customer());
-    }
-
-    @FXML
-    public void updateCustomerButton(MouseEvent event) throws IOException {
-        Customer customer = customerTbl.getSelectionModel().getSelectedItem();
-        if (customer != null) {
-            changeSceneCustomer(event, SceneView.UPDATECUSTOMER, customer);
-        }
-    }
-
-    @FXML
-    public void deleteCustomerClicked(MouseEvent event) {
-        Customer customer = customerTbl.getSelectionModel().getSelectedItem();
-        if (customer != null) {
-            manager.deleteCustomer(customer.getId());
-        }
-    }
-
-    @FXML
-    public void createFilmButton(MouseEvent event) throws IOException {
-        changeSceneFilm(event, SceneView.CREATEFILM, new Film());
-    }
-
-    @FXML
-    public void updateFilmButton(MouseEvent event) throws IOException {
-        Film film = filmTbl.getSelectionModel().getSelectedItem();
-        if (film != null) {
-            changeSceneFilm(event, SceneView.UPDATEFILM, film);
-        }
-    }
-
-    @FXML
-    public void deleteFilmClicked(MouseEvent event) {
-        Film film = filmTbl.getSelectionModel().getSelectedItem();
-        if (film != null) {
-            manager.deleteFilm(film.getId());
-        }
-    }
 
     public void changeSceneCustomer(MouseEvent event, SceneView view, Customer customer) throws IOException {
         String fxml = "";
@@ -191,6 +115,7 @@ public class Controller implements Initializable {
             lengthCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("length"));
             releaseCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("releaseYear"));
             actorsCol.setCellValueFactory(new PropertyValueFactory<Film, FilmActor>("filmActors"));
+            lastupdateCol.setCellValueFactory(new PropertyValueFactory<Film, Timestamp>("lastUpdate"));
             filmTbl.setItems(manager.getAllFilms());
         }
     }
@@ -212,15 +137,83 @@ public class Controller implements Initializable {
     @FXML
     void deleteMouseClick(MouseEvent event) {
 
+        int i = tabpane.getSelectionModel().getSelectedIndex();
+        switch (i) {
+
+            case 0 -> {
+                Customer customer = customerTbl.getSelectionModel().getSelectedItem();
+                if (customer != null) {
+                    manager.deleteCustomer(customer.getId());
+                }
+
+            }
+            case 1 -> {
+                Film film = filmTbl.getSelectionModel().getSelectedItem();
+                if (film != null) {
+                    manager.deleteFilm(film.getId());
+                }
+            }
+            case 2 -> {
+
+            }
+            case 3 -> {
+            }
+
+
+        }
     }
 
     @FXML
-    void updateMouseClick(MouseEvent event) {
+    void updateMouseClick(MouseEvent event) throws IOException {
+        int i = tabpane.getSelectionModel().getSelectedIndex();
+
+        switch (i) {
+
+            case 0 -> {
+                Customer customer = customerTbl.getSelectionModel().getSelectedItem();
+                if (customer != null) {
+                    changeSceneCustomer(event, SceneView.UPDATECUSTOMER, customer);
+                }
+            }
+            case 1 -> {
+                Film film = filmTbl.getSelectionModel().getSelectedItem();
+                if (film != null) {
+                    changeSceneFilm(event, SceneView.UPDATEFILM, film);
+                }
+            }
+            case 2 -> {
+
+            }
+            case 3 -> {
+
+            }
+        }
+    }
+
+    @FXML
+    void createMouseClick(MouseEvent event) throws IOException {
+        int i = tabpane.getSelectionModel().getSelectedIndex();
+
+        switch (i) {
+
+            case 0 -> {
+                changeSceneCustomer(event, SceneView.CREATECUSTOMER, new Customer());
+            }
+            case 1 -> {
+                changeSceneFilm(event, SceneView.CREATEFILM, new Film());
+            }
+            case 2 -> {
+
+            }
+            case 3 -> {
+
+            }
+        }
 
     }
 
     @FXML
-    void createMouseClick(MouseEvent event) {
+    void rentmovieMouseClick(MouseEvent event) {
 
     }
 
