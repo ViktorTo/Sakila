@@ -1,5 +1,6 @@
 package com.sakila.controller;
 
+import com.sakila.dao.FilmDAO;
 import com.sakila.entity.Film;
 import com.sakila.entity.Language;
 import com.sakila.logic.Manager;
@@ -19,7 +20,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 
@@ -53,6 +56,14 @@ public class FilmController implements Initializable {
 
     @FXML
     public void updateFilmDone(MouseEvent event) throws IOException {
+
+        film.setTitle(titleTxt.getText());
+        film.setRentalDuration(Integer.parseInt(rentaldurTxt.getText()));
+        film.setRentalRate(BigDecimal.valueOf(Double.parseDouble(rentalrateTxt.getText())));
+        film.setLength(Integer.parseInt(filmlengthTxt.getText()));
+        film.setReplacementCost(BigDecimal.valueOf(Double.parseDouble(replacementTxt.getText())));
+        film.setLanguage(languageidChoice.getValue());
+        manager.updateFilm(film);
 
     }
     @FXML

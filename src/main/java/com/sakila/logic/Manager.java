@@ -46,6 +46,12 @@ public class Manager {
         }
     }
 
+    public void updateFilm(Film film){
+        if (film != null){
+            filmDAO.update(film);
+        }
+    }
+
     public ObservableList<Address> getAllAddresses() {
         return FXCollections.observableArrayList(addressDAO.readAll());
     }
