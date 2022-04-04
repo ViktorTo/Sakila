@@ -256,8 +256,13 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void rentmovieMouseClick(MouseEvent event) {
-
+    void rentmovieMouseClick(MouseEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("sakilarentmovie.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @Override

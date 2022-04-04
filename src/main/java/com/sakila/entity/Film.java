@@ -196,5 +196,8 @@ public class Film {
         this.id = id;
     }
 
-
+    @Override
+    public String toString() {
+        return  title;
+    }
 }
