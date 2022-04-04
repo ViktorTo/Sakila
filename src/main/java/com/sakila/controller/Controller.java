@@ -208,6 +208,22 @@ public class Controller implements Initializable {
         }
     }
 
+
+    @FXML
+    void deleteMouseClick(MouseEvent event) {
+
+    }
+
+    @FXML
+    void updateMouseClick(MouseEvent event) {
+
+    }
+
+    @FXML
+    void createMouseClick(MouseEvent event) {
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
