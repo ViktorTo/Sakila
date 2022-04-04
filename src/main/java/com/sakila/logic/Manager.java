@@ -13,6 +13,7 @@ public class Manager {
     private final StoreDAO storeDAO = new StoreDAO();
     private final FilmDAO filmDAO = new FilmDAO();
     private final LanguageDAO languageDAO = new LanguageDAO();
+    private final StaffDAO staffDAO = new StaffDAO();
 
     public ObservableList<Actor> getAllActors() {
         return FXCollections.observableArrayList(actorDAO.readAll());
@@ -20,6 +21,10 @@ public class Manager {
 
     public ObservableList<Customer> getAllCustomers() {
         return FXCollections.observableArrayList(customerDAO.readAll());
+    }
+
+    public ObservableList<Staff> getAllStaff() {
+        return FXCollections.observableArrayList(staffDAO.readAll());
     }
 
     public void deleteCustomer(int id){

@@ -49,14 +49,20 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab style="-fx-background-color: #749D75; -fx-border-color: #83B185; -fx-text-base-color: white;" text="Untitled Tab 1">
+                  <Tab fx:id="staffTab" onSelectionChanged="#changeToStaffTab" style="-fx-background-color: #749D75; -fx-border-color: #83B185; -fx-text-base-color: white;" text="Staff">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView prefHeight="517.0" prefWidth="1250.0" style="-fx-background-color: #749D75;">
+                              <TableView fx:id="staffTbl" prefHeight="517.0" prefWidth="1250.0" style="-fx-background-color: #749D75;">
                                  <columns>
-                                    <TableColumn prefWidth="75.0" style="-fx-background-color: #83B185;" text="C1" />
-                                    <TableColumn prefWidth="75.0" style="-fx-background-color: #83B185;" text="C2" />
+                                    <TableColumn fx:id="staffIdCol" prefWidth="71.0" style="-fx-background-color: #83B185;" text="ID" />
+                                    <TableColumn fx:id="staffFirstNameCol" prefWidth="184.0" style="-fx-background-color: #83B185;" text="First Name" />
+                                    <TableColumn fx:id="staffLastNameCol" prefWidth="177.0" style="-fx-background-color: #83B185;" text="Last Name" />
+                                    <TableColumn fx:id="staffAddressCol" prefWidth="224.0" style="-fx-background-color: #83B185;" text="Address" />
+                                    <TableColumn fx:id="staffEmailCol" prefWidth="182.0" style="-fx-background-color: #83B185;" text="Email" />
+                                    <TableColumn fx:id="staffStoreCol" prefWidth="154.0" style="-fx-background-color: #83B185;" text="Store" />
+                                    <TableColumn fx:id="staffUsernameCol" prefWidth="137.0" style="-fx-background-color: #83B185;" text="Username" />
+                                    <TableColumn fx:id="staffPasswordCol" prefWidth="120.0" style="-fx-background-color: #83B185;" text="Password" />
                                  </columns>
                               </TableView>
                            </children>

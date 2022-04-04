@@ -2,9 +2,8 @@ package com.sakila.controller;
 
 import com.sakila.dao.CustomerDAO;
 import com.sakila.dao.FilmDAO;
-import com.sakila.entity.Customer;
-import com.sakila.entity.Film;
-import com.sakila.entity.FilmActor;
+import com.sakila.dao.StaffDAO;
+import com.sakila.entity.*;
 import com.sakila.logic.Manager;
 import com.sakila.main.Main;
 import com.sakila.utility.SceneView;
@@ -34,7 +33,7 @@ public class Controller implements Initializable {
     private TableColumn<Film, FilmActor> actorsCol;
 
     @FXML
-    private Tab customerTab, filmTab;
+    private Tab customerTab, filmTab, staffTab;
 
     @FXML
     private TabPane tabpane;
@@ -62,6 +61,34 @@ public class Controller implements Initializable {
 
     @FXML
     private TableColumn<Film, String> titleCol;
+
+    @FXML
+    private TableView<Staff> staffTbl;
+
+    @FXML
+    private TableColumn<Staff, Integer> staffAddressCol;
+
+    @FXML
+    private TableColumn<Staff, String> staffEmailCol;
+
+    @FXML
+    private TableColumn<Staff, String> staffFirstNameCol;
+
+    @FXML
+    private TableColumn<Staff, Integer> staffIdCol;
+
+    @FXML
+    private TableColumn<Staff, String> staffLastNameCol;
+
+    @FXML
+    private TableColumn<Staff, String> staffPasswordCol;
+
+    @FXML
+    private TableColumn<Staff, Integer> staffStoreCol;
+
+    @FXML
+    private TableColumn<Staff, String> staffUsernameCol;
+
 
 
 
@@ -130,6 +157,22 @@ public class Controller implements Initializable {
             mailCol.setCellValueFactory(new PropertyValueFactory<Customer, String>("email"));
             customerUpdateCol.setCellValueFactory(new PropertyValueFactory<Customer, Timestamp>("lastUpdate"));
             customerTbl.setItems(manager.getAllCustomers());
+        }
+    }
+
+    public void changeToStaffTab() {
+        //Show data in staff tab
+        if (staffTab.isSelected()) {
+            staffTbl.getItems().clear();
+            staffIdCol.setCellValueFactory(new PropertyValueFactory<Staff, Integer>("id"));
+            staffFirstNameCol.setCellValueFactory(new PropertyValueFactory<Staff, String>("firstName"));
+            staffLastNameCol.setCellValueFactory(new PropertyValueFactory<Staff, String>("lastName"));
+ //           staffAddressCol.setCellValueFactory(new PropertyValueFactory<Staff, Integer>("address"));
+            staffEmailCol.setCellValueFactory(new PropertyValueFactory<Staff, String>("email"));
+//            staffStoreCol.setCellValueFactory(new PropertyValueFactory<Staff, Integer>("store_id"));
+            staffUsernameCol.setCellValueFactory(new PropertyValueFactory<Staff, String>("username"));
+            staffPasswordCol.setCellValueFactory(new PropertyValueFactory<Staff, String>("password"));
+            staffTbl.setItems(manager.getAllStaff());
         }
     }
 
