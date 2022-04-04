@@ -35,6 +35,12 @@ public class Manager {
         }
     }
 
+    public void updateCustomer(Customer customer) {
+        if(customer.getId() != 0) {
+            customerDAO.update(customer);
+        }
+    }
+
     public ObservableList<Film> getAllFilms() {
         return FXCollections.observableArrayList(filmDAO.readAll());
     }
@@ -43,6 +49,12 @@ public class Manager {
         Film film = filmDAO.read(id);
         if (film != null) {
             filmDAO.delete(id);
+        }
+    }
+
+    public void createFilm(Film film) {
+        if (film != null) {
+            filmDAO.create(film);
         }
     }
 
@@ -65,9 +77,7 @@ public class Manager {
         return FXCollections.observableArrayList(languageDAO.readAll());
     }
 
-    public void updateCustomer(Customer customer) {
-        if(customer.getId() != 0) {
-            customerDAO.update(customer);
-        }
-    }
+
+
+
 }
