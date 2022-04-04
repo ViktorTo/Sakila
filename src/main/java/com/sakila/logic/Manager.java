@@ -68,6 +68,13 @@ public class Manager {
         return FXCollections.observableArrayList(addressDAO.readAll());
     }
 
+    public Address readAddress(int id) {
+        if(id != 0) {
+            return addressDAO.read(id);
+        }
+        return null;
+    }
+
     public ObservableList<Store> getAllStores() {
         return FXCollections.observableArrayList(storeDAO.readAll());
     }
@@ -78,6 +85,17 @@ public class Manager {
     }
 
 
+    public Store readStore(int id) {
+        if(id != 0) {
+            return storeDAO.read(id);
+        }
+        return null;
+    }
 
-
+    public Language readLanguage(int id) {
+        if(id != 0) {
+            return languageDAO.read(id);
+        }
+        return null;
+    }
 }
