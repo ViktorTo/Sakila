@@ -12,6 +12,7 @@ public class Manager {
     private final CustomerDAO customerDAO = new CustomerDAO();
     private final StoreDAO storeDAO = new StoreDAO();
     private final FilmDAO filmDAO = new FilmDAO();
+    private final LanguageDAO languageDAO = new LanguageDAO();
 
     public ObservableList<Actor> getAllActors() {
         return FXCollections.observableArrayList(actorDAO.readAll());
@@ -54,4 +55,5 @@ public class Manager {
     }
 
 
+    public ObservableList<Language> getAllLanguages() { return FXCollections.observableArrayList(languageDAO.readAll()); }
 }

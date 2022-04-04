@@ -18,9 +18,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Timestamp;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -98,15 +100,19 @@ public class Controller implements Initializable {
     private Button updatefilmBtn;
 
 
-
     @FXML
     void createCustomerButton(MouseEvent event) throws IOException {
-        changeScene(event, SceneView.CREATECUSTOMER);
+        changeSceneCustomer(event, SceneView.CREATECUSTOMER, new Customer());
     }
+
     @FXML
     public void updateCustomerButton(MouseEvent event) throws IOException {
-        changeScene(event, SceneView.UPDATECUSTOMER);
+        Customer customer = customerTbl.getSelectionModel().getSelectedItem();
+        if (customer != null) {
+            changeSceneCustomer(event, SceneView.UPDATECUSTOMER, customer);
+        }
     }
+
     @FXML
     public void deleteCustomerClicked(MouseEvent event) {
         Customer customer = customerTbl.getSelectionModel().getSelectedItem();
@@ -114,14 +120,20 @@ public class Controller implements Initializable {
             manager.deleteCustomer(customer.getId());
         }
     }
+
     @FXML
     public void createFilmButton(MouseEvent event) throws IOException {
-        changeScene(event, SceneView.CREATEFILM);
+        changeSceneFilm(event, SceneView.CREATEFILM, new Film());
     }
+
     @FXML
     public void updateFilmButton(MouseEvent event) throws IOException {
-        changeScene(event, SceneView.UPDATEFILM);
+        Film film = filmTbl.getSelectionModel().getSelectedItem();
+        if (film != null) {
+            changeSceneFilm(event, SceneView.UPDATEFILM, film);
+        }
     }
+
     @FXML
     public void deleteFilmClicked(MouseEvent event) {
         Film film = filmTbl.getSelectionModel().getSelectedItem();
@@ -130,38 +142,49 @@ public class Controller implements Initializable {
         }
     }
 
-    public void changeScene(MouseEvent event, SceneView view) throws IOException {
+    public void changeSceneCustomer(MouseEvent event, SceneView view, Customer customer) throws IOException {
         String fxml = "";
         switch (view) {
-
             case CREATECUSTOMER -> {
-                fxml="sakilacreatecustomer.fxml";
+                fxml = "sakilacreatecustomer.fxml";
             }
             case UPDATECUSTOMER -> {
-                fxml="sakilaupdatecustomer.fxml";
+                fxml = "sakilaupdatecustomer.fxml";
             }
-            case CREATEFILM -> {
-                fxml="sakilacreatefilm.fxml";
-            }
-            case UPDATEFILM -> {
-                fxml="sakilaupdatefilm.fxml";
-            }
-
         }
-
         FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
         Parent root = loader.load();
+        CustomerController controller = loader.getController();
+        controller.initData(view, customer);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
 
-
+    public void changeSceneFilm(MouseEvent event, SceneView view, Film film) throws IOException {
+        String fxml = "";
+        switch (view) {
+            case CREATEFILM -> {
+                fxml = "sakilacreatefilm.fxml";
+            }
+            case UPDATEFILM -> {
+                fxml = "sakilaupdatefilm.fxml";
+            }
+        }
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
+        Parent root = loader.load();
+        FilmController controller = loader.getController();
+        controller.initData(view, film);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void changeToFilmTab() {
         //Show data in film tab
-        if (filmTab.isSelected()){
+        if (filmTab.isSelected()) {
             filmTbl.getItems().clear();
             filmidCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("id"));
             titleCol.setCellValueFactory(new PropertyValueFactory<Film, String>("title"));
@@ -174,7 +197,7 @@ public class Controller implements Initializable {
 
     public void changeToCustomerTab() {
         //Show data in customer tab
-        if (customerTab.isSelected()){
+        if (customerTab.isSelected()) {
             customerTbl.getItems().clear();
             customeridCol.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("id"));
             firstnameCol.setCellValueFactory(new PropertyValueFactory<Customer, String>("firstName"));
@@ -184,7 +207,7 @@ public class Controller implements Initializable {
             customerTbl.setItems(manager.getAllCustomers());
         }
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
