@@ -29,19 +29,11 @@ public class FilmDAO implements DatabaseAccessObject<Film> {
     public void update(Film data) {
     Session session = databaseSession.startSession();
     Film film = session.find(Film.class, data.getId());
-    film.setFilmActors(data.getFilmActors());
-    film.setFilmCategories(data.getFilmCategories());
-    film.setDescription(data.getDescription());
-    film.setInventories(data.getInventories());
     film.setLanguage(data.getLanguage());
     film.setLength(data.getLength());
-    film.setOriginalLanguage(data.getOriginalLanguage());
-    film.setRating(data.getRating());
-    film.setReleaseYear(data.getReleaseYear());
     film.setRentalDuration(data.getRentalDuration());
     film.setRentalRate(data.getRentalRate());
     film.setReplacementCost(data.getReplacementCost());
-    film.setSpecialFeatures(data.getSpecialFeatures());
     film.setTitle(data.getTitle());
     databaseSession.endSession(session);
     }

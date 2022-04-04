@@ -64,6 +64,7 @@ public class FilmController implements Initializable {
         film.setReplacementCost(BigDecimal.valueOf(Double.parseDouble(replacementTxt.getText())));
         film.setLanguage(languageidChoice.getValue());
         manager.updateFilm(film);
+        changeScene(event);
 
     }
     @FXML
