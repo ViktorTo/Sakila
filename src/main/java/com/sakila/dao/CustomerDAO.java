@@ -54,4 +54,16 @@ public class CustomerDAO implements DatabaseAccessObject<Customer>{
         databaseSession.endSession(session);
         return customerList;
     }
+
+    public Customer readEmail(String email) {
+        Session session = databaseSession.startSession();
+        List<Customer> customerList = session.createQuery("FROM Customer c WHERE c.email = :id", Customer.class)
+                .setParameter("id", email)
+                .getResultList();
+        if(customerList.size() < 1) {
+            System.err.println("No found");
+            return null;
+        }
+        return customerList.get(0);
+    }
 }
