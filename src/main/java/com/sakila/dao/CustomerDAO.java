@@ -29,6 +29,10 @@ public class CustomerDAO implements DatabaseAccessObject<Customer>{
     public void update(Customer data) {
         Session session = databaseSession.startSession();
         Customer customer = session.find(Customer.class, data.getId());
+        customer.setFirstName(data.getFirstName());
+        customer.setLastName(data.getLastName());
+        customer.setEmail(data.getEmail());
+        customer.setStore(data.getStore());
         customer.setAddress(data.getAddress());
         databaseSession.endSession(session);
 

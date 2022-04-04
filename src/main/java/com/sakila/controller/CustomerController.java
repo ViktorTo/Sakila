@@ -19,6 +19,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class CustomerController {
 
@@ -45,11 +47,20 @@ public class CustomerController {
         customer.setFirstName(firstnameTxt.getText());
         customer.setLastName(lastnameTxt.getText());
         customer.setEmail(emailTxt.getText());
+        customer.setCreateDate(Timestamp.valueOf(LocalDateTime.now()));
+        customer.setActive(true);
         manager.createCustomer(customer);
+        changeScene(event);
     }
     @FXML
     public void updateCustomerDone(MouseEvent event) throws IOException {
-
+        customer.setFirstName(firstnameTxt.getText());
+        customer.setLastName(lastnameTxt.getText());
+        customer.setEmail(emailTxt.getText());
+        customer.setAddress(addressChoice.getValue());
+        customer.setStore(storeChoice.getValue());
+        manager.updateCustomer(customer);
+        changeScene(event);
     }
     @FXML
     public void cancelCustomer(MouseEvent event) throws IOException {
@@ -67,29 +78,30 @@ public class CustomerController {
 
     public void initData(SceneView view, Customer customer) {
 
-//        addressChoice.setItems(manager.getAddressStreet());
-//        storeChoice.setItems(manager.getStoreName());
+        addressChoice.setItems(manager.getAllAddresses());
+        storeChoice.setItems(manager.getAllStores());
 
         switch (view) {
             case CREATECUSTOMER -> {
-
+             this.customer = customer;
             }
             case UPDATECUSTOMER -> {
                 this.customer = customer;
                 firstnameTxt.setText(customer.getFirstName());
                 lastnameTxt.setText(customer.getLastName());
                 emailTxt.setText(customer.getEmail());
-
+//                addressChoice
+//                storeChoice.getSelectionModel().select(customer.getStore());
             }
         }
 
     }
 
     public void initialize() {
-
-        // DESSA SKA LIGGA I INITDATA!!
-        addressChoice.setItems(manager.getAllAddresses());
-        storeChoice.setItems(manager.getAllStores());
+        
+//        storeChoice.getSelectionModel().selectedIndexProperty().addListener(e -> {
+//            System.out.println("Hej");
+//        });
     }
 
 }
