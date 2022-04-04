@@ -1,8 +1,13 @@
 package com.sakila.controller;
 
+import com.sakila.entity.Film;
+import com.sakila.entity.Language;
+import com.sakila.logic.Manager;
 import com.sakila.main.Main;
+import com.sakila.utility.SceneView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,10 +19,13 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class FilmController {
-
+public class FilmController implements Initializable {
+    private final Manager manager = new Manager();
+    private Film film;
     @FXML
     private Button cancelBtn;
 
@@ -25,7 +33,7 @@ public class FilmController {
     private Button doneBtn;
 
     @FXML
-    private ChoiceBox<?> languageidChoice;
+    private ChoiceBox<Language> languageidChoice;
 
     @FXML
     private TextField filmlengthTxt;
@@ -35,9 +43,6 @@ public class FilmController {
 
     @FXML
     private TextField rentalrateTxt;
-
-    @FXML
-    private TextField rentalrateTxt1;
 
     @FXML
     private TextField replacementTxt;
@@ -68,4 +73,27 @@ public class FilmController {
         stage.show();
     }
 
+    public void initData(SceneView view, Film film) {
+
+        switch (view) {
+            case CREATEFILM -> {
+
+            }
+            case UPDATEFILM -> {
+                this.film = film;
+                titleTxt.setText(film.getTitle());
+                rentaldurTxt.setText(film.getRentalDuration().toString());
+                rentalrateTxt.setText(film.getRentalRate().toString());
+                filmlengthTxt.setText(film.getLength().toString());
+                replacementTxt.setText(film.getReplacementCost().toString());
+
+            }
+        }
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        languageidChoice.setItems(manager.getAllLanguages());
+    }
 }
