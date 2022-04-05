@@ -111,7 +111,12 @@ public class Manager {
     public Customer searchedEmail(String email) {
         return customerDAO.readEmail(email);
     }
+
     public ObservableList<Film> searchedFilm(String filteredText){
         return FXCollections.observableArrayList(filmDAO.readFromSearch(filteredText));
+    }
+
+    public ObservableList<Customer> searchedCustomer(String filteredText) {
+        return FXCollections.observableArrayList(customerDAO.readFromSearch(filteredText));
     }
 }
