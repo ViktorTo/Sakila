@@ -156,4 +156,10 @@ public class Manager {
             rentalDAO.update(rental);
         }
     }
+
+    public Inventory getInventoryFromFilm(int filmId) {
+        List<Inventory> inventories = inventoryDAO.readByFilm(filmId);
+        //TODO: kanske fixa så man inte kan hyra samma film fån inventory.
+        return inventories.get(0);
+    }
 }
