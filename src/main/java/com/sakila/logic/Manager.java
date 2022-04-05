@@ -168,4 +168,15 @@ public class Manager {
             rentalDAO.create(rental);
         }
     }
+
+    public List<Rental> getFilmsToReturn(Customer customer) {
+        List<Rental> rentals = new ArrayList<>();
+        for(Rental r : customer.getRentals()) {
+            if(r.getReturnDate() == null) {
+                rentals.add(r);
+            }
+        }
+        return rentals;
+    }
+
 }

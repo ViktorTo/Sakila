@@ -58,6 +58,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
+                              <Button fx:id="returnButton" mnemonicParsing="false" onMouseClicked="#notificationClicked" text="0" />
                               <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="378.0" text="Select a movie!">
                                  <font>
                                     <Font name="Roboto Mono for Powerline" size="18.0" />
@@ -113,6 +114,26 @@
                      <padding>
                         <Insets bottom="25.0" />
                      </padding>
+                  </VBox>
+                  <VBox fx:id="returnBox" prefHeight="200.0" prefWidth="100.0" visible="false">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="117.0" prefWidth="666.0" text="Return movies">
+                           <font>
+                              <Font name="Roboto Mono for Powerline" size="18.0" />
+                           </font>
+                        </Label>
+                        <VBox prefHeight="348.0" prefWidth="666.0">
+                           <children>
+                              <ListView fx:id="returnListView" onMouseClicked="#returnListClicked" prefHeight="215.0" prefWidth="666.0" />
+                              <HBox alignment="CENTER" prefHeight="161.0" prefWidth="666.0" spacing="10.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onMouseClicked="#returnClicked" text="Return" />
+                                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#backClicked" text="Back" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
                   </VBox>
                </children>
             </StackPane>

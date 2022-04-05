@@ -4,6 +4,7 @@ import com.sakila.entity.*;
 import com.sakila.logic.Manager;
 import com.sakila.utility.SceneChanger;
 import com.sakila.utility.SceneView;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -12,14 +13,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-import java.util.List;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class RentMovieController {
 
     private final Manager manager = new Manager();
+    private final SceneChanger sceneChanger = new SceneChanger();
     private Customer customer;
     private Staff staff;
-    private final SceneChanger sceneChanger = new SceneChanger();
 
     @FXML
     private TextField emailField, searchField, staffUserField;
@@ -28,13 +30,16 @@ public class RentMovieController {
     private ListView<Film> filmList;
 
     @FXML
-    private VBox loginBox, rentBox, staffBox;
+    private ListView<Rental> returnListView;
+
+    @FXML
+    private VBox loginBox, rentBox, staffBox, returnBox;
 
     @FXML
     private Label noEmailLabel;
 
     @FXML
-    private Button staffButton;
+    private Button staffButton, returnButton;
 
     @FXML
     private PasswordField staffPasswordField;
@@ -43,6 +48,13 @@ public class RentMovieController {
     void cancelClicked(MouseEvent event) throws IOException {
         staffButton.setVisible(true);
         changeBox(loginBox);
+    }
+
+    @FXML
+    void backClicked(MouseEvent event) {
+        changeBox(rentBox);
+        filmList.setItems(manager.getFilmsFromInventory(customer.getStore().getId()));
+        returnButton.setText(String.valueOf(manager.getFilmsToReturn(customer).size()));
     }
 
     @FXML
@@ -56,10 +68,12 @@ public class RentMovieController {
         if (customer!=null){
             changeBox(rentBox);
             filmList.setItems(manager.getFilmsFromInventory(customer.getStore().getId()));
+            returnButton.setText(String.valueOf(manager.getFilmsToReturn(customer).size()));
         } else {
             noEmailLabel.setVisible(true);
         }
     }
+
 
     @FXML
     void staffLoginClicked(MouseEvent event) throws IOException {
@@ -97,12 +111,35 @@ public class RentMovieController {
     }
 
     @FXML
+    void returnClicked(MouseEvent Event) {
+        Rental rental = returnListView.getSelectionModel().getSelectedItem();
+        if(rental != null) {
+            rental.setReturnDate(Timestamp.valueOf(LocalDateTime.now()));
+            manager.updateRental(rental);
+            returnListView.setItems(FXCollections.observableArrayList(manager.getFilmsToReturn(customer)));
+        }
+    }
+
+    @FXML
     void searchTyped(KeyEvent event) {
         if (!searchField.getText().isEmpty() || searchField.getText() != null) {
             ObservableList<Film> searchedFilm = manager.searchedFilm(searchField.getText());
             filmList.setItems(searchedFilm);
         }
     }
+
+    @FXML
+    void returnListClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void notificationClicked(MouseEvent event) {
+        returnListView.setItems(FXCollections.observableArrayList(manager.getFilmsToReturn(customer)));
+        changeBox(returnBox);
+    }
+
+
 
     public void initialize() {
         staffButton.setVisible(true);
@@ -112,12 +149,12 @@ public class RentMovieController {
         loginBox.setVisible(false);
         staffBox.setVisible(false);
         rentBox.setVisible(false);
+        returnBox.setVisible(false);
         staffButton.setVisible(false);
 
         if(box == loginBox) {
             staffButton.setVisible(true);
         }
-
         box.setVisible(true);
     }
 
