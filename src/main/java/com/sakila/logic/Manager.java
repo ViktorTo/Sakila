@@ -68,6 +68,13 @@ public class Manager {
             rentalDAO.delete(id);
         }
     }
+    //Här
+    public void deleteStaff(int id){
+        Staff staff = staffDAO.read(id);
+        if(staff != null){
+            staffDAO.delete(id);
+        }
+    }
 
     public void createFilm(Film film) {
         if (film != null) {

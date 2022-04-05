@@ -16,7 +16,7 @@ public class Store {
     @Column(name = "store_id", nullable = false)
     private Integer id;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.LAZY, optional = false ,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "manager_staff_id", nullable = false)
     private Staff managerStaff;
 
@@ -30,8 +30,8 @@ public class Store {
 
     @OneToMany(mappedBy = "store")
     private Set<Inventory> inventories = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "store")
+    //här
+    @OneToMany(mappedBy = "store" , cascade = CascadeType.PERSIST)
     private Set<Staff> staff = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "store")

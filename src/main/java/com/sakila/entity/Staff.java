@@ -32,7 +32,7 @@ public class Staff {
     @Column(name = "email", length = 50)
     private String email;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false , cascade = CascadeType.PERSIST)
     @JoinColumn(name = "store_id", nullable = false)
     private Store store;
 
@@ -48,13 +48,13 @@ public class Staff {
     @UpdateTimestamp
     @Column(name = "last_update", nullable = false)
     private Timestamp lastUpdate;
-
-    @OneToMany(mappedBy = "staff")
+    // Kolla HÄR!!
+    @OneToMany(mappedBy = "staff" , cascade = CascadeType.DETACH)
     private Set<Payment> payments = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "staff")
+    @OneToMany(mappedBy = "staff" , cascade = CascadeType.PERSIST)
     private Set<Rental> rentals = new LinkedHashSet<>();
-
+    // Kolla HÄR!!
     public Set<Rental> getRentals() {
         return rentals;
     }

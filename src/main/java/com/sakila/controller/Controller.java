@@ -280,6 +280,10 @@ public class Controller implements Initializable {
                 }
             }
             case 3 -> {
+                Staff staff = staffTbl.getSelectionModel().getSelectedItem();
+                if (staff !=  null){
+                    manager.deleteStaff(staff.getId());
+                }
             }
 
 
