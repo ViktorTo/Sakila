@@ -35,7 +35,7 @@ public class Controller implements Initializable {
     private TableColumn<Film, FilmActor> actorsCol;
 
     @FXML
-    private Tab customerTab, filmTab, staffTab, rentalTab;
+    private Tab customerTab, filmTab, staffTab, rentalTab, actorTab;
 
     @FXML
     private TabPane tabpane;
@@ -105,6 +105,19 @@ public class Controller implements Initializable {
 
     @FXML
     private TableView<Rental> rentalTbl;
+
+    @FXML
+    private TableColumn<Actor, String> actorFirstNameCol;
+
+    @FXML
+    private TableColumn<Actor, Integer> actorIdCol;
+
+    @FXML
+    private TableColumn<Actor, String> actorLastNameCol;
+
+    @FXML
+    private TableView<Actor> actorTbl;
+
 
 
 
@@ -205,6 +218,17 @@ public class Controller implements Initializable {
             rentalLastUpdateCol.setCellValueFactory(new PropertyValueFactory<Rental, Timestamp>("lastUpdate"));
             rentalTbl.setItems(manager.getRentalCustomerAndStaff());
 
+        }
+    }
+
+    public void changeToActorTab(){
+        //Show data in actor tab
+        if (actorTab.isSelected()) {
+            actorTbl.getItems().clear();
+            actorIdCol.setCellValueFactory(new PropertyValueFactory<Actor, Integer>("id"));
+            actorFirstNameCol.setCellValueFactory(new PropertyValueFactory<Actor, String>("firstName"));
+            actorLastNameCol.setCellValueFactory(new PropertyValueFactory<Actor, String>("lastName"));
+            actorTbl.setItems(manager.getAllActors());
 
         }
     }

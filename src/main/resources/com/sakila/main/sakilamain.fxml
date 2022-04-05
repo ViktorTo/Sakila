@@ -87,14 +87,15 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab style="-fx-background-color: #749D75; -fx-border-color: #83B185; -fx-text-base-color: white;" text="Untitled Tab 2">
+                  <Tab fx:id="actorTab" onSelectionChanged="#changeToActorTab" style="-fx-background-color: #749D75; -fx-border-color: #83B185; -fx-text-base-color: white;" text="Actor">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView prefHeight="517.0" prefWidth="1250.0" style="-fx-background-color: #749D75;">
+                              <TableView fx:id="actorTbl" prefHeight="517.0" prefWidth="1250.0" style="-fx-background-color: #749D75;">
                                  <columns>
-                                    <TableColumn prefWidth="75.0" style="-fx-background-color: #83B185;" text="C1" />
-                                    <TableColumn prefWidth="75.0" style="-fx-background-color: #83B185;" text="C2" />
+                                    <TableColumn fx:id="actorIdCol" prefWidth="242.0" style="-fx-background-color: #83B185;" text="ID" />
+                                    <TableColumn fx:id="actorFirstNameCol" prefWidth="521.0" style="-fx-background-color: #83B185;" text="First Name" />
+                                    <TableColumn fx:id="actorLastNameCol" prefWidth="486.0" style="-fx-background-color: #83B185;" text="Last Name" />
                                  </columns>
                               </TableView>
                            </children>
