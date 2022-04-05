@@ -31,6 +31,24 @@
                         </AnchorPane>
                   </content>
                 </Tab>
+                  <Tab fx:id="rentalTab" onSelectionChanged="#changeToRentalTab" style="-fx-background-color: #749D75; -fx-border-color: #83B185; -fx-text-base-color: white;" text="Rental">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="rentalTbl" prefHeight="517.0" prefWidth="1250.0" style="-fx-background-color: #749D75;">
+                                 <columns>
+                                    <TableColumn fx:id="rentalIdCol" prefWidth="47.0" style="-fx-background-color: #83B185;" text="Id" />
+                                    <TableColumn fx:id="rentalCustomerIdCol" prefWidth="200.0" style="-fx-background-color: #83B185;" text="Customer" />
+                                    <TableColumn fx:id="rentalStaffIdCol" prefWidth="222.0" style="-fx-background-color: #83B185;" text="Staff" />
+                                    <TableColumn fx:id="rentalRentalDateCol" prefWidth="250.0" style="-fx-background-color: #83B185;" text="Rental Date" />
+                                    <TableColumn fx:id="rentalReturnCol" prefWidth="268.0" style="-fx-background-color: #83B185;" text="Return Date" />
+                                    <TableColumn fx:id="rentalLastUpdateCol" prefWidth="247.0" style="-fx-background-color: #83B185;" text="Last Update" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
                   <Tab fx:id="filmTab" onSelectionChanged="#changeToFilmTab" style="-fx-border-color: #83B185; -fx-background-color: #749D75; -fx-text-base-color: white;" text="Films">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">

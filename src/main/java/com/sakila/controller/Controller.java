@@ -6,6 +6,7 @@ import com.sakila.dao.StaffDAO;
 import com.sakila.entity.*;
 import com.sakila.logic.Manager;
 import com.sakila.main.Main;
+import com.sakila.utility.SceneChanger;
 import com.sakila.utility.SceneView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,13 +28,14 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     private final Manager manager = new Manager();
+    private final SceneChanger sceneChanger = new SceneChanger();
 
     //Main FXML
     @FXML
     private TableColumn<Film, FilmActor> actorsCol;
 
     @FXML
-    private Tab customerTab, filmTab, staffTab;
+    private Tab customerTab, filmTab, staffTab, rentalTab;
 
     @FXML
     private TabPane tabpane;
@@ -88,6 +90,21 @@ public class Controller implements Initializable {
 
     @FXML
     private TableColumn<Staff, String> staffUsernameCol;
+
+    @FXML
+    private TableColumn<Rental, Customer> rentalCustomerIdCol;
+
+    @FXML
+    private TableColumn<Rental, Integer> rentalIdCol;
+
+    @FXML
+    private TableColumn<Rental, Timestamp> rentalLastUpdateCol,rentalRentalDateCol, rentalReturnCol;
+
+    @FXML
+    private TableColumn<Rental, Staff> rentalStaffIdCol;
+
+    @FXML
+    private TableView<Rental> rentalTbl;
 
 
 
@@ -176,6 +193,21 @@ public class Controller implements Initializable {
         }
     }
 
+    public void changeToRentalTab() {
+        //Show data in rental tab
+        if (rentalTab.isSelected()) {
+            rentalTbl.getItems().clear();
+            rentalIdCol.setCellValueFactory(new PropertyValueFactory<Rental, Integer>("id"));
+            rentalCustomerIdCol.setCellValueFactory(new PropertyValueFactory<Rental, Customer>("customer"));
+            rentalStaffIdCol.setCellValueFactory(new PropertyValueFactory<Rental, Staff>("staff"));
+            rentalRentalDateCol.setCellValueFactory(new PropertyValueFactory<Rental, Timestamp>("rentalDate"));
+            rentalReturnCol.setCellValueFactory(new PropertyValueFactory<Rental, Timestamp>("returnDate"));
+            rentalLastUpdateCol.setCellValueFactory(new PropertyValueFactory<Rental, Timestamp>("lastUpdate"));
+            rentalTbl.setItems(manager.getRentalCustomerAndStaff());
+
+
+        }
+    }
 
     @FXML
     void deleteMouseClick(MouseEvent event) {
