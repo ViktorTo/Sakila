@@ -66,4 +66,14 @@ public class CustomerDAO implements DatabaseAccessObject<Customer>{
         }
         return customerList.get(0);
     }
+
+    public List<Customer> readFromSearch(String filterText) {
+        Session session = databaseSession.startSession();
+        List<Customer> customerList = session.createQuery("SELECT c FROM Customer c WHERE c.email LIKE :id", Customer.class)
+                .setParameter("id", "%"+filterText+"%")
+                .getResultList();
+        databaseSession.endSession(session);
+        return customerList;
+    }
+
 }

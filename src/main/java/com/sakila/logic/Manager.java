@@ -62,6 +62,13 @@ public class Manager {
         }
     }
 
+    public void deleteRental(int id) {
+        Rental rental = rentalDAO.read(id);
+        if (rental != null) {
+            rentalDAO.delete(id);
+        }
+    }
+
     public void createFilm(Film film) {
         if (film != null) {
             filmDAO.create(film);
@@ -118,9 +125,9 @@ public class Manager {
         return FXCollections.observableArrayList(filmDAO.readFromSearch(filteredText));
     }
 
-//    public ObservableList<Customer> searchedCustomer(String filteredText) {
-//        return FXCollections.observableArrayList(customerDAO.readFromSearch(filteredText));
-//    }
+    public ObservableList<Customer> searchedCustomer(String filteredText) {
+        return FXCollections.observableArrayList(customerDAO.readFromSearch(filteredText));
+    }
 
     public ObservableList<Film> getFilmsFromInventory(int id) {
         List<Inventory> inventoryList = inventoryDAO.readFromStore(id);
@@ -137,4 +144,9 @@ public class Manager {
         return staffDAO.readUsername(username);
     }
 
+    public void updateRental(Rental rental) {
+        if (rental != null){
+            rentalDAO.update(rental);
+        }
+    }
 }
