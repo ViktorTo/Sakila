@@ -62,17 +62,22 @@ public class RentalController {
     }
 
     @FXML
-    public void rentMovieClicked(MouseEvent event) {
-        Rental rental = new Rental();
-        Timestamp rentaldate = Timestamp.valueOf(LocalDateTime.now());
-        Timestamp returndate = Timestamp.valueOf(LocalDateTime.now().plusDays(7));
+    public void rentMovieClicked(MouseEvent event) throws IOException {
+        Film film = filmListView.getSelectionModel().getSelectedItem();
+        Customer customer = customerListView.getSelectionModel().getSelectedItem();
+        if (film != null && customer != null) {
+            Timestamp rentaldate = Timestamp.valueOf(LocalDateTime.now());
 
-        rental.setRentalDate(rentaldate);
-//        rental.setInventory(filmListView.getSelectionModel().getSelectedItem().getId());
-        rental.setCustomer(customerListView.getSelectionModel().getSelectedItem());
-        rental.setReturnDate(returndate);
-//        rental.setStaff(); Todo staff???
-        rental.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
+
+            rental.setRentalDate(rentaldate);
+            rental.setInventory(manager.getInventoryFromFilm(film.getId()));
+            rental.setCustomer(customer);
+
+            rental.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
+            manager.createRental(rental);
+            sceneChanger.mainScene(event);
+        }
+
 
     }
 
@@ -93,6 +98,7 @@ public class RentalController {
 
         switch (view) {
             case CREATERENTAL -> {
+                this.rental=rental;
             customerListView.setItems(manager.getAllCustomers());
 
             }

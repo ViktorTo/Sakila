@@ -52,7 +52,7 @@ public class Staff {
     @OneToMany(mappedBy = "staff" , cascade = CascadeType.DETACH)
     private Set<Payment> payments = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "staff" , cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "staff")
     private Set<Rental> rentals = new LinkedHashSet<>();
     // Kolla HÄR!!
     public Set<Rental> getRentals() {

@@ -162,4 +162,10 @@ public class Manager {
         //TODO: kanske fixa så man inte kan hyra samma film fån inventory.
         return inventories.get(0);
     }
+
+    public void createRental(Rental rental) {
+        if (rental != null){
+            rentalDAO.create(rental);
+        }
+    }
 }
