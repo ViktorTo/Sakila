@@ -21,7 +21,7 @@ public class RentalDAO implements DatabaseAccessObject<Rental> {
         Session session = databaseSession.startSession();
         Rental rental = session.find(Rental.class, id);
         databaseSession.endSession(session);
-        return null;
+        return rental;
     }
 
     @Override
