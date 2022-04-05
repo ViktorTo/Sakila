@@ -53,4 +53,13 @@ public class FilmDAO implements DatabaseAccessObject<Film> {
         databaseSession.endSession(session);
         return filmList;
     }
+
+    public List<Film> readFromSearch(String filterText) {
+        Session session = databaseSession.startSession();
+        List<Film> filmList = session.createQuery("SELECT f FROM Film f WHERE f.title LIKE :s", Film.class)
+                .setParameter("s", "%"+filterText+"%")
+                .getResultList();
+        databaseSession.endSession(session);
+        return filmList;
+    }
 }
