@@ -16,6 +16,7 @@ public class Manager {
     private final FilmDAO filmDAO = new FilmDAO();
     private final LanguageDAO languageDAO = new LanguageDAO();
     private final StaffDAO staffDAO = new StaffDAO();
+    private final RentalDAO rentalDAO = new RentalDAO();
 
     public ObservableList<Actor> getAllActors() {
         return FXCollections.observableArrayList(actorDAO.readAll());
@@ -86,10 +87,11 @@ public class Manager {
         return FXCollections.observableArrayList(storeDAO.readAll());
     }
 
+    public ObservableList<Language> getAllLanguages() { return FXCollections.observableArrayList(languageDAO.readAll()); }
 
-    public ObservableList<Language> getAllLanguages() {
-        return FXCollections.observableArrayList(languageDAO.readAll());
-    }
+    public ObservableList<Rental> getAllRentals() { return FXCollections.observableArrayList(rentalDAO.readAll()); }
+
+    public ObservableList<Rental> getRentalCustomerAndStaff() {return FXCollections.observableArrayList(rentalDAO.readRentalCustomerStaff());}
 
 
     public Store readStore(int id) {

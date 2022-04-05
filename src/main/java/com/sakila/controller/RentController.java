@@ -5,6 +5,7 @@ import com.sakila.entity.Customer;
 import com.sakila.entity.Film;
 import com.sakila.logic.Manager;
 import com.sakila.main.Main;
+import com.sakila.utility.SceneChanger;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +27,7 @@ public class RentController {
 
     private final Manager manager = new Manager();
     private Customer customer;
+    private final SceneChanger sceneChanger = new SceneChanger();
 
     @FXML
     private TextField emailField, searchField;
@@ -41,7 +43,7 @@ public class RentController {
 
     @FXML
     void cancelClicked(MouseEvent event) throws IOException {
-        changeScene(event);
+        sceneChanger.mainScene(event);
     }
 
     @FXML
@@ -74,15 +76,6 @@ public class RentController {
             ObservableList<Film> searchedFilm = manager.searchedFilm(searchField.getText());
             filmList.setItems(searchedFilm);
         }
-    }
-
-    public void changeScene(MouseEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("sakilamain.fxml"));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 
 }

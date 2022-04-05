@@ -51,6 +51,12 @@ public class RentalDAO implements DatabaseAccessObject<Rental> {
         Session session = databaseSession.startSession();
         List<Rental> rentalList = session.createQuery("FROM Rental ", Rental.class).getResultList();
         databaseSession.endSession(session);
-        return null;
+        return rentalList;
+    }
+
+    public List<Rental> readRentalCustomerStaff() {
+        Session session = databaseSession.startSession();
+        List<Rental> rentalList = session.createQuery("SELECT r FROM Rental r LEFT JOIN FETCH r.staff LEFT JOIN FETCH r.customer", Rental.class).getResultList();
+        return rentalList;
     }
 }
