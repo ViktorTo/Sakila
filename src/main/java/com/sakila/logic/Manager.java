@@ -5,6 +5,8 @@ import com.sakila.entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.List;
+
 public class Manager {
 
     private final ActorDAO actorDAO = new ActorDAO();
@@ -105,7 +107,9 @@ public class Manager {
     }
 
     public Customer searchedEmail(String email) {
-
         return customerDAO.readEmail(email);
+    }
+    public ObservableList<Film> searchedFilm(String filteredText){
+        return FXCollections.observableArrayList(filmDAO.readFromSearch(filteredText));
     }
 }
