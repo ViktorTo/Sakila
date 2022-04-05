@@ -163,6 +163,27 @@ public class Controller implements Initializable {
         stage.show();
     }
 
+    public void changeSceneRental(MouseEvent event, SceneView view, Rental rental) throws IOException {
+        String fxml = "";
+        switch(view) {
+            case CREATERENTAL -> {
+                fxml = "sakilacreaterental.fxml";
+            }
+            case UPDATERENTAL -> {
+                fxml = "sakilaupdaterental.fxml";
+            }
+
+        }
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
+        Parent root = loader.load();
+        RentalController controller = loader.getController();
+        controller.initData(view, rental);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void changeToFilmTab() {
         //Show data in film tab
         if (filmTab.isSelected()) {
@@ -247,13 +268,16 @@ public class Controller implements Initializable {
 
             }
             case 1 -> {
+                Rental rental = rentalTbl.getSelectionModel().getSelectedItem();
+                if (rental != null) {
+                    manager.deleteRental(rental.getId());
+                }
+            }
+            case 2 -> {
                 Film film = filmTbl.getSelectionModel().getSelectedItem();
                 if (film != null) {
                     manager.deleteFilm(film.getId());
                 }
-            }
-            case 2 -> {
-
             }
             case 3 -> {
             }
@@ -275,19 +299,24 @@ public class Controller implements Initializable {
                 }
             }
             case 1 -> {
+                Rental rental = rentalTbl.getSelectionModel().getSelectedItem();
+                if (rental != null) {
+                    changeSceneRental(event, SceneView.UPDATERENTAL, rental);
+                }
+            }
+            case 2 -> {
                 Film film = filmTbl.getSelectionModel().getSelectedItem();
                 if (film != null) {
                     changeSceneFilm(event, SceneView.UPDATEFILM, film);
                 }
-            }
-            case 2 -> {
-
             }
             case 3 -> {
 
             }
         }
     }
+
+
 
     @FXML
     void createMouseClick(MouseEvent event) throws IOException {
@@ -299,10 +328,10 @@ public class Controller implements Initializable {
                 changeSceneCustomer(event, SceneView.CREATECUSTOMER, new Customer());
             }
             case 1 -> {
-                changeSceneFilm(event, SceneView.CREATEFILM, new Film());
+                changeSceneRental(event, SceneView.CREATERENTAL, new Rental());
             }
             case 2 -> {
-
+                changeSceneFilm(event, SceneView.CREATEFILM, new Film());
             }
             case 3 -> {
 

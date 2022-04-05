@@ -6,5 +6,7 @@ public enum SceneView {
     UPDATECUSTOMER,
     CREATEFILM,
     UPDATEFILM,
+    CREATERENTAL,
+    UPDATERENTAL,
 
 }
