@@ -30,7 +30,7 @@ public class Rental {
     @Column(name = "return_date")
     private Timestamp returnDate;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "staff_id", nullable = false)
     private Staff staff;
 
