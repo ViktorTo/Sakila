@@ -1,8 +1,6 @@
 package com.sakila.controller;
 
-import com.sakila.entity.Customer;
-import com.sakila.entity.Film;
-import com.sakila.entity.Staff;
+import com.sakila.entity.*;
 import com.sakila.logic.Manager;
 import com.sakila.utility.SceneChanger;
 import com.sakila.utility.SceneView;
@@ -14,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.util.List;
 
 public class RentMovieController {
 
@@ -70,7 +69,7 @@ public class RentMovieController {
             staff = manager.getStaffByUsername(staffUsername);
         }
         if(staff != null) {
-            sceneChanger.mainScene(event);
+            sceneChanger.mainScene(event, staff);
         }
     }
 
@@ -82,7 +81,11 @@ public class RentMovieController {
     @FXML
     void rentClicked(MouseEvent event) {
         Film film = filmList.getSelectionModel().getSelectedItem();
+        Inventory freeMovie;
+
         if(film != null) {
+//            List<Rental> rentals = manager.getRentalByMovie(film.getId());
+//            List<Inventory> inventories = manager.getInventoryByFilm(film.getId());
 
         }
     }

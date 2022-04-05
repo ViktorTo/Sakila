@@ -49,10 +49,19 @@ public class InventoryDAO implements DatabaseAccessObject<Inventory> {
         return inventoryList;
     }
 
-    public List<Inventory> readFromStore(int id) {
+    public List<Inventory> readFromStore(int storeId) {
         Session session = databaseSession.startSession();
         List<Inventory> inventoryList = session.createQuery("FROM Inventory i LEFT JOIN FETCH i.film WHERE i.store.id = :id", Inventory.class)
-                .setParameter("id", id)
+                .setParameter("id", storeId)
+                .getResultList();
+        databaseSession.endSession(session);
+        return inventoryList;
+    }
+
+    public List<Inventory> readByFilm(int filmId) {
+        Session session = databaseSession.startSession();
+        List<Inventory> inventoryList = session.createQuery("FROM Inventory i LEFT JOIN FETCH i.film WHERE i.film.id = :id", Inventory.class)
+                .setParameter("id", filmId)
                 .getResultList();
         databaseSession.endSession(session);
         return inventoryList;

@@ -29,6 +29,7 @@ public class Controller implements Initializable {
 
     private final Manager manager = new Manager();
     private final SceneChanger sceneChanger = new SceneChanger();
+    private Staff staff;
 
     //Main FXML
     @FXML
@@ -118,71 +119,6 @@ public class Controller implements Initializable {
     @FXML
     private TableView<Actor> actorTbl;
 
-
-
-
-
-
-    public void changeSceneCustomer(MouseEvent event, SceneView view, Customer customer) throws IOException {
-        String fxml = "";
-        switch (view) {
-            case CREATECUSTOMER -> {
-                fxml = "sakilacreatecustomer.fxml";
-            }
-            case UPDATECUSTOMER -> {
-                fxml = "sakilaupdatecustomer.fxml";
-            }
-        }
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
-        Parent root = loader.load();
-        CustomerController controller = loader.getController();
-        controller.initData(view, customer);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void changeSceneFilm(MouseEvent event, SceneView view, Film film) throws IOException {
-        String fxml = "";
-        switch (view) {
-            case CREATEFILM -> {
-                fxml = "sakilacreatefilm.fxml";
-            }
-            case UPDATEFILM -> {
-                fxml = "sakilaupdatefilm.fxml";
-            }
-        }
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
-        Parent root = loader.load();
-        FilmController controller = loader.getController();
-        controller.initData(view, film);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void changeSceneRental(MouseEvent event, SceneView view, Rental rental) throws IOException {
-        String fxml = "";
-        switch(view) {
-            case CREATERENTAL -> {
-                fxml = "sakilacreaterental.fxml";
-            }
-            case UPDATERENTAL -> {
-                fxml = "sakilaupdaterental.fxml";
-            }
-
-        }
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
-        Parent root = loader.load();
-        RentalController controller = loader.getController();
-        controller.initData(view, rental);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 
     public void changeToFilmTab() {
         //Show data in film tab
@@ -299,19 +235,19 @@ public class Controller implements Initializable {
             case 0 -> {
                 Customer customer = customerTbl.getSelectionModel().getSelectedItem();
                 if (customer != null) {
-                    changeSceneCustomer(event, SceneView.UPDATECUSTOMER, customer);
+                    sceneChanger.customerScene(event, SceneView.UPDATECUSTOMER, customer);
                 }
             }
             case 1 -> {
                 Rental rental = rentalTbl.getSelectionModel().getSelectedItem();
                 if (rental != null) {
-                    changeSceneRental(event, SceneView.UPDATERENTAL, rental);
+                    sceneChanger.changeSceneRental(event, SceneView.UPDATERENTAL, rental);
                 }
             }
             case 2 -> {
                 Film film = filmTbl.getSelectionModel().getSelectedItem();
                 if (film != null) {
-                    changeSceneFilm(event, SceneView.UPDATEFILM, film);
+                    sceneChanger.changeSceneFilm(event, SceneView.UPDATEFILM, film);
                 }
             }
             case 3 -> {
@@ -329,13 +265,15 @@ public class Controller implements Initializable {
         switch (i) {
 
             case 0 -> {
-                changeSceneCustomer(event, SceneView.CREATECUSTOMER, new Customer());
+                sceneChanger.customerScene(event, SceneView.CREATECUSTOMER, new Customer());
             }
             case 1 -> {
-                changeSceneRental(event, SceneView.CREATERENTAL, new Rental());
+                Rental rental = new Rental();
+                rental.setStaff(this.staff);
+                sceneChanger.changeSceneRental(event, SceneView.CREATERENTAL, rental);
             }
             case 2 -> {
-                changeSceneFilm(event, SceneView.CREATEFILM, new Film());
+                sceneChanger.changeSceneFilm(event, SceneView.CREATEFILM, new Film());
             }
             case 3 -> {
 
@@ -357,5 +295,10 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
+
+    public void initData(Staff staff) {
+        this.staff = staff;
+        System.out.println(staff.getFirstName());
     }
 }
