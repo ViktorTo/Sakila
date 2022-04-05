@@ -19,7 +19,7 @@ public class Rental {
     @Column(name = "rental_date", nullable = false)
     private Timestamp rentalDate;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "inventory_id", nullable = false)
     private Inventory inventory;
 
@@ -30,7 +30,7 @@ public class Rental {
     @Column(name = "return_date")
     private Timestamp returnDate;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "staff_id", nullable = false)
     private Staff staff;
 
