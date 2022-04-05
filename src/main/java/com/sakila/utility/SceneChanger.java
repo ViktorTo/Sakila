@@ -1,7 +1,13 @@
 package com.sakila.utility;
 
+import com.sakila.controller.Controller;
 import com.sakila.controller.CustomerController;
+import com.sakila.controller.FilmController;
+import com.sakila.controller.RentalController;
 import com.sakila.entity.Customer;
+import com.sakila.entity.Film;
+import com.sakila.entity.Rental;
+import com.sakila.entity.Staff;
 import com.sakila.main.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -23,6 +29,17 @@ public class SceneChanger {
         stage.show();
     }
 
+    public void mainScene(MouseEvent event, Staff staff) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("sakilamain.fxml"));
+        Parent root = loader.load();
+        Controller controller = loader.getController();
+        controller.initData(staff);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void customerScene(MouseEvent event, SceneView view, Customer customer) throws IOException {
         String fxml = "";
         switch (view) {
@@ -37,6 +54,47 @@ public class SceneChanger {
         Parent root = loader.load();
         CustomerController controller = loader.getController();
         controller.initData(view, customer);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void changeSceneRental(MouseEvent event, SceneView view, Rental rental) throws IOException {
+        String fxml = "";
+        switch(view) {
+            case CREATERENTAL -> {
+                fxml = "sakilacreaterental.fxml";
+            }
+            case UPDATERENTAL -> {
+                fxml = "sakilaupdaterental.fxml";
+            }
+
+        }
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
+        Parent root = loader.load();
+        RentalController controller = loader.getController();
+        controller.initData(view, rental);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void changeSceneFilm(MouseEvent event, SceneView view, Film film) throws IOException {
+        String fxml = "";
+        switch (view) {
+            case CREATEFILM -> {
+                fxml = "sakilacreatefilm.fxml";
+            }
+            case UPDATEFILM -> {
+                fxml = "sakilaupdatefilm.fxml";
+            }
+        }
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
+        Parent root = loader.load();
+        FilmController controller = loader.getController();
+        controller.initData(view, film);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
