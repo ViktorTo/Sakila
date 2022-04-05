@@ -1,5 +1,6 @@
 package com.sakila.dao;
 
+import com.sakila.entity.Customer;
 import com.sakila.entity.Staff;
 import com.sakila.utility.DatabaseSession;
 import org.hibernate.Session;
@@ -57,5 +58,17 @@ public class StaffDAO implements DatabaseAccessObject<Staff>{
         List<Staff> staffList = session.createQuery("FROM Staff ", Staff.class).getResultList();
         databaseSession.endSession(session);
         return staffList;
+    }
+
+    public Staff readUsername(String username) {
+        Session session = databaseSession.startSession();
+        List<Staff> staffList = session.createQuery("FROM Staff s WHERE s.username = :id", Staff.class)
+                .setParameter("id", username)
+                .getResultList();
+        if(staffList.size() < 1) {
+            System.err.println("No found");
+            return null;
+        }
+        return staffList.get(0);
     }
 }

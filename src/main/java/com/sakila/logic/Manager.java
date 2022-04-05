@@ -5,6 +5,7 @@ import com.sakila.entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Manager {
@@ -17,6 +18,7 @@ public class Manager {
     private final LanguageDAO languageDAO = new LanguageDAO();
     private final StaffDAO staffDAO = new StaffDAO();
     private final RentalDAO rentalDAO = new RentalDAO();
+    private final InventoryDAO inventoryDAO = new InventoryDAO();
 
     public ObservableList<Actor> getAllActors() {
         return FXCollections.observableArrayList(actorDAO.readAll());
@@ -116,7 +118,23 @@ public class Manager {
         return FXCollections.observableArrayList(filmDAO.readFromSearch(filteredText));
     }
 
-    public ObservableList<Customer> searchedCustomer(String filteredText) {
-        return FXCollections.observableArrayList(customerDAO.readFromSearch(filteredText));
+//    public ObservableList<Customer> searchedCustomer(String filteredText) {
+//        return FXCollections.observableArrayList(customerDAO.readFromSearch(filteredText));
+//    }
+
+    public ObservableList<Film> getFilmsFromInventory(int id) {
+        List<Inventory> inventoryList = inventoryDAO.readFromStore(id);
+        List<Film> filmList = new ArrayList<>();
+        for (Inventory i : inventoryList) {
+            if(!filmList.contains(i.getFilm())) {
+                filmList.add(i.getFilm());
+            }
+        }
+        return FXCollections.observableArrayList(filmList);
     }
+
+    public Staff getStaffByUsername(String username) {
+        return staffDAO.readUsername(username);
+    }
+
 }
