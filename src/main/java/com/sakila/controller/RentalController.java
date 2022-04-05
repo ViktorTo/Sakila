@@ -3,6 +3,7 @@ package com.sakila.controller;
 import com.sakila.dao.CustomerDAO;
 import com.sakila.entity.Customer;
 import com.sakila.entity.Film;
+import com.sakila.entity.Inventory;
 import com.sakila.entity.Rental;
 import com.sakila.logic.Manager;
 import com.sakila.utility.SceneChanger;
@@ -15,10 +16,13 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import org.hibernate.type.LocalDateTimeType;
 
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class RentalController {
     private final Manager manager = new Manager();
@@ -46,7 +50,8 @@ public class RentalController {
 
     @FXML
     public void updateRentalClicked(MouseEvent event) throws IOException {
-        rental.setReturnDate(Timestamp.valueOf(returnDatePicker.getValue().toString()));
+        LocalDateTime localDateTime = LocalDateTime.of(returnDatePicker.getValue(), LocalTime.now());
+        rental.setReturnDate(Timestamp.valueOf(localDateTime));
         manager.updateRental(rental);
         sceneChanger.mainScene(event);
     }
@@ -59,6 +64,16 @@ public class RentalController {
     @FXML
     public void rentMovieClicked(MouseEvent event) {
         Rental rental = new Rental();
+        Timestamp rentaldate = Timestamp.valueOf(LocalDateTime.now());
+        Timestamp returndate = Timestamp.valueOf(LocalDateTime.now().plusDays(7));
+
+        rental.setRentalDate(rentaldate);
+//        rental.setInventory(filmListView.getSelectionModel().getSelectedItem().getId());
+        rental.setCustomer(customerListView.getSelectionModel().getSelectedItem());
+        rental.setReturnDate(returndate);
+//        rental.setStaff(); Todo staff???
+        rental.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
+
     }
 
     @FXML
