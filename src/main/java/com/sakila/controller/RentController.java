@@ -5,6 +5,7 @@ import com.sakila.entity.Customer;
 import com.sakila.entity.Film;
 import com.sakila.logic.Manager;
 import com.sakila.main.Main;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -19,10 +20,13 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class RentController {
 
+    private final Manager manager = new Manager();
     private Customer customer;
+
     @FXML
     private TextField emailField, searchField;
 
@@ -42,7 +46,7 @@ public class RentController {
 
     @FXML
     void loginClicked(MouseEvent event) {
-        Manager manager = new Manager();
+
         customer = manager.searchedEmail(emailField.getText());
         if (customer!=null){
             noEmailLabel.setVisible(false);
@@ -66,7 +70,10 @@ public class RentController {
 
     @FXML
     void searchTyped(KeyEvent event) {
-
+        if (!searchField.getText().isEmpty() || searchField.getText() != null) {
+            ObservableList<Film> searchedFilm = manager.searchedFilm(searchField.getText());
+            filmList.setItems(searchedFilm);
+        }
     }
 
     public void changeScene(MouseEvent event) throws IOException {
