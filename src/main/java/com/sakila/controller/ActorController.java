@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class ActorController {
 
@@ -31,6 +33,7 @@ public class ActorController {
     @FXML
     private TextField lastNameTxt;
 
+
     @FXML
     void cancelActor(MouseEvent event) throws IOException {
         sceneChanger.mainScene(event);
@@ -47,5 +50,13 @@ public class ActorController {
         sceneChanger.mainScene(event);
 
     }
-    public void createActorDone(MouseEvent event) throws IOException {}
+    @FXML
+    void createActorDone(MouseEvent event) throws IOException{
+    Actor actor = new Actor();
+    actor.setFirstName(firstNameTxt.getText());
+    actor.setLastName(lastNameTxt.getText());
+    actor.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
+    manager.updateActor(actor);
+    sceneChanger.mainScene(event);
+    }
 }
