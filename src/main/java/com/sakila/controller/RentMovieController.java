@@ -129,11 +129,6 @@ public class RentMovieController {
     }
 
     @FXML
-    void returnListClicked(MouseEvent event) {
-
-    }
-
-    @FXML
     void notificationClicked(MouseEvent event) {
         returnListView.setItems(FXCollections.observableArrayList(manager.getFilmsToReturn(customer)));
         changeBox(returnBox);
