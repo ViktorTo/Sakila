@@ -127,4 +127,14 @@ public class SceneChanger {
         stage.show();
     }
 
+    public void informationScene(MouseEvent event, int id) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("sakilainformation.fxml"));
+        Parent root = loader.load();
+        InfoController controller = loader.getController();
+        controller.initFilm(id);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

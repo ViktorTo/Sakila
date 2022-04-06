@@ -25,6 +25,18 @@ public class FilmDAO implements DatabaseAccessObject<Film> {
         return film;
     }
 
+    public Film readWithLanguage(int id) {
+        Session session = databaseSession.startSession();
+        List<Film> filmList = session.createQuery("FROM Film f LEFT JOIN FETCH f.language WHERE f.id = :id", Film.class)
+                .setParameter("id", id)
+                .getResultList();
+        databaseSession.endSession(session);
+        if(filmList.size() > 0) {
+            return filmList.get(0);
+        }
+        return null;
+    }
+
     @Override
     public void update(Film data) {
     Session session = databaseSession.startSession();

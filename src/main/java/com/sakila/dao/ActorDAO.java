@@ -1,6 +1,8 @@
 package com.sakila.dao;
 
 import com.sakila.entity.Actor;
+import com.sakila.entity.Film;
+import com.sakila.entity.FilmActor;
 import com.sakila.utility.DatabaseSession;
 import org.hibernate.Session;
 
