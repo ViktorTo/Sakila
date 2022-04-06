@@ -34,7 +34,10 @@ public class ActorDAO implements DatabaseAccessObject<Actor> {
 
     @Override
     public void delete(int id) {
-
+    Session session = databaseSession.startSession();
+    Actor actor = session.find(Actor.class, id);
+    session.delete(actor);
+    databaseSession.endSession(session);
     }
 
     @Override
