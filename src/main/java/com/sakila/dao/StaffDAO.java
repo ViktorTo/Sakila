@@ -48,7 +48,7 @@ public class StaffDAO implements DatabaseAccessObject<Staff>{
     public void delete(int id) {
     Session session = databaseSession.startSession();
     Staff staff = session.find(Staff.class, id);
-    session.remove(staff);
+    // session.remove(staff);
     databaseSession.endSession(session);
     }
 

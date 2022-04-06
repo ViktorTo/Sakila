@@ -101,6 +101,13 @@ public class Manager {
             staffDAO.delete(id);
         }
     }
+    public void deleteActor (int id) {
+
+        if (id > 0){
+            System.out.println(id);
+            actorDAO.delete(id);
+        }
+    }
 
     public void createFilm(Film film) {
         if (film != null) {

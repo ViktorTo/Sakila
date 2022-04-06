@@ -26,7 +26,7 @@ public class Actor {
     @Column(name = "last_update", nullable = false)
     private Timestamp lastUpdate;
 
-    @OneToMany(mappedBy = "actor", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "actor", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<FilmActor> filmActors = new LinkedHashSet<>();
 
     public Set<FilmActor> getFilmActors() {

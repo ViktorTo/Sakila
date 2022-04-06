@@ -253,6 +253,10 @@ public class Controller implements Initializable {
                 }
             }
             case 4 -> {
+                Actor actor = actorTbl.getSelectionModel().getSelectedItem();
+                if (actor != null){
+                    manager.deleteActor(actor.getId());
+                }
 
             }
             case 5 -> {
