@@ -296,9 +296,15 @@ public class Controller implements Initializable {
             }
             case 3 -> {
 
+
             }
             case 4 -> {
-
+          /*      //HÄR
+                Actor actor = actorTbl.getSelectionModel().getSelectedItem();
+                if(actor != null) {
+                    sceneChanger.changeSceneActor(event, SceneView.UPDATEACTOR, actor);
+                }
+        */
             }
             case 5 -> {
                 Inventory inventory = inventoryTbl.getSelectionModel().getSelectedItem();
@@ -332,6 +338,8 @@ public class Controller implements Initializable {
 
             }
             case 4 -> {
+                //här
+             //   sceneChanger.changeSceneActor(event, SceneView.CREATEACTOR, new Actor());
 
             }
             case 5 -> {
