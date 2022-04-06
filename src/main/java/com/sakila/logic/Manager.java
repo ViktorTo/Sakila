@@ -20,6 +20,8 @@ public class Manager {
     private final RentalDAO rentalDAO = new RentalDAO();
     private final InventoryDAO inventoryDAO = new InventoryDAO();
 
+    public ObservableList<Inventory> getAllInventories() { return FXCollections.observableArrayList(inventoryDAO.readInventoryFilmStore()); };
+
     public ObservableList<Actor> getAllActors() {
         return FXCollections.observableArrayList(actorDAO.readAll());
     }

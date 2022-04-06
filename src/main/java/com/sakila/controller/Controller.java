@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -119,6 +120,24 @@ public class Controller implements Initializable {
     @FXML
     private TableView<Actor> actorTbl;
 
+    @FXML
+    private TableColumn<Inventory, Film> inventoryFilmCol;
+
+    @FXML
+    private TableColumn<Inventory, Integer> inventoryIdCol;
+
+    @FXML
+    private TableColumn<Inventory, Timestamp> inventoryLastUpdateCol;
+
+    @FXML
+    private TableColumn<Inventory, Store> inventoryStoreIdCol;
+
+    @FXML
+    private Tab inventoryTab;
+
+    @FXML
+    private TableView<Inventory> inventoryTbl;
+
 
     public void changeToFilmTab() {
         //Show data in film tab
@@ -187,6 +206,18 @@ public class Controller implements Initializable {
             actorLastNameCol.setCellValueFactory(new PropertyValueFactory<Actor, String>("lastName"));
             actorTbl.setItems(manager.getAllActors());
 
+        }
+    }
+
+    public void changeToInventoryTab() {
+    //Show data in inventory tab
+        if (inventoryTab.isSelected()) {
+            inventoryTbl.getItems().clear();
+            inventoryIdCol.setCellValueFactory(new PropertyValueFactory<Inventory, Integer>("id"));
+            inventoryFilmCol.setCellValueFactory(new PropertyValueFactory<Inventory, Film>("film"));
+            inventoryStoreIdCol.setCellValueFactory(new PropertyValueFactory<Inventory, Store>("store"));
+            inventoryLastUpdateCol.setCellValueFactory(new PropertyValueFactory<Inventory, Timestamp>("lastUpdate"));
+            inventoryTbl.setItems(manager.getAllInventories());
         }
     }
 

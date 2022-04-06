@@ -95,8 +95,6 @@ public class Store {
 
     @Override
     public String toString() {
-        return "Store{" +
-                "id=" + id +
-                '}';
+        return id.toString();
     }
 }
