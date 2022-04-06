@@ -46,21 +46,25 @@ public class InventoryController implements Initializable {
     @FXML
     void inventoryDoneClicked(MouseEvent event) throws IOException {
         Inventory inventory = new Inventory();
-        inventory.setFilm(addedFilmListView.getItems().get(0));
-        inventory.setStore(storeIdChoice.getValue());
-        inventory.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
-        manager.createInventory(inventory);
-        sceneChanger.mainScene(event);
 
+        if (! addedFilmListView.getItems().isEmpty()  && storeIdChoice.getValue() != null) {
+            inventory.setFilm(addedFilmListView.getItems().get(0));
+            inventory.setStore(storeIdChoice.getValue());
+            inventory.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
+            manager.createInventory(inventory);
+            sceneChanger.mainScene(event);
+        }
     }
 
     @FXML
     void updateInventoryClicked(MouseEvent event) throws IOException {
-        inventory.setStore(storeIdChoice.getValue());
-        inventory.setFilm(addedFilmListView.getItems().get(0));
-        inventory.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
-        manager.updateInventory(inventory);
-        sceneChanger.mainScene(event);
+        if (inventory != null) {
+            inventory.setStore(storeIdChoice.getValue());
+            inventory.setFilm(addedFilmListView.getItems().get(0));
+            inventory.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
+            manager.updateInventory(inventory);
+            sceneChanger.mainScene(event);
+        }
     }
 
     @FXML
