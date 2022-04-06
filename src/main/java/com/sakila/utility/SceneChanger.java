@@ -43,6 +43,9 @@ public class SceneChanger {
             case UPDATECUSTOMER -> {
                 fxml = "sakilaupdatecustomer.fxml";
             }
+            case CREATECUSTOMERUSER -> {
+                fxml = "sakilacreatecustomer.fxml";
+            }
         }
         FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
         Parent root = loader.load();
@@ -109,6 +112,15 @@ public class SceneChanger {
         Parent root = loader.load();
         InventoryController controller = loader.getController();
         controller.initData(view, inventory);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void changeSceneLogin(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("sakilarentmovie.fxml"));
+        Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

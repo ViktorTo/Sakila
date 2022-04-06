@@ -96,7 +96,7 @@ public class RentMovieController {
 
     @FXML
     void registerClicked(MouseEvent event) throws IOException {
-        sceneChanger.customerScene(event, SceneView.CREATECUSTOMER, new Customer());
+        sceneChanger.customerScene(event, SceneView.CREATECUSTOMERUSER, new Customer());
     }
 
     @FXML
