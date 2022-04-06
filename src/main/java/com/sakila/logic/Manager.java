@@ -20,18 +20,36 @@ public class Manager {
     private final RentalDAO rentalDAO = new RentalDAO();
     private final InventoryDAO inventoryDAO = new InventoryDAO();
 
-    public ObservableList<Inventory> getAllInventories() { return FXCollections.observableArrayList(inventoryDAO.readInventoryFilmStore()); };
+
 
     public ObservableList<Actor> getAllActors() {
         return FXCollections.observableArrayList(actorDAO.readAll());
     }
 
-    public ObservableList<Customer> getAllCustomers() {
-        return FXCollections.observableArrayList(customerDAO.readAll());
+    public Inventory getInventoryFromFilm(int filmId) {
+        List<Inventory> inventories = inventoryDAO.readByFilm(filmId);
+        //TODO: kanske fixa så man inte kan hyra samma film fån inventory.
+        return inventories.get(0);
     }
 
-    public ObservableList<Staff> getAllStaff() {
-        return FXCollections.observableArrayList(staffDAO.readAll());
+    public ObservableList<Inventory> getAllInventories() { return FXCollections.observableArrayList(inventoryDAO.readInventoryFilmStore()); }
+
+    public void deleteInventory(int id) {
+        Inventory inventory = inventoryDAO.read(id);
+        if(inventory != null) {
+            inventoryDAO.delete(id);
+        }
+    }
+
+    public void createInventory(Inventory inventory) {
+        if (inventory != null) {
+            inventoryDAO.create(inventory);
+        }
+    }
+    public void updateInventory(Inventory inventory) {
+        if (inventory.getId() != 0) {
+            inventoryDAO.update(inventory);
+        }
     }
 
     public void deleteCustomer(int id) {
@@ -40,6 +58,8 @@ public class Manager {
             customerDAO.delete(id);
         }
     }
+
+    public ObservableList<Customer> getAllCustomers() { return FXCollections.observableArrayList(customerDAO.readAll()); }
 
     public void createCustomer(Customer customer) {
         if (customer != null) {
@@ -70,7 +90,11 @@ public class Manager {
             rentalDAO.delete(id);
         }
     }
-    //Här
+
+    public ObservableList<Staff> getAllStaff() {
+        return FXCollections.observableArrayList(staffDAO.readAll());
+    }
+
     public void deleteStaff(int id){
         Staff staff = staffDAO.read(id);
         if(staff != null){
@@ -110,7 +134,6 @@ public class Manager {
     public ObservableList<Rental> getAllRentals() { return FXCollections.observableArrayList(rentalDAO.readAll()); }
 
     public ObservableList<Rental> getRentalCustomerAndStaff() {return FXCollections.observableArrayList(rentalDAO.readRentalCustomerStaff());}
-
 
     public Store readStore(int id) {
         if (id != 0) {
@@ -159,11 +182,7 @@ public class Manager {
         }
     }
 
-    public Inventory getInventoryFromFilm(int filmId) {
-        List<Inventory> inventories = inventoryDAO.readByFilm(filmId);
-        //TODO: kanske fixa så man inte kan hyra samma film fån inventory.
-        return inventories.get(0);
-    }
+
 
     public void createRental(Rental rental) {
         if (rental != null){

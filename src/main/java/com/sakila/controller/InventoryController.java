@@ -1,11 +1,15 @@
 package com.sakila.controller;
 
+import com.sakila.entity.Inventory;
+import com.sakila.utility.SceneView;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 
 public class InventoryController {
+
+    private Inventory inventory;
 
     @FXML
     private ListView<?> filmListView;
@@ -41,4 +45,15 @@ public class InventoryController {
 
     }
 
+    public void initData(SceneView view, Inventory inventory) {
+        switch (view){
+            case CREATEINVENTORY -> {
+
+            }
+            case UPDATEINVENTORY -> {
+                this.inventory = inventory;
+
+            }
+        }
+    }
 }

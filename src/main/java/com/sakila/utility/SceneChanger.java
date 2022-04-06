@@ -1,13 +1,7 @@
 package com.sakila.utility;
 
-import com.sakila.controller.Controller;
-import com.sakila.controller.CustomerController;
-import com.sakila.controller.FilmController;
-import com.sakila.controller.RentalController;
-import com.sakila.entity.Customer;
-import com.sakila.entity.Film;
-import com.sakila.entity.Rental;
-import com.sakila.entity.Staff;
+import com.sakila.controller.*;
+import com.sakila.entity.*;
 import com.sakila.main.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -101,5 +95,24 @@ public class SceneChanger {
         stage.show();
     }
 
+    public void changeSceneInventory(MouseEvent event, SceneView view, Inventory inventory) throws IOException {
+        String fxml = "";
+        switch (view) {
+            case CREATEINVENTORY -> {
+                fxml = "sakilacreateinventory.fxml";
+            }
+            case UPDATEINVENTORY -> {
+                fxml = "sakilaupdateinventory.fxml";
+            }
+        }
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
+        Parent root = loader.load();
+        InventoryController controller = loader.getController();
+        controller.initData(view, inventory);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
 }

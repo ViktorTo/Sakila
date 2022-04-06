@@ -252,6 +252,15 @@ public class Controller implements Initializable {
                     manager.deleteStaff(staff.getId());
                 }
             }
+            case 4 -> {
+
+            }
+            case 5 -> {
+                Inventory inventory = inventoryTbl.getSelectionModel().getSelectedItem();
+                if (inventory != null){
+                    manager.deleteInventory(inventory.getId());
+                }
+            }
 
 
         }
@@ -284,6 +293,15 @@ public class Controller implements Initializable {
             case 3 -> {
 
             }
+            case 4 -> {
+
+            }
+            case 5 -> {
+                Inventory inventory = inventoryTbl.getSelectionModel().getSelectedItem();
+                if (inventory != null) {
+                    sceneChanger.changeSceneInventory(event, SceneView.UPDATEINVENTORY, inventory);
+                }
+            }
         }
     }
 
@@ -308,6 +326,12 @@ public class Controller implements Initializable {
             }
             case 3 -> {
 
+            }
+            case 4 -> {
+
+            }
+            case 5 -> {
+                sceneChanger.changeSceneInventory(event, SceneView.CREATEINVENTORY, new Inventory());
             }
         }
 
