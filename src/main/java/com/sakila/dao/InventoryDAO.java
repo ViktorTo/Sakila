@@ -30,6 +30,9 @@ public class InventoryDAO implements DatabaseAccessObject<Inventory> {
     public void update(Inventory data) {
     Session session = databaseSession.startSession();
     Inventory inventory = session.find(Inventory.class, data.getId());
+    inventory.setStore(data.getStore());
+    inventory.setFilm(data.getFilm());
+    inventory.setLastUpdate(data.getLastUpdate());
     databaseSession.endSession(session);
     }
 
