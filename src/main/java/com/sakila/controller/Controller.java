@@ -31,6 +31,7 @@ public class Controller implements Initializable {
     private final Manager manager = new Manager();
     private final SceneChanger sceneChanger = new SceneChanger();
     private Staff staff;
+    private int clickCount = 0;
 
     //Main FXML
     @FXML
@@ -370,8 +371,13 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public void filmTblClicked(MouseEvent event) {
-
+    public void filmTblClicked(MouseEvent event) throws IOException {
+        clickCount++;
+        Film film = filmTbl.getSelectionModel().getSelectedItem();
+        if(clickCount == 2 && film != null) {
+            sceneChanger.informationScene(event, film.getId());
+            clickCount = 0;
+        }
     }
 
 }
