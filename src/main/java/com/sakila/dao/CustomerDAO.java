@@ -57,9 +57,10 @@ public class CustomerDAO implements DatabaseAccessObject<Customer>{
 
     public Customer readEmail(String email) {
         Session session = databaseSession.startSession();
-        List<Customer> customerList = session.createQuery("FROM Customer c WHERE c.email = :id", Customer.class)
+        List<Customer> customerList = session.createQuery("FROM Customer c INNER JOIN FETCH c.rentals WHERE c.email = :id", Customer.class)
                 .setParameter("id", email)
                 .getResultList();
+        databaseSession.endSession(session);
         if(customerList.size() < 1) {
             System.err.println("No found");
             return null;

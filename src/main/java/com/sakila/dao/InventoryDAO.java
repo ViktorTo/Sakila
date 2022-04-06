@@ -23,7 +23,7 @@ public class InventoryDAO implements DatabaseAccessObject<Inventory> {
         Session session = databaseSession.startSession();
         Inventory inventory = session.find(Inventory.class, id);
         databaseSession.endSession(session);
-        return null;
+        return inventory;
     }
 
     @Override
