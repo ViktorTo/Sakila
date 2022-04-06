@@ -122,7 +122,7 @@
                               <Font name="Roboto Mono for Powerline" size="18.0" />
                            </font>
                         </Label>
-                        <VBox prefHeight="348.0" prefWidth="666.0" visible="false">
+                        <VBox prefHeight="348.0" prefWidth="666.0">
                            <children>
                               <ListView fx:id="returnListView" prefHeight="215.0" prefWidth="666.0" style="-fx-font-family: Monospaced;" />
                               <HBox alignment="CENTER" prefHeight="161.0" prefWidth="666.0" spacing="10.0">
