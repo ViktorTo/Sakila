@@ -15,6 +15,7 @@ public class Manager {
     private final CustomerDAO customerDAO = new CustomerDAO();
     private final StoreDAO storeDAO = new StoreDAO();
     private final FilmDAO filmDAO = new FilmDAO();
+    private final FilmActorDAO filmActorDAO = new FilmActorDAO();
     private final LanguageDAO languageDAO = new LanguageDAO();
     private final StaffDAO staffDAO = new StaffDAO();
     private final RentalDAO rentalDAO = new RentalDAO();
@@ -218,4 +219,11 @@ public class Manager {
         return rentals;
     }
 
+    public List<FilmActor> getActorsInFilm(Integer id) {
+        return filmActorDAO.readActorsByFilm(id);
+    }
+
+    public Film getFilmById(int id) {
+        return filmDAO.readWithLanguage(id);
+    }
 }

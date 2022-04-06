@@ -69,5 +69,8 @@ public class Actor {
         this.id = id;
     }
 
-
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
+    }
 }

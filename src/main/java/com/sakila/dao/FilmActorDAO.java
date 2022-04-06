@@ -1,5 +1,6 @@
 package com.sakila.dao;
 
+import com.sakila.entity.Actor;
 import com.sakila.entity.Film;
 import com.sakila.entity.FilmActor;
 import com.sakila.utility.DatabaseSession;
@@ -48,8 +49,18 @@ public class FilmActorDAO implements DatabaseAccessObject<FilmActor>{
     @Override
     public List<FilmActor> readAll() {
         Session session = databaseSession.startSession();
-        List<FilmActor> filmActorList = session.createQuery("FROM Film_Actor ", FilmActor.class).getResultList();
+        List<FilmActor> filmActorList = session.createQuery("FROM FilmActor ", FilmActor.class).getResultList();
         databaseSession.endSession(session);
         return filmActorList;
     }
+
+    public List<FilmActor> readActorsByFilm(int id) {
+        Session session = databaseSession.startSession();
+        List<FilmActor> actorList = session.createQuery("FROM FilmActor f LEFT JOIN FETCH f.actor WHERE f.film.id = :id ", FilmActor.class)
+                .setParameter("id", id)
+                .getResultList();
+        databaseSession.endSession(session);
+        return actorList;
+    }
+
 }

@@ -14,7 +14,7 @@
          <children>
             <StackPane prefHeight="563.0" prefWidth="744.0">
                <children>
-                  <VBox fx:id="customerBox" alignment="CENTER" prefHeight="575.0" prefWidth="666.0" spacing="5.0" visible="false">
+                  <VBox fx:id="filmBox" alignment="CENTER" prefHeight="575.0" prefWidth="666.0" spacing="5.0">
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="666.0" text="Information">
                            <font>
@@ -25,20 +25,91 @@
                            <children>
                               <VBox prefHeight="220.0" prefWidth="336.0">
                                  <children>
-                                    <Label fx:id="customerFnameLabel" prefHeight="40.0" prefWidth="334.0" text="firstname" />
-                                    <Label fx:id="customerLnameLabel" prefHeight="40.0" prefWidth="334.0" text="Lastname" />
-                                    <Label fx:id="customerEmailLabel" prefHeight="40.0" prefWidth="334.0" text="Email" />
-                                    <Label fx:id="customerAddress" prefHeight="40.0" prefWidth="334.0" text="Address" />
-                                    <Label fx:id="customerActiveLabel" prefHeight="40.0" prefWidth="334.0" text="Active" />
+                                    <Label fx:id="filmTitleLabel" prefHeight="40.0" prefWidth="334.0" text="title" />
+                                    <Label fx:id="filmDescriptionLabel" prefHeight="40.0" prefWidth="334.0" text="Description" />
+                                    <Label fx:id="releaseYearLabel" prefHeight="40.0" prefWidth="334.0" text="ReleaseYear" />
+                                    <Label fx:id="filmLanguageLabel" prefHeight="40.0" prefWidth="334.0" text="Language" />
+                                    <Label fx:id="rentalDurationLabel" prefHeight="40.0" prefWidth="334.0" text="rentalDuration" />
                                  </children>
                               </VBox>
                               <VBox prefHeight="220.0" prefWidth="334.0">
                                  <children>
-                                    <Label fx:id="customerIdLabel" prefHeight="40.0" prefWidth="334.0" text="Id" />
-                                    <Label fx:id="customerStoreLabel" prefHeight="40.0" prefWidth="334.0" text="Store" />
-                                    <Label fx:id="customerCreatedLabel" prefHeight="40.0" prefWidth="334.0" text="created" />
-                                    <Label fx:id="customerActiveLabel" prefHeight="40.0" prefWidth="334.0" text="active" />
-                                    <Label fx:id="customerUpdateLabel" prefHeight="40.0" prefWidth="334.0" text="lastUpdate" />
+                                    <Label fx:id="filmIdLabel" prefHeight="40.0" prefWidth="334.0" text="Id" />
+                                    <Label fx:id="filmRatingLabel" prefHeight="40.0" prefWidth="334.0" text="rating" />
+                                    <Label fx:id="filmSpecialLabel" prefHeight="40.0" prefWidth="334.0" text="SpecialFeatures" />
+                                    <Label fx:id="filmUpdateLabel" prefHeight="40.0" prefWidth="334.0" text="active" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="262.0" prefWidth="666.0" spacing="5.0">
+                           <children>
+                              <ListView fx:id="filmActorList" prefHeight="100.0" prefWidth="335.0" />
+                              <ListView fx:id="filmInventoryList" prefHeight="100.0" prefWidth="335.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="customerBox" prefHeight="200.0" prefWidth="100.0" visible="false">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="666.0" text="Information">
+                           <font>
+                              <Font name="Monospaced Regular" size="18.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="201.0" prefWidth="666.0">
+                           <children>
+                              <VBox prefHeight="220.0" prefWidth="336.0">
+                                 <children>
+                                    <Label fx:id="customerFnameLabel" prefHeight="40.0" prefWidth="334.0" text="firstname">
+                                       <font>
+                                          <Font name="Monospaced Regular" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="customerLnameLabel" prefHeight="40.0" prefWidth="334.0" text="Lastname">
+                                       <font>
+                                          <Font name="Monospaced Regular" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="customerEmailLabel" prefHeight="40.0" prefWidth="334.0" text="Email">
+                                       <font>
+                                          <Font name="Monospaced Regular" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="customerAddress" prefHeight="40.0" prefWidth="334.0" text="Address">
+                                       <font>
+                                          <Font name="Monospaced Regular" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="customerActiveLabel" prefHeight="40.0" prefWidth="334.0" text="Active">
+                                       <font>
+                                          <Font name="Monospaced Regular" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="220.0" prefWidth="334.0">
+                                 <children>
+                                    <Label fx:id="customerIdLabel" prefHeight="40.0" prefWidth="334.0" text="Id">
+                                       <font>
+                                          <Font name="Monospaced Regular" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="customerStoreLabel" prefHeight="40.0" prefWidth="334.0" text="Store">
+                                       <font>
+                                          <Font name="Monospaced Regular" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="customerCreatedLabel" prefHeight="40.0" prefWidth="334.0" text="created">
+                                       <font>
+                                          <Font name="Monospaced Regular" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="customerUpdateLabel" prefHeight="40.0" prefWidth="334.0" text="last update">
+                                       <font>
+                                          <Font name="Monospaced Regular" size="13.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </VBox>
                            </children>
@@ -49,9 +120,7 @@
                               <ListView fx:id="customerPaymentList" prefHeight="100.0" prefWidth="335.0" />
                            </children>
                         </HBox>
-                     </children>
-                  </VBox>
-                  <VBox fx:id="filmBox" prefHeight="200.0" prefWidth="100.0" visible="false" />
+                     </children></VBox>
                </children>
             </StackPane>
          </children>
