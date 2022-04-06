@@ -69,6 +69,13 @@ public class RentMovieController {
             changeBox(rentBox);
             filmList.setItems(manager.getFilmsFromInventory(customer.getStore().getId()));
             returnButton.setText(String.valueOf(manager.getFilmsToReturn(customer).size()));
+
+            if(customer.getStore().getId() == 1) {
+                this.staff = manager.getStaffByUsername("Scanner1");
+            }else {
+                this.staff = manager.getStaffByUsername("Scanner2");
+            }
+
         } else {
             noEmailLabel.setVisible(true);
         }
@@ -95,12 +102,19 @@ public class RentMovieController {
     @FXML
     void rentClicked(MouseEvent event) {
         Film film = filmList.getSelectionModel().getSelectedItem();
-        Inventory freeMovie;
+        Rental rental = new Rental();
 
         if(film != null) {
-//            List<Rental> rentals = manager.getRentalByMovie(film.getId());
-//            List<Inventory> inventories = manager.getInventoryByFilm(film.getId());
-
+            Timestamp rentaldate = Timestamp.valueOf(LocalDateTime.now());
+            rental.setRentalDate(rentaldate);
+            rental.setInventory(manager.getInventoryFromFilm(film.getId()));
+            rental.setCustomer(customer);
+            rental.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
+            rental.setStaff(this.staff);
+            manager.createRental(rental);
+            changeBox(rentBox);
+            this.customer = manager.searchedEmail(customer.getEmail());
+            returnButton.setText(String.valueOf(manager.getFilmsToReturn(customer).size()));
         }
     }
 
@@ -116,7 +130,10 @@ public class RentMovieController {
         if(rental != null) {
             rental.setReturnDate(Timestamp.valueOf(LocalDateTime.now()));
             manager.updateRental(rental);
-            returnListView.setItems(FXCollections.observableArrayList(manager.getFilmsToReturn(customer)));
+            this.customer = manager.searchedEmail(customer.getEmail());
+            returnButton.setText(String.valueOf(manager.getFilmsToReturn(customer).size()));
+            changeBox(rentBox);
+
         }
     }
 
