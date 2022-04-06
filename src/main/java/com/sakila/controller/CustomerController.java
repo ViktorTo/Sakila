@@ -30,6 +30,7 @@ public class CustomerController {
     private final Manager manager = new Manager();
     private final SceneChanger sceneChanger = new SceneChanger();
     private Customer customer;
+    private SceneView view;
 
     @FXML
     private ChoiceBox<Address> addressChoice;
@@ -54,7 +55,12 @@ public class CustomerController {
         customer.setCreateDate(Timestamp.valueOf(LocalDateTime.now()));
         customer.setActive(true);
         manager.createCustomer(customer);
-        sceneChanger.mainScene(event);
+
+        if(view.equals(SceneView.CREATECUSTOMER)) {
+            sceneChanger.mainScene(event);
+        }else {
+        sceneChanger.changeSceneLogin(event);
+        }
     }
     @FXML
     public void updateCustomerDone(MouseEvent event) throws IOException {
@@ -68,33 +74,29 @@ public class CustomerController {
     }
     @FXML
     public void cancelCustomer(MouseEvent event) throws IOException {
-        sceneChanger.mainScene(event);
+        if(view.equals(SceneView.CREATECUSTOMER)) {
+            sceneChanger.mainScene(event);
+        }else {
+            sceneChanger.changeSceneLogin(event);
+        }
     }
 
     public void initData(SceneView view, Customer customer) {
 
         addressChoice.setItems(manager.getAllAddresses());
         storeChoice.setItems(manager.getAllStores());
+        this.customer = customer;
+        this.view = view;
 
-        switch (view) {
-            case CREATECUSTOMER -> {
-             this.customer = customer;
-            }
-            case UPDATECUSTOMER -> {
-                this.customer = customer;
-                firstnameTxt.setText(customer.getFirstName());
-                lastnameTxt.setText(customer.getLastName());
-                emailTxt.setText(customer.getEmail());
-                Address address = manager.readAddress(customer.getAddress().getId());
-                Store store = manager.readStore(customer.getStore().getId());
-                addressChoice.getSelectionModel().select(address);
-                storeChoice.getSelectionModel().select(store);
-            }
+        if (view == SceneView.UPDATECUSTOMER) {
+            firstnameTxt.setText(customer.getFirstName());
+            lastnameTxt.setText(customer.getLastName());
+            emailTxt.setText(customer.getEmail());
+            Address address = manager.readAddress(customer.getAddress().getId());
+            Store store = manager.readStore(customer.getStore().getId());
+            addressChoice.getSelectionModel().select(address);
+            storeChoice.getSelectionModel().select(store);
         }
-
-    }
-
-    public void initialize() {
 
     }
 

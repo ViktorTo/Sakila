@@ -3,6 +3,7 @@ package com.sakila.utility;
 public enum SceneView {
 
     CREATECUSTOMER,
+    CREATECUSTOMERUSER,
     UPDATECUSTOMER,
     CREATEFILM,
     UPDATEFILM,
