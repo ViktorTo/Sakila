@@ -14,11 +14,11 @@
          <top>
             <TabPane fx:id="tabpane" prefHeight="545.0" prefWidth="1250.0" style="-fx-background-color: #83B185; -fx-border-color: #83B185; -fx-region-background-color: #83B185; -fx-text-background-color: #FFFFFF;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
               <tabs>
-                <Tab fx:id="customerTab" onSelectionChanged="#changeToCustomerTab" style="-fx-border-color: #83B185; -fx-background-color: #749D75; -fx-text-base-color: white;" text="Customers">
+                <Tab fx:id="customerTab" onSelectionChanged="#changeToCustomerTab" style="-fx-border-color: #83B185; -fx-background-color: #749D75; -fx-text-base-color: white; -fx-font-family: Monospaced;" text="Customers">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #83B185;">
                            <children>
-                              <TableView fx:id="customerTbl" prefHeight="517.0" prefWidth="1244.0" style="-fx-background-color: #749D75; -fx-border-color: #83B185; -fx-border-base-color: #83B185;">
+                              <TableView fx:id="customerTbl" prefHeight="517.0" prefWidth="1244.0" style="-fx-background-color: #749D75; -fx-border-color: #83B185; -fx-border-base-color: #83B185; -fx-font-family: Monospaced;">
                                 <columns>
                                   <TableColumn fx:id="customeridCol" prefWidth="47.0" style="-fx-background-color: #749D75;" text="Id" />
                                   <TableColumn fx:id="firstnameCol" prefWidth="231.0" style="-fx-background-color: #749D75;" text="First Name" />
@@ -31,29 +31,29 @@
                         </AnchorPane>
                   </content>
                 </Tab>
-                  <Tab fx:id="rentalTab" onSelectionChanged="#changeToRentalTab" style="-fx-background-color: #749D75; -fx-border-color: #83B185; -fx-text-base-color: white;" text="Rental">
+                  <Tab fx:id="rentalTab" onSelectionChanged="#changeToRentalTab" style="-fx-background-color: #749D75; -fx-border-color: #83B185; -fx-text-base-color: white; -fx-font-family: Monospaced;" text="Rental">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView fx:id="rentalTbl" prefHeight="517.0" prefWidth="1250.0" style="-fx-background-color: #749D75;">
+                              <TableView fx:id="rentalTbl" prefHeight="517.0" prefWidth="1250.0" style="-fx-background-color: #749D75; -fx-font-family: Monospaced;">
                                  <columns>
-                                    <TableColumn fx:id="rentalIdCol" prefWidth="47.0" style="-fx-background-color: #83B185;" text="Id" />
-                                    <TableColumn fx:id="rentalCustomerIdCol" prefWidth="200.0" style="-fx-background-color: #83B185;" text="Customer" />
-                                    <TableColumn fx:id="rentalStaffIdCol" prefWidth="222.0" style="-fx-background-color: #83B185;" text="Staff" />
-                                    <TableColumn fx:id="rentalRentalDateCol" prefWidth="250.0" style="-fx-background-color: #83B185;" text="Rental Date" />
-                                    <TableColumn fx:id="rentalReturnCol" prefWidth="268.0" style="-fx-background-color: #83B185;" text="Return Date" />
-                                    <TableColumn fx:id="rentalLastUpdateCol" prefWidth="247.0" style="-fx-background-color: #83B185;" text="Last Update" />
+                                    <TableColumn fx:id="rentalIdCol" prefWidth="47.0" style="-fx-background-color: #83B185; -fx-font-family: Monospaced;" text="Id" />
+                                    <TableColumn fx:id="rentalCustomerIdCol" prefWidth="200.0" style="-fx-background-color: #83B185; -fx-font-family: Monospaced;" text="Customer" />
+                                    <TableColumn fx:id="rentalStaffIdCol" prefWidth="222.0" style="-fx-background-color: #83B185; -fx-font-family: Monospaced;" text="Staff" />
+                                    <TableColumn fx:id="rentalRentalDateCol" prefWidth="250.0" style="-fx-background-color: #83B185; -fx-font-family: Monospaced;" text="Rental Date" />
+                                    <TableColumn fx:id="rentalReturnCol" prefWidth="268.0" style="-fx-background-color: #83B185; -fx-font-family: Monospaced;" text="Return Date" />
+                                    <TableColumn fx:id="rentalLastUpdateCol" prefWidth="247.0" style="-fx-background-color: #83B185; -fx-font-family: Monospaced;" text="Last Update" />
                                  </columns>
                               </TableView>
                            </children>
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab fx:id="filmTab" onSelectionChanged="#changeToFilmTab" style="-fx-border-color: #83B185; -fx-background-color: #749D75; -fx-text-base-color: white;" text="Films">
+                  <Tab fx:id="filmTab" onSelectionChanged="#changeToFilmTab" style="-fx-border-color: #83B185; -fx-background-color: #749D75; -fx-text-base-color: white; -fx-font-family: Monospaced;" text="Films">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView fx:id="filmTbl" prefHeight="517.0" prefWidth="1248.0" style="-fx-background-color: #749D75;">
+                              <TableView fx:id="filmTbl" onMouseClicked="#filmTblClicked" prefHeight="517.0" prefWidth="1248.0" style="-fx-background-color: #749D75; -fx-font-family: Monospaced;">
                                  <columns>
                                     <TableColumn fx:id="filmidCol" prefWidth="53.0" style="-fx-background-color: #749D75;" text="Id" />
                                     <TableColumn fx:id="titleCol" prefWidth="407.0" style="-fx-background-color: #749D75;" text="Title" />
@@ -67,11 +67,11 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab fx:id="staffTab" onSelectionChanged="#changeToStaffTab" style="-fx-background-color: #749D75; -fx-border-color: #83B185; -fx-text-base-color: white;" text="Staff">
+                  <Tab fx:id="staffTab" onSelectionChanged="#changeToStaffTab" style="-fx-background-color: #749D75; -fx-border-color: #83B185; -fx-text-base-color: white; -fx-font-family: Monospaced;" text="Staff">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView fx:id="staffTbl" prefHeight="517.0" prefWidth="1250.0" style="-fx-background-color: #749D75;">
+                              <TableView fx:id="staffTbl" prefHeight="517.0" prefWidth="1250.0" style="-fx-background-color: #749D75; -fx-font-family: Monospaced;">
                                  <columns>
                                     <TableColumn fx:id="staffIdCol" prefWidth="71.0" style="-fx-background-color: #749D75;" text="ID" />
                                     <TableColumn fx:id="staffFirstNameCol" prefWidth="184.0" style="-fx-background-color: #749D75;" text="First Name" />
@@ -87,11 +87,11 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab fx:id="actorTab" onSelectionChanged="#changeToActorTab" style="-fx-background-color: #749D75; -fx-border-color: #83B185; -fx-text-base-color: white;" text="Actor">
+                  <Tab fx:id="actorTab" onSelectionChanged="#changeToActorTab" style="-fx-background-color: #749D75; -fx-border-color: #83B185; -fx-text-base-color: white; -fx-font-family: Monospaced;" text="Actor">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView fx:id="actorTbl" prefHeight="517.0" prefWidth="1250.0" style="-fx-background-color: #749D75;">
+                              <TableView fx:id="actorTbl" prefHeight="517.0" prefWidth="1250.0" style="-fx-background-color: #749D75; -fx-font-family: Monospaced;">
                                  <columns>
                                     <TableColumn fx:id="actorIdCol" prefWidth="61.0" style="-fx-background-color: #83B185;" text="Id" />
                                     <TableColumn fx:id="actorFirstNameCol" prefWidth="702.0" style="-fx-background-color: #83B185;" text="First Name" />
@@ -102,16 +102,16 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab fx:id="inventoryTab" onSelectionChanged="#changeToInventoryTab" style="-fx-background-color: #749D75; -fx-border-color: #83B185; -fx-text-base-color: white;" text="Inventory">
+                  <Tab fx:id="inventoryTab" onSelectionChanged="#changeToInventoryTab" style="-fx-background-color: #749D75; -fx-border-color: #83B185; -fx-text-base-color: white; -fx-font-family: Monospaced;" text="Inventory">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView fx:id="inventoryTbl" prefHeight="517.0" prefWidth="1250.0" style="-fx-background-color: #749D75;">
+                              <TableView fx:id="inventoryTbl" prefHeight="517.0" prefWidth="1250.0" style="-fx-background-color: #749D75; -fx-font-family: Monospaced;">
                                  <columns>
-                                    <TableColumn fx:id="inventoryIdCol" prefWidth="68.0" style="-fx-background-color: #749D75;" text="Id" />
-                                    <TableColumn fx:id="inventoryFilmCol" prefWidth="423.0" style="-fx-background-color: #749D75;" text="Film" />
-                                    <TableColumn fx:id="inventoryStoreIdCol" prefWidth="392.0" style="-fx-background-color: #749D75;" text="Store Id" />
-                                    <TableColumn fx:id="inventoryLastUpdateCol" prefWidth="350.0" style="-fx-background-color: #749D75;" text="Last Update" />
+                                    <TableColumn fx:id="inventoryIdCol" prefWidth="68.0" style="-fx-background-color: #749D75; -fx-font-family: Monospaced;" text="Id" />
+                                    <TableColumn fx:id="inventoryFilmCol" prefWidth="423.0" style="-fx-background-color: #749D75; -fx-font-family: Monospaced;" text="Film" />
+                                    <TableColumn fx:id="inventoryStoreIdCol" prefWidth="392.0" style="-fx-background-color: #749D75; -fx-font-family: Monospaced;" text="Store Id" />
+                                    <TableColumn fx:id="inventoryLastUpdateCol" prefWidth="350.0" style="-fx-background-color: #749D75; -fx-font-family: Monospaced;" text="Last Update" />
                                  </columns>
                               </TableView>
                            </children>
@@ -122,9 +122,9 @@
             </TabPane>
          </top>
       </BorderPane>
-      <Button fx:id="createBtn" layoutX="524.0" layoutY="657.0" mnemonicParsing="false" onMouseClicked="#createMouseClick" text="Create" textFill="#325e34" />
-      <Button fx:id="deleteBtn" layoutX="670.0" layoutY="657.0" mnemonicParsing="false" onMouseClicked="#deleteMouseClick" text="Delete" textFill="#325e34" />
-      <Button fx:id="updateBtn" layoutX="596.0" layoutY="657.0" mnemonicParsing="false" onMouseClicked="#updateMouseClick" text="Update" textFill="#325e34" />
-      <Button layoutX="584.0" layoutY="732.0" mnemonicParsing="false" onMouseClicked="#rentmovieMouseClick" text="Rent Movie" textFill="#325e34" />
+      <Button fx:id="createBtn" layoutX="524.0" layoutY="657.0" mnemonicParsing="false" onMouseClicked="#createMouseClick" style="-fx-font-family: Monospaced;" text="Create" textFill="#325e34" />
+      <Button fx:id="deleteBtn" layoutX="670.0" layoutY="657.0" mnemonicParsing="false" onMouseClicked="#deleteMouseClick" style="-fx-font-family: Monospaced;" text="Delete" textFill="#325e34" />
+      <Button fx:id="updateBtn" layoutX="596.0" layoutY="657.0" mnemonicParsing="false" onMouseClicked="#updateMouseClick" style="-fx-font-family: Monospaced;" text="Update" textFill="#325e34" />
+      <Button layoutX="584.0" layoutY="732.0" mnemonicParsing="false" onMouseClicked="#rentmovieMouseClick" style="-fx-font-family: Monospaced;" text="Rent Movie" textFill="#325e34" />
    </children>
 </AnchorPane>

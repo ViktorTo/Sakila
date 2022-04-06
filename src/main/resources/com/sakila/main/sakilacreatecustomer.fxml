@@ -11,40 +11,52 @@
    <children>
       <Text fill="WHITE" layoutX="246.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create customer" textAlignment="CENTER" wrappingWidth="251.13671875">
          <font>
-            <Font size="24.0" />
+            <Font name="Monospaced Regular" size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="firstnameTxt" layoutX="302.0" layoutY="138.0" />
-      <TextField fx:id="lastnameTxt" layoutX="302.0" layoutY="187.0" />
-      <TextField fx:id="emailTxt" layoutX="302.0" layoutY="234.0" />
+      <TextField fx:id="firstnameTxt" layoutX="302.0" layoutY="138.0" prefHeight="23.0" prefWidth="150.0" promptText="Tomas">
+         <font>
+            <Font name="Monospaced Bold" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="lastnameTxt" layoutX="302.0" layoutY="187.0" prefHeight="23.0" prefWidth="150.0" promptText="Wigell" style="-fx-font-family: Monospaced;">
+         <font>
+            <Font name="Monospaced Regular" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="emailTxt" layoutX="302.0" layoutY="234.0" prefHeight="23.0" prefWidth="149.0" promptText="tomas@sakila.org" style="-fx-font-family: Monospaced;" />
       <Text fill="WHITE" layoutX="153.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First name  " textAlignment="RIGHT" wrappingWidth="149.0">
          <font>
-            <Font size="14.0" />
+            <Font name="Monospaced Regular" size="14.0" />
          </font>
       </Text>
       <Text fill="WHITE" layoutX="153.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name  " textAlignment="RIGHT" wrappingWidth="149.0">
          <font>
-            <Font size="14.0" />
+            <Font name="Monospaced Regular" size="14.0" />
          </font>
       </Text>
       <Text fill="WHITE" layoutX="153.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email  " textAlignment="RIGHT" wrappingWidth="149.0">
          <font>
-            <Font size="14.0" />
+            <Font name="Monospaced Regular" size="14.0" />
          </font>
       </Text>
       <Text fill="WHITE" layoutX="153.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address  " textAlignment="RIGHT" wrappingWidth="149.0">
          <font>
-            <Font size="14.0" />
+            <Font name="Monospaced Regular" size="14.0" />
          </font>
       </Text>
       <Text fill="WHITE" layoutX="153.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Store  " textAlignment="RIGHT" wrappingWidth="149.0">
          <font>
-            <Font size="14.0" />
+            <Font name="Monospaced Bold" size="14.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="storeChoice" layoutX="302.0" layoutY="333.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="addressChoice" layoutX="302.0" layoutY="283.0" prefWidth="150.0" />
-      <Button fx:id="doneBtn" layoutX="310.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#createCustomerDone" text="Done" textFill="#325e34" />
-      <Button fx:id="cancelBtn" layoutX="391.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#cancelCustomer" text="Cancel" textFill="#325e34" />
+      <ChoiceBox fx:id="storeChoice" layoutX="302.0" layoutY="333.0" prefWidth="150.0" style="-fx-font-family: Monospaced;" />
+      <ChoiceBox fx:id="addressChoice" layoutX="302.0" layoutY="283.0" prefWidth="150.0" style="-fx-font-family: Monospaced;" />
+      <Button fx:id="doneBtn" layoutX="306.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#createCustomerDone" prefHeight="23.0" prefWidth="60.0" text="Done" textFill="#325e34">
+         <font>
+            <Font name="Monospaced Regular" size="12.0" />
+         </font></Button>
+      <Button fx:id="cancelBtn" layoutX="387.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#cancelCustomer" text="Cancel" textFill="#325e34">
+         <font>
+            <Font name="Monospaced Regular" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>

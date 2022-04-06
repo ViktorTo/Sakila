@@ -26,6 +26,6 @@
             <Font name="Monospaced Regular" size="17.0" />
          </font>
       </Text>
-      <DatePicker fx:id="returnDatePicker" layoutX="289.0" layoutY="230.0" prefHeight="25.0" prefWidth="167.0" />
+      <DatePicker fx:id="returnDatePicker" layoutX="289.0" layoutY="230.0" prefHeight="25.0" prefWidth="167.0" style="-fx-font-family: Monospaced;" />
     </children>
 </AnchorPane>
