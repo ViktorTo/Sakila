@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -23,7 +24,19 @@ public class SceneChanger {
         stage.show();
     }
 
+
+
     public void mainScene(MouseEvent event, Staff staff) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("sakilamain.fxml"));
+        Parent root = loader.load();
+        Controller controller = loader.getController();
+        controller.initData(staff);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void mainScene(KeyEvent event, Staff staff) throws IOException {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("sakilamain.fxml"));
         Parent root = loader.load();
         Controller controller = loader.getController();

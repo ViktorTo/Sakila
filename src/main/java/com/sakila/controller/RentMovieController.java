@@ -6,8 +6,10 @@ import com.sakila.utility.SceneChanger;
 import com.sakila.utility.SceneView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -22,6 +24,9 @@ public class RentMovieController {
     private final SceneChanger sceneChanger = new SceneChanger();
     private Customer customer;
     private Staff staff;
+
+    @FXML
+    private Button staffLoginButton, customerLoginButton;
 
     @FXML
     private TextField emailField, searchField, staffUserField;
@@ -122,6 +127,23 @@ public class RentMovieController {
     void staffOnClicked(MouseEvent event) {
         staffButton.setVisible(false);
         changeBox(staffBox);
+
+        staffLoginButton.setOnKeyPressed( e -> {
+            if(e.getCode() == KeyCode.ENTER){
+                String staffUsername = staffUserField.getText();
+                String staffPassword = staffPasswordField.getText();
+                if(staffUsername != null || !staffUsername.isEmpty()) {
+                    staff = manager.getStaffByUsername(staffUsername);
+                }
+                if(staff != null) {
+                    try {
+                        sceneChanger.mainScene(event, staff);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        });
     }
 
     @FXML
@@ -155,6 +177,27 @@ public class RentMovieController {
 
     public void initialize() {
         staffButton.setVisible(true);
+
+        customerLoginButton.setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                customer = manager.searchedEmail(emailField.getText());
+                if (customer!=null){
+                    changeBox(rentBox);
+                    filmList.setItems(manager.getFilmsFromInventory(customer.getStore().getId()));
+                    returnButton.setText(String.valueOf(manager.getFilmsToReturn(customer).size()));
+
+                    if(customer.getStore().getId() == 1) {
+                        this.staff = manager.getStaffByUsername("Scanner1");
+                    }else {
+                        this.staff = manager.getStaffByUsername("Scanner2");
+                    }
+
+                } else {
+                    noEmailLabel.setVisible(true);
+                }
+            }
+        });
+
     }
 
     public void changeBox(VBox box) {
