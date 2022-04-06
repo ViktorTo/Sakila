@@ -368,4 +368,10 @@ public class Controller implements Initializable {
         this.staff = staff;
         System.out.println(staff.getFirstName());
     }
+
+    @FXML
+    public void filmTblClicked(MouseEvent event) {
+
+    }
+
 }

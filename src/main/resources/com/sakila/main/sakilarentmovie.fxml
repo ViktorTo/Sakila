@@ -18,14 +18,14 @@
          <children>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="staffButton" mnemonicParsing="false" onMouseClicked="#staffOnClicked" text="Staff" />
+                  <Button fx:id="staffButton" mnemonicParsing="false" onMouseClicked="#staffOnClicked" style="-fx-font-family: Monospaced;" text="Staff" textFill="#325e34" />
                </children>
             </HBox>
             <StackPane prefHeight="563.0" prefWidth="744.0">
                <children>
                   <VBox fx:id="loginBox" alignment="CENTER" prefHeight="465.0" prefWidth="666.0" spacing="5.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="666.0" text="Enter email">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="666.0" style="-fx-font-family: Monospaced;" text="Enter email" textFill="WHITE">
                            <font>
                               <Font name="Roboto Mono for Powerline" size="18.0" />
                            </font>
@@ -34,20 +34,20 @@
                            <children>
                               <HBox alignment="TOP_CENTER" prefHeight="48.0" prefWidth="666.0" spacing="10.0">
                                  <children>
-                                    <TextField fx:id="emailField" prefHeight="25.0" prefWidth="357.0" promptText="Example@gmail.com" />
-                                    <Button mnemonicParsing="false" onMouseClicked="#loginClicked" prefHeight="25.0" prefWidth="74.0" text="Log in" />
+                                    <TextField fx:id="emailField" prefHeight="25.0" prefWidth="357.0" promptText="Example@gmail.com" style="-fx-font-family: Monospaced;" />
+                                    <Button mnemonicParsing="false" onMouseClicked="#loginClicked" prefHeight="25.0" prefWidth="74.0" style="-fx-font-family: Monospaced;" text="Log in" textFill="#325e34" />
                                  </children>
                               </HBox>
-                              <Label fx:id="noEmailLabel" prefHeight="17.0" prefWidth="209.0" text="No customer with that email found" visible="false" />
+                              <Label fx:id="noEmailLabel" prefHeight="17.0" prefWidth="241.0" style="-fx-font-family: Monospaced;" text="No customer with that email found" textFill="#c92222" visible="false" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="86.0" prefWidth="666.0">
                            <children>
-                              <Label prefHeight="17.0" prefWidth="143.0" text="If you are not a customer" />
+                              <Label prefHeight="17.0" prefWidth="187.0" style="-fx-font-family: Monospaced;" text="If you are not a customer" textFill="WHITE" />
                               <HBox alignment="CENTER" prefHeight="68.0" prefWidth="666.0" spacing="10.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onMouseClicked="#registerClicked" prefHeight="25.0" prefWidth="80.0" text="Register" />
-                                    <Button mnemonicParsing="false" onMouseClicked="#exitClicked" prefHeight="25.0" prefWidth="80.0" text="Exit" />
+                                    <Button mnemonicParsing="false" onMouseClicked="#registerClicked" prefHeight="25.0" prefWidth="80.0" style="-fx-font-family: Monospaced;" text="Register" textFill="#325e34" />
+                                    <Button mnemonicParsing="false" onMouseClicked="#exitClicked" prefHeight="25.0" prefWidth="80.0" style="-fx-font-family: Monospaced;" text="Exit" textFill="#325e34" />
                                  </children>
                               </HBox>
                            </children>
@@ -78,7 +78,7 @@
                   </VBox>
                   <VBox fx:id="staffBox" alignment="CENTER" prefHeight="465.0" prefWidth="666.0" spacing="5.0" visible="false">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="666.0" text="Login Staff">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="666.0" style="-fx-font-family: Monospaced;" text="Login Staff" textFill="WHITE">
                            <font>
                               <Font name="Roboto Mono for Powerline" size="18.0" />
                            </font>
@@ -87,15 +87,15 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="48.0" prefWidth="666.0" spacing="10.0">
                                  <children>
-                                    <Label prefWidth="60.0" text="Username" />
-                                    <TextField fx:id="staffUserField" prefHeight="25.0" prefWidth="335.0" promptText="Mike" />
+                                    <Label prefWidth="60.0" style="-fx-font-family: Monospaced;" text="Username" textFill="WHITE" />
+                                    <TextField fx:id="staffUserField" prefHeight="25.0" prefWidth="335.0" promptText="Mike" style="-fx-font-family: Monospaced;" />
                                  </children>
                               </HBox>
                               <Label fx:id="noEmailLabel1" prefHeight="17.0" prefWidth="209.0" text="No customer with that email found" visible="false" />
                               <HBox alignment="CENTER" prefHeight="48.0" prefWidth="666.0" spacing="10.0">
                                  <children>
-                                    <Label prefWidth="60.0" text="Password" />
-                                    <PasswordField fx:id="staffPasswordField" prefHeight="25.0" prefWidth="335.0" promptText="*********" />
+                                    <Label prefWidth="60.0" style="-fx-font-family: Monospaced;" text="Password" textFill="WHITE" />
+                                    <PasswordField fx:id="staffPasswordField" prefHeight="25.0" prefWidth="335.0" promptText="*********" style="-fx-font-family: Monospaced;" />
                                  </children>
                               </HBox>
                            </children>
@@ -104,8 +104,8 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="68.0" prefWidth="666.0" spacing="10.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onMouseClicked="#staffLoginClicked" prefHeight="25.0" prefWidth="80.0" text="Login" />
-                                    <Button mnemonicParsing="false" onMouseClicked="#cancelClicked" prefHeight="25.0" prefWidth="80.0" text="Cancel" />
+                                    <Button mnemonicParsing="false" onMouseClicked="#staffLoginClicked" prefHeight="25.0" prefWidth="80.0" style="-fx-font-family: Monospaced;" text="Login" textFill="#325e34" />
+                                    <Button mnemonicParsing="false" onMouseClicked="#cancelClicked" prefHeight="25.0" prefWidth="80.0" style="-fx-font-family: Monospaced;" text="Cancel" textFill="#325e34" />
                                  </children>
                               </HBox>
                            </children>

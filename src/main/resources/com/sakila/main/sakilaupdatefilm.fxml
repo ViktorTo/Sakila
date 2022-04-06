@@ -9,45 +9,45 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="744.0" style="-fx-background-color: #83B185;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sakila.controller.FilmController">
    <children>
-      <Text fill="WHITE" layoutX="246.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update film" textAlignment="CENTER" wrappingWidth="251.13671875">
+      <Text fill="WHITE" layoutX="246.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Update film" textAlignment="CENTER" wrappingWidth="251.13671875">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="titleTxt" layoutX="303.0" layoutY="135.0" />
-      <TextField fx:id="rentaldurTxt" layoutX="305.0" layoutY="179.0" promptText="3-7" />
-      <TextField fx:id="rentalrateTxt" layoutX="305.0" layoutY="223.0" promptText="T.ex 2.99" />
-      <Text fill="WHITE" layoutX="154.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title  " textAlignment="RIGHT" wrappingWidth="149.0">
+      <TextField fx:id="titleTxt" layoutX="303.0" layoutY="135.0" prefHeight="23.0" prefWidth="150.0" style="-fx-font-family: Monospaced;" />
+      <TextField fx:id="rentaldurTxt" layoutX="305.0" layoutY="179.0" prefHeight="23.0" prefWidth="149.0" promptText="3-7" style="-fx-font-family: Monospaced;" />
+      <TextField fx:id="rentalrateTxt" layoutX="305.0" layoutY="223.0" prefHeight="23.0" prefWidth="149.0" promptText="T.ex 2.99" style="-fx-font-family: Monospaced;" />
+      <Text fill="WHITE" layoutX="154.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Title  " textAlignment="RIGHT" wrappingWidth="149.0">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="156.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rental duration  " textAlignment="RIGHT" wrappingWidth="149.0">
+      <Text fill="WHITE" layoutX="156.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Rental duration  " textAlignment="RIGHT" wrappingWidth="149.0">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="156.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rental rate  " textAlignment="RIGHT" wrappingWidth="149.0">
+      <Text fill="WHITE" layoutX="156.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Rental rate  " textAlignment="RIGHT" wrappingWidth="149.0">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="156.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Language " textAlignment="RIGHT" wrappingWidth="149.0">
+      <Text fill="WHITE" layoutX="156.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Language " textAlignment="RIGHT" wrappingWidth="149.0">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="155.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Replacement cost  " textAlignment="RIGHT" wrappingWidth="149.0">
+      <Text fill="WHITE" layoutX="139.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Replacement cost  " textAlignment="RIGHT" wrappingWidth="164.0">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="languageidChoice" layoutX="305.0" layoutY="356.0" prefWidth="150.0" />
-      <Button fx:id="doneBtn" layoutX="314.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#updateFilmDone" text="Done" textFill="#325e34" />
-      <Button fx:id="cancelBtn" layoutX="395.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#cancelFilm" text="Cancel" textFill="#325e34" />
-      <TextField fx:id="replacementTxt" layoutX="305.0" layoutY="312.0" promptText="T.ex 19.99" />
-      <TextField fx:id="filmlengthTxt" layoutX="304.0" layoutY="268.0" />
-      <Text fill="WHITE" layoutX="155.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Length  " textAlignment="RIGHT" wrappingWidth="149.0">
+      <ChoiceBox fx:id="languageidChoice" layoutX="305.0" layoutY="356.0" prefWidth="150.0" style="-fx-font-family: Monospaced;" />
+      <Button fx:id="doneBtn" layoutX="308.0" layoutY="422.0" mnemonicParsing="false" onMouseClicked="#updateFilmDone" prefHeight="23.0" prefWidth="60.0" style="-fx-font-family: Monospaced;" text="Done" textFill="#325e34" />
+      <Button fx:id="cancelBtn" layoutX="389.0" layoutY="422.0" mnemonicParsing="false" onMouseClicked="#cancelFilm" style="-fx-font-family: Monospaced;" text="Cancel" textFill="#325e34" />
+      <TextField fx:id="replacementTxt" layoutX="305.0" layoutY="312.0" prefHeight="23.0" prefWidth="149.0" promptText="T.ex 19.99" style="-fx-font-family: Monospaced;" />
+      <TextField fx:id="filmlengthTxt" layoutX="304.0" layoutY="268.0" prefHeight="23.0" prefWidth="149.0" style="-fx-font-family: Monospaced;" />
+      <Text fill="WHITE" layoutX="155.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Length  " textAlignment="RIGHT" wrappingWidth="149.0">
          <font>
             <Font size="14.0" />
          </font>
