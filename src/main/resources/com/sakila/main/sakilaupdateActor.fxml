@@ -8,24 +8,24 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="744.0" style="-fx-background-color: #83B185;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sakila.controller.ActorController">
    <children>
-      <Text fill="WHITE" layoutX="246.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Actor" textAlignment="CENTER" wrappingWidth="251.13671875">
+      <Text fill="WHITE" layoutX="246.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Update Actor" textAlignment="CENTER" wrappingWidth="251.13671875">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="firstNameTxt" layoutX="303.0" layoutY="135.0" />
-      <TextField fx:id="lastNameTxt" layoutX="305.0" layoutY="179.0" />
-      <Text fill="WHITE" layoutX="154.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name " textAlignment="RIGHT" wrappingWidth="149.0">
+      <TextField fx:id="firstNameTxt" layoutX="303.0" layoutY="135.0" prefHeight="23.0" prefWidth="149.0" style="-fx-font-family: Monospaced;" />
+      <TextField fx:id="lastNameTxt" layoutX="305.0" layoutY="179.0" prefHeight="23.0" prefWidth="149.0" style="-fx-font-family: Monospaced;" />
+      <Text fill="WHITE" layoutX="154.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="First Name " textAlignment="RIGHT" wrappingWidth="149.0">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="156.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name " textAlignment="RIGHT" wrappingWidth="149.0">
+      <Text fill="WHITE" layoutX="156.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Last Name " textAlignment="RIGHT" wrappingWidth="149.0">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Button fx:id="doneBtn" layoutX="314.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#updateActorDone" text="Done" textFill="#325e34" />
-      <Button fx:id="cancelBtn" layoutX="395.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#cancelActor" text="Cancel" textFill="#325e34" />
+      <Button fx:id="doneBtn" layoutX="314.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#updateActorDone" style="-fx-font-family: Monospaced;" text="Done" textFill="#325e34" />
+      <Button fx:id="cancelBtn" layoutX="395.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#cancelActor" style="-fx-font-family: Monospaced;" text="Cancel" textFill="#325e34" />
    </children>
 </AnchorPane>
