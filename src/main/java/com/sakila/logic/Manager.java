@@ -120,6 +120,17 @@ public class Manager {
             filmDAO.update(film);
         }
     }
+    //lagt till denna
+    public void updateActor(Actor actor){
+        if (actor != null){
+            actorDAO.update(actor);
+        }
+    }
+    public void createActor(Actor actor) {
+        if (actor != null) {
+            actorDAO.create(actor);
+        }
+    }
 
     public ObservableList<Address> getAllAddresses() {
         return FXCollections.observableArrayList(addressDAO.readAll());
