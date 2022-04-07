@@ -123,7 +123,7 @@ public class Manager {
     }
     //lagt till denna
     public void updateActor(Actor actor){
-        if (actor != null){
+        if (actor.getId() != 0){
             actorDAO.update(actor);
         }
     }
