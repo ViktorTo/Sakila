@@ -1,5 +1,8 @@
 package com.sakila.entity;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -15,6 +18,7 @@ public class Inventory {
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "film_id", nullable = false)
     private Film film;
 
@@ -25,7 +29,7 @@ public class Inventory {
     @Column(name = "last_update", nullable = false)
     private Timestamp lastUpdate;
 
-    @OneToMany(mappedBy = "inventory")
+    @OneToMany(mappedBy = "inventory", cascade = CascadeType.ALL)
     private Set<Rental> rentals = new LinkedHashSet<>();
 
     public Set<Rental> getRentals() {

@@ -1,5 +1,7 @@
 package com.sakila.entity;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -22,10 +24,10 @@ public class Language {
     @Column(name = "last_update", nullable = false)
     private Timestamp lastUpdate;
 
-    @OneToMany(mappedBy = "language")
+    @OneToMany(mappedBy = "language", cascade = CascadeType.ALL)
     private Set<Film> films_language = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "originalLanguage")
+    @OneToMany(mappedBy = "originalLanguage", cascade = CascadeType.ALL)
     private Set<Film> films = new LinkedHashSet<>();
 
     public Set<Film> getFilms() {

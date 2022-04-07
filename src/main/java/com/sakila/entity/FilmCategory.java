@@ -1,5 +1,7 @@
 package com.sakila.entity;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -12,7 +14,8 @@ public class FilmCategory {
     private FilmCategoryId id;
 
     @MapsId("filmId")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "film_id", nullable = false)
     private Film film;
 

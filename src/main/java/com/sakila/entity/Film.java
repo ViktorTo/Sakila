@@ -1,5 +1,7 @@
 package com.sakila.entity;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -28,10 +30,12 @@ public class Film {
     private Integer releaseYear;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "language_id", nullable = false)
     private Language language;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "original_language_id")
     private Language originalLanguage;
 
@@ -59,13 +63,13 @@ public class Film {
     @Column(name = "last_update", nullable = false)
     private Timestamp lastUpdate;
 
-    @OneToMany(mappedBy = "film")
+    @OneToMany(mappedBy = "film", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Inventory> inventories = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "film", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "film", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<FilmActor> filmActors = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "film", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<FilmCategory> filmCategories = new LinkedHashSet<>();
 
     public Set<FilmCategory> getFilmCategories() {
