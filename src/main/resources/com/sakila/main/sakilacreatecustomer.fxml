@@ -14,49 +14,77 @@
             <Font name="Monospaced Regular" size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="firstnameTxt" layoutX="302.0" layoutY="138.0" prefHeight="23.0" prefWidth="150.0" promptText="Tomas">
-         <font>
-            <Font name="Monospaced Bold" size="12.0" />
-         </font></TextField>
-      <TextField fx:id="lastnameTxt" layoutX="302.0" layoutY="187.0" prefHeight="23.0" prefWidth="150.0" promptText="Wigell" style="-fx-font-family: Monospaced;">
+      <TextField fx:id="firstnameTxt" layoutX="157.0" layoutY="154.0" prefHeight="23.0" prefWidth="150.0" promptText="Tomas">
          <font>
             <Font name="Monospaced Regular" size="12.0" />
          </font></TextField>
-      <TextField fx:id="emailTxt" layoutX="302.0" layoutY="234.0" prefHeight="23.0" prefWidth="149.0" promptText="tomas@sakila.org" style="-fx-font-family: Monospaced;" />
-      <Text fill="WHITE" layoutX="153.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First name  " textAlignment="RIGHT" wrappingWidth="149.0">
+      <TextField fx:id="lastnameTxt" layoutX="157.0" layoutY="203.0" prefHeight="23.0" prefWidth="150.0" promptText="Wigell" style="-fx-font-family: Monospaced;">
+         <font>
+            <Font name="Monospaced Regular" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="emailTxt" layoutX="157.0" layoutY="250.0" prefHeight="23.0" prefWidth="149.0" promptText="tomas@sakila.org" style="-fx-font-family: Monospaced;" />
+      <Text fill="WHITE" layoutX="157.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First name  " wrappingWidth="149.0">
          <font>
             <Font name="Monospaced Regular" size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="153.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name  " textAlignment="RIGHT" wrappingWidth="149.0">
+      <Text fill="WHITE" layoutX="158.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name  " wrappingWidth="149.0">
          <font>
             <Font name="Monospaced Regular" size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="153.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email  " textAlignment="RIGHT" wrappingWidth="149.0">
+      <Text fill="WHITE" layoutX="158.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email  " wrappingWidth="149.0">
          <font>
             <Font name="Monospaced Regular" size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="153.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address  " textAlignment="RIGHT" wrappingWidth="149.0">
+      <Text fill="WHITE" layoutX="438.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Street Address  " wrappingWidth="149.0">
          <font>
             <Font name="Monospaced Regular" size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="153.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Store  " textAlignment="RIGHT" wrappingWidth="149.0">
+      <Text fill="WHITE" layoutX="158.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Store  " wrappingWidth="149.0">
          <font>
-            <Font name="Monospaced Bold" size="14.0" />
+            <Font name="Monospaced Regular" size="14.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="storeChoice" layoutX="302.0" layoutY="333.0" prefWidth="150.0" style="-fx-font-family: Monospaced;" />
-      <ChoiceBox fx:id="addressChoice" layoutX="302.0" layoutY="283.0" prefWidth="150.0" style="-fx-font-family: Monospaced;" />
-      <Button fx:id="doneBtn" layoutX="306.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#createCustomerDone" prefHeight="23.0" prefWidth="60.0" text="Done" textFill="#325e34">
+      <ChoiceBox fx:id="storeChoice" layoutX="158.0" layoutY="296.0" prefWidth="150.0" style="-fx-font-family: Monospaced;" />
+      <Button fx:id="doneBtn" layoutX="302.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#createCustomerDone" prefHeight="23.0" prefWidth="60.0" text="Done" textFill="#325e34">
          <font>
             <Font name="Monospaced Regular" size="12.0" />
          </font></Button>
-      <Button fx:id="cancelBtn" layoutX="387.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#cancelCustomer" text="Cancel" textFill="#325e34">
+      <Button fx:id="cancelBtn" layoutX="383.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#cancelCustomer" text="Cancel" textFill="#325e34">
          <font>
             <Font name="Monospaced Regular" size="12.0" />
          </font></Button>
+      <TextField fx:id="streetAddressTxt" layoutX="437.0" layoutY="154.0" prefHeight="23.0" prefWidth="149.0" promptText="Street address">
+         <font>
+            <Font name="Monospaced Regular" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="districtTxt" layoutX="437.0" layoutY="203.0" prefHeight="23.0" prefWidth="149.0" promptText="District" style="-fx-font-family: Monospaced;" />
+      <TextField fx:id="cityTxt" layoutX="437.0" layoutY="250.0" prefHeight="23.0" prefWidth="149.0" promptText="City" style="-fx-font-family: Monospaced;" />
+      <TextField fx:id="postalCodeTxt" layoutX="437.0" layoutY="296.0" prefHeight="23.0" prefWidth="149.0" promptText="Postal Code" style="-fx-font-family: Monospaced;" />
+      <Text fill="WHITE" layoutX="437.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="District" wrappingWidth="149.0">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="437.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City" wrappingWidth="149.0">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="438.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Postal Code" wrappingWidth="149.0">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="countryChoice" layoutX="596.0" layoutY="250.0" prefHeight="23.0" prefWidth="121.0" style="-fx-font-family: Monospaced;" />
+      <Text fill="WHITE" layoutX="596.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country" wrappingWidth="149.0">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

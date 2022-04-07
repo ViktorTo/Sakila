@@ -43,6 +43,18 @@ public class CityDAO implements DatabaseAccessObject<City>{
 
     }
 
+    public City readCityByName(String cityName) {
+        Session session = databaseSession.startSession();
+        List<City> cityList = session.createQuery("FROM City c WHERE c.city = :name")
+                        .setParameter("name", cityName)
+                                .getResultList();
+        databaseSession.endSession(session);
+        if (cityList.size() > 0) {
+            return cityList.get(0);
+        }
+        return null;
+    }
+
     @Override
     public List<City> readAll() {
         Session session = databaseSession.startSession();

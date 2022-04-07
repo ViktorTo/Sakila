@@ -1,8 +1,6 @@
 package com.sakila.controller;
 
-import com.sakila.entity.Address;
-import com.sakila.entity.Customer;
-import com.sakila.entity.Store;
+import com.sakila.entity.*;
 import com.sakila.logic.Manager;
 import com.sakila.main.Main;
 import com.sakila.utility.SceneChanger;
@@ -33,21 +31,37 @@ public class CustomerController {
     private SceneView view;
 
     @FXML
-    private ChoiceBox<Address> addressChoice;
+    private ChoiceBox<Country> countryChoice;
 
     @FXML
-    private Button cancelBtn, doneBtn;
-
-    @FXML
-    private TextField firstnameTxt, lastnameTxt, emailTxt;
+    private TextField firstnameTxt, lastnameTxt, emailTxt, streetAddressTxt, postalCodeTxt, cityTxt, districtTxt;
 
     @FXML
     private ChoiceBox<Store> storeChoice;
 
     @FXML
     public void createCustomerDone(MouseEvent event) throws IOException {
+
+        City city = manager.readCityByName(cityTxt.getText());
+        if (city == null) {
+            city = new City();
+            city.setCity(cityTxt.getText());
+            city.setCountry(countryChoice.getValue());
+            manager.createCity(city);
+        }
+        Address address = manager.readAddressByName(streetAddressTxt.getText());
+        if (address == null) {
+            address = new Address();
+            address.setAddress(streetAddressTxt.getText());
+            address.setDistrict(districtTxt.getText());
+            address.setCity(city);
+            address.setPostalCode(postalCodeTxt.getText());
+            address.setPhone(" ");
+            manager.createAddress(address);
+        }
+
         Customer customer = new Customer();
-        customer.setAddress(addressChoice.getValue());
+        customer.setAddress(address);
         customer.setStore(storeChoice.getValue());
         customer.setFirstName(firstnameTxt.getText());
         customer.setLastName(lastnameTxt.getText());
@@ -58,17 +72,49 @@ public class CustomerController {
 
         if(view.equals(SceneView.CREATECUSTOMER)) {
             sceneChanger.mainScene(event);
-        }else {
+        } else {
         sceneChanger.changeSceneLogin(event);
         }
     }
     @FXML
     public void updateCustomerDone(MouseEvent event) throws IOException {
+
+        City city = manager.readCityByName(cityTxt.getText());
+        Address address = manager.readAddressByName(streetAddressTxt.getText());
+        boolean changeCountry = false;
+
+        if (city == null) {
+            city = new City();
+            city.setCity(cityTxt.getText());
+            city.setCountry(countryChoice.getValue());
+            manager.createCity(city);
+
+        } else if (city.getCountry() != countryChoice.getValue()) {
+            changeCountry = true;
+            city = new City();
+            city.setCity(cityTxt.getText());
+            city.setCountry(countryChoice.getValue());
+            manager.createCity(city);
+        }
+
+        if (address == null || changeCountry) {
+            address = new Address();
+            address.setAddress(streetAddressTxt.getText());
+            address.setDistrict(districtTxt.getText());
+            address.setCity(city);
+            address.setPostalCode(postalCodeTxt.getText());
+            address.setPhone(" ");
+            System.out.println("hej");
+            manager.createAddress(address);
+        }
+
         customer.setFirstName(firstnameTxt.getText());
         customer.setLastName(lastnameTxt.getText());
         customer.setEmail(emailTxt.getText());
-        customer.setAddress(addressChoice.getValue());
         customer.setStore(storeChoice.getValue());
+        customer.setAddress(address);
+
+
         manager.updateCustomer(customer);
         sceneChanger.mainScene(event);
     }
@@ -82,22 +128,25 @@ public class CustomerController {
     }
 
     public void initData(SceneView view, Customer customer) {
-
-        addressChoice.setItems(manager.getAllAddresses());
+        countryChoice.setItems(manager.getAllCountries());
         storeChoice.setItems(manager.getAllStores());
         this.customer = customer;
         this.view = view;
 
         if (view == SceneView.UPDATECUSTOMER) {
+            Address address = manager.readAddress(customer.getAddress().getId());
+            City city = manager.readCity(address.getCity().getId());
+            Country country = manager.readCountry(city.getCountry().getId());
+            Store store = manager.readStore(customer.getStore().getId());
             firstnameTxt.setText(customer.getFirstName());
             lastnameTxt.setText(customer.getLastName());
             emailTxt.setText(customer.getEmail());
-            Address address = manager.readAddress(customer.getAddress().getId());
-            Store store = manager.readStore(customer.getStore().getId());
-            addressChoice.getSelectionModel().select(address);
             storeChoice.getSelectionModel().select(store);
+            streetAddressTxt.setText(address.getAddress());
+            districtTxt.setText(address.getDistrict());
+            cityTxt.setText(city.getCity());
+            countryChoice.getSelectionModel().select(country);
+            postalCodeTxt.setText(address.getPostalCode());
         }
-
     }
-
 }

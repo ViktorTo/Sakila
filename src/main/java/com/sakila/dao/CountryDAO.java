@@ -1,5 +1,6 @@
 package com.sakila.dao;
 
+import com.sakila.entity.City;
 import com.sakila.entity.Country;
 import com.sakila.utility.DatabaseSession;
 import org.hibernate.Session;
@@ -49,6 +50,7 @@ private final DatabaseSession databaseSession = new DatabaseSession();
         databaseSession.endSession(session);
         return countryList;
     }
+
 }
 
 
