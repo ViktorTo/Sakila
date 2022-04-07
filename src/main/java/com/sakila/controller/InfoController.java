@@ -65,6 +65,6 @@ public class InfoController {
             actorList.add(f.getActor());
         }
         filmActorList.setItems(FXCollections.observableArrayList(actorList));
-//        filmInventoryList.setItems(FXCollections.observableArrayList(manager.getInventoryByFilm(film.getId())));
+        filmInventoryList.setItems(FXCollections.observableArrayList(manager.getInventoryByFilm(film.getId())));
     }
 }
