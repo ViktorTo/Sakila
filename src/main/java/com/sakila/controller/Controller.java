@@ -231,6 +231,7 @@ public class Controller implements Initializable {
                 Customer customer = customerTbl.getSelectionModel().getSelectedItem();
                 if (customer != null) {
                     manager.deleteCustomer(customer.getId());
+                    changeToCustomerTab();
                 }
 
             }
@@ -238,24 +239,28 @@ public class Controller implements Initializable {
                 Rental rental = rentalTbl.getSelectionModel().getSelectedItem();
                 if (rental != null) {
                     manager.deleteRental(rental.getId());
+                    changeToRentalTab();
                 }
             }
             case 2 -> {
                 Film film = filmTbl.getSelectionModel().getSelectedItem();
                 if (film != null) {
                     manager.deleteFilm(film.getId());
+                    changeToFilmTab();
                 }
             }
             case 3 -> {
                 Staff staff = staffTbl.getSelectionModel().getSelectedItem();
                 if (staff !=  null){
                     manager.deleteStaff(staff.getId());
+                    changeToStaffTab();
                 }
             }
             case 4 -> {
                 Actor actor = actorTbl.getSelectionModel().getSelectedItem();
                 if (actor != null){
                     manager.deleteActor(actor.getId());
+                    changeToActorTab();
                 }
 
             }
@@ -263,6 +268,7 @@ public class Controller implements Initializable {
                 Inventory inventory = inventoryTbl.getSelectionModel().getSelectedItem();
                 if (inventory != null){
                     manager.deleteInventory(inventory.getId());
+                    changeToInventoryTab();
                 }
             }
 
