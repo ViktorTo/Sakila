@@ -382,6 +382,13 @@ public class Controller {
         }
     }
 
+    public void initialize() throws IOException {
+        if(staff == null) {
+            staff = manager.getStaffByUsername("Mike");
+            initData(staff);
+        }
+    }
+
     @FXML
     public void filmTblClicked(MouseEvent event) throws IOException {
         clickCount++;
