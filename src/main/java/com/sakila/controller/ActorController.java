@@ -19,6 +19,7 @@ public class ActorController {
     private final Manager manager = new Manager();
     private final SceneChanger sceneChanger = new SceneChanger();
     private Actor actor;
+    private SceneView view;
 
 
     @FXML
@@ -42,8 +43,7 @@ public class ActorController {
 
     @FXML
     void updateActorDone(MouseEvent event) throws IOException {
-
-        Actor actor = new Actor();
+        
         actor.setFirstName(firstNameTxt.getText());
         actor.setLastName(lastNameTxt.getText());
         manager.updateActor(actor);
@@ -61,6 +61,22 @@ public class ActorController {
     }
 
     public void initData(SceneView view, Actor actor) {
-        this.actor = actor;
+
+        switch (view) {
+            case CREATEACTOR ->{
+
+            }
+
+            case UPDATEACTOR -> {
+                this.actor = actor;
+                firstNameTxt.setText(actor.getFirstName());
+                lastNameTxt.setText(actor.getLastName());
+
+            }
+        }
+
+
+        }
+
     }
-}
+
