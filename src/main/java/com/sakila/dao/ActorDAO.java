@@ -14,6 +14,9 @@ public class ActorDAO implements DatabaseAccessObject<Actor> {
 
     @Override
     public void create(Actor data) {
+        Session session = databaseSession.startSession();
+        session.persist(data);
+        databaseSession.endSession(session);
 
     }
 
