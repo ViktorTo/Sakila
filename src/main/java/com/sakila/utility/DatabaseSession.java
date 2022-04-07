@@ -25,6 +25,7 @@ public class DatabaseSession {
             if (transaction != null) {
                 transaction.rollback();
                 System.err.println("Rollback");
+                e.printStackTrace();
             }
         }
         session.close();
