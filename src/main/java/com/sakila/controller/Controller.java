@@ -343,7 +343,6 @@ public class Controller implements Initializable {
 
             }
             case 4 -> {
-                //här
              sceneChanger.changeSceneActor(event, SceneView.CREATEACTOR, new Actor());
 
             }

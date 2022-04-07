@@ -150,4 +150,24 @@ public class SceneChanger {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void changeSceneActor(MouseEvent event, SceneView view, Actor actor) throws IOException {
+        String fxml = "";
+        switch (view) {
+            case CREATEACTOR -> {
+                fxml = "sakilacreateactor.fxml";
+            }
+            case UPDATEACTOR -> {
+                fxml = "sakilaupdateactor.fxml";
+            }
+        }
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
+        Parent root = loader.load();
+        ActorController controller = loader.getController();
+        controller.initData(view, actor);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
