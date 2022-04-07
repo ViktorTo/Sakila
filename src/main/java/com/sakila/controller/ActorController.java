@@ -59,4 +59,8 @@ public class ActorController {
     manager.updateActor(actor);
     sceneChanger.mainScene(event);
     }
+
+    public void initData(SceneView view, Actor actor) {
+        this.actor = actor;
+    }
 }
