@@ -4,7 +4,6 @@ import com.sakila.entity.*;
 import com.sakila.logic.Manager;
 import com.sakila.utility.SceneChanger;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -71,9 +70,11 @@ public class InfoController {
         filmRatingLabel.setText(film.getRating());
         filmSpecialLabel.setText(film.getSpecialFeatures());
         filmUpdateLabel.setText(film.getLastUpdate().toString());
+
         for (FilmActor f : manager.getActorsInFilm(film.getId())) {
             actorList.add(f.getActor());
         }
+
         filmActorList.setItems(FXCollections.observableArrayList(actorList));
         filmInventoryList.setItems(FXCollections.observableArrayList(manager.getInventoryByFilm(film.getId())));
     }

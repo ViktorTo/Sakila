@@ -7,18 +7,20 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Circle?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="848.0" prefWidth="1248.0" style="-fx-background-color: #83B185;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sakila.controller.Controller">
    <children>
+      <Circle fx:id="staffImageView" disable="true" fill="#f3f4f5" layoutX="96.0" layoutY="599.0" radius="53.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
       <BorderPane layoutX="-3.0" prefHeight="546.0" prefWidth="1250.0" style="-fx-background-color: #83B185;">
          <top>
-            <TabPane fx:id="tabpane" prefHeight="545.0" prefWidth="1250.0" style="-fx-background-color: #83B185; -fx-border-color: #83B185; -fx-region-background-color: #83B185; -fx-text-background-color: #FFFFFF;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <TabPane fx:id="tabpane" prefHeight="515.0" prefWidth="1250.0" style="-fx-background-color: #83B185; -fx-border-color: #83B185; -fx-region-background-color: #83B185; -fx-text-background-color: #FFFFFF;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
               <tabs>
                 <Tab fx:id="customerTab" onSelectionChanged="#changeToCustomerTab" style="-fx-border-color: #83B185; -fx-background-color: #749D75; -fx-text-base-color: white; -fx-font-family: Monospaced;" text="Customers">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #83B185;">
                            <children>
-                              <TableView fx:id="customerTbl" prefHeight="517.0" prefWidth="1244.0" style="-fx-background-color: #749D75; -fx-border-color: #83B185; -fx-border-base-color: #83B185; -fx-font-family: Monospaced;">
+                              <TableView fx:id="customerTbl" layoutY="1.0" prefHeight="501.0" prefWidth="1244.0" style="-fx-background-color: #749D75; -fx-border-color: #83B185; -fx-border-base-color: #83B185; -fx-font-family: Monospaced;">
                                 <columns>
                                   <TableColumn fx:id="customeridCol" prefWidth="47.0" style="-fx-background-color: #749D75;" text="Id" />
                                   <TableColumn fx:id="firstnameCol" prefWidth="231.0" style="-fx-background-color: #749D75;" text="First Name" />

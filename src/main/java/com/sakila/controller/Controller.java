@@ -16,9 +16,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.Effect;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Time;
@@ -26,7 +32,7 @@ import java.sql.Timestamp;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class Controller {
 
     private final Manager manager = new Manager();
     private final SceneChanger sceneChanger = new SceneChanger();
@@ -139,6 +145,9 @@ public class Controller implements Initializable {
 
     @FXML
     private TableView<Inventory> inventoryTbl;
+
+    @FXML
+    private Circle staffImageView;
 
 
     public void changeToFilmTab() {
@@ -364,14 +373,13 @@ public class Controller implements Initializable {
         stage.show();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
-
-    public void initData(Staff staff) {
+    public void initData(Staff staff) throws IOException {
         this.staff = staff;
-        System.out.println(staff.getFirstName());
+        if(staff.getPicture() != null) {
+            ImagePattern image = new ImagePattern(getImage(staff.getPicture()));
+            staffImageView.setFill(image);
+            staffImageView.setVisible(true);
+        }
     }
 
     @FXML
@@ -387,6 +395,11 @@ public class Controller implements Initializable {
             clickCount = 1;
             filmSaved = film;
         }
+    }
+
+    private Image getImage(byte[] picture) throws IOException {
+        ByteArrayInputStream bis = new ByteArrayInputStream(picture);
+        return new Image(bis);
     }
 
 }
