@@ -226,4 +226,8 @@ public class Manager {
     public Film getFilmById(int id) {
         return filmDAO.readWithLanguage(id);
     }
+
+    public ObservableList<Inventory> getInventoryByFilm(Integer id) {
+        return FXCollections.observableArrayList(inventoryDAO.readByFilm(id));
+    }
 }

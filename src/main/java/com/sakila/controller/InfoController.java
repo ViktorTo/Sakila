@@ -61,10 +61,12 @@ public class InfoController {
         filmRatingLabel.setText(film.getRating());
         filmSpecialLabel.setText(film.getSpecialFeatures());
         filmUpdateLabel.setText(film.getLastUpdate().toString());
+
         for (FilmActor f : manager.getActorsInFilm(film.getId())) {
             actorList.add(f.getActor());
         }
+
         filmActorList.setItems(FXCollections.observableArrayList(actorList));
-//        filmInventoryList.setItems(FXCollections.observableArrayList(manager.getInventoryByFilm(film.getId())));
+        filmInventoryList.setItems(FXCollections.observableArrayList(manager.getInventoryByFilm(id)));
     }
 }
