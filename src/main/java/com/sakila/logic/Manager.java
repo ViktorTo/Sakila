@@ -20,6 +20,8 @@ public class Manager {
     private final StaffDAO staffDAO = new StaffDAO();
     private final RentalDAO rentalDAO = new RentalDAO();
     private final InventoryDAO inventoryDAO = new InventoryDAO();
+    private final CountryDAO countryDAO = new CountryDAO();
+    private final CityDAO cityDAO = new CityDAO();
 
 
 
@@ -58,6 +60,48 @@ public class Manager {
         if (customer != null) {
             customerDAO.delete(id);
         }
+    }
+
+    public ObservableList<Country> getAllCountries() { return FXCollections.observableArrayList(countryDAO.readAll());}
+
+    public Country readCountry(int id) {
+        if (id != 0) {
+            return countryDAO.read(id);
+        }
+        return null;
+    }
+
+    public void createCity(City city) {
+        if (city != null) {
+            cityDAO.create(city);
+        }
+    }
+
+    public void updateCity(City city) {
+        if (city.getId() != 0) {
+            cityDAO.update(city);
+        }
+    }
+
+    public City readCityByName(String cityName){
+        return cityDAO.readCityByName(cityName);
+    }
+
+    public City readCity(int id) {
+        if (id != 0) {
+            return cityDAO.read(id);
+        }
+        return null;
+    }
+
+    public void createAddress(Address address) {
+        if (address != null){
+            addressDAO.create(address);
+        }
+    }
+
+    public Address readAddressByName(String addressName) {
+        return addressDAO.readAddressByName(addressName);
     }
 
     public ObservableList<Customer> getAllCustomers() { return FXCollections.observableArrayList(customerDAO.readAll()); }

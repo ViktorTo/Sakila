@@ -1,5 +1,6 @@
 package com.sakila.entity;
 
+import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;

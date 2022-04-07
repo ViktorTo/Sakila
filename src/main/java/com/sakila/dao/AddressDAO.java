@@ -1,6 +1,7 @@
 package com.sakila.dao;
 
 import com.sakila.entity.Address;
+import com.sakila.entity.City;
 import com.sakila.utility.DatabaseSession;
 import org.hibernate.Session;
 
@@ -58,4 +59,17 @@ public class AddressDAO implements DatabaseAccessObject<Address>{
         databaseSession.endSession(session);
         return addressList;
     }
+
+    public Address readAddressByName(String addressName) {
+        Session session = databaseSession.startSession();
+        List<Address> addressList = session.createQuery("FROM Address a WHERE a.address = :name")
+                .setParameter("name", addressName)
+                .getResultList();
+        databaseSession.endSession(session);
+        if (addressList.size() > 0) {
+            return addressList.get(0);
+        }
+        return null;
+    }
+
 }

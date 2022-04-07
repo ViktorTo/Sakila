@@ -14,37 +14,61 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="firstnameTxt" layoutX="302.0" layoutY="138.0" prefHeight="23.0" prefWidth="149.0" style="-fx-font-family: Monospaced;" />
-      <TextField fx:id="lastnameTxt" layoutX="302.0" layoutY="182.0" prefHeight="23.0" prefWidth="149.0" style="-fx-font-family: Monospaced;" />
-      <TextField fx:id="emailTxt" layoutX="302.0" layoutY="226.0" prefHeight="23.0" prefWidth="149.0" style="-fx-font-family: Monospaced;" />
-      <Text fill="WHITE" layoutX="153.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="First name  " textAlignment="RIGHT" wrappingWidth="149.0">
+      <TextField fx:id="firstnameTxt" layoutX="155.0" layoutY="162.0" prefHeight="23.0" prefWidth="149.0" style="-fx-font-family: Monospaced;" />
+      <TextField fx:id="lastnameTxt" layoutX="155.0" layoutY="206.0" prefHeight="23.0" prefWidth="149.0" style="-fx-font-family: Monospaced;" />
+      <TextField fx:id="emailTxt" layoutX="155.0" layoutY="250.0" prefHeight="23.0" prefWidth="149.0" style="-fx-font-family: Monospaced;" />
+      <Text fill="WHITE" layoutX="155.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="First name  " wrappingWidth="149.0">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="153.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Last name  " textAlignment="RIGHT" wrappingWidth="149.0">
+      <Text fill="WHITE" layoutX="155.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Last name  " wrappingWidth="149.0">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="153.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Email  " textAlignment="RIGHT" wrappingWidth="149.0">
+      <Text fill="WHITE" layoutX="155.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Email  " wrappingWidth="149.0">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="153.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Address  " textAlignment="RIGHT" wrappingWidth="149.0">
+      <Text fill="WHITE" layoutX="440.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Address  " wrappingWidth="149.0">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="153.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Store  " textAlignment="RIGHT" wrappingWidth="149.0">
+      <Text fill="WHITE" layoutX="155.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Store  " wrappingWidth="149.0">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="storeChoice" layoutX="302.0" layoutY="319.0" prefHeight="19.0" prefWidth="150.0" style="-fx-font-family: Monospaced;" />
-      <ChoiceBox fx:id="addressChoice" layoutX="302.0" layoutY="275.0" prefHeight="19.0" prefWidth="150.0" style="-fx-font-family: Monospaced;" />
-      <Button fx:id="doneBtn" layoutX="305.0" layoutY="388.0" mnemonicParsing="false" onMouseClicked="#updateCustomerDone" style="-fx-font-family: Monospaced;" text="Done" textFill="#325e34" />
-      <Button fx:id="cancelBtn" layoutX="385.0" layoutY="388.0" mnemonicParsing="false" onMouseClicked="#cancelCustomer" style="-fx-font-family: Monospaced;" text="Cancel" textFill="#325e34" />
+      <ChoiceBox fx:id="storeChoice" layoutX="155.0" layoutY="296.0" prefHeight="19.0" prefWidth="150.0" style="-fx-font-family: Monospaced;" />
+      <ChoiceBox fx:id="countryChoice" layoutX="599.0" layoutY="251.0" prefHeight="23.0" prefWidth="133.0" style="-fx-font-family: Monospaced;" />
+      <Button fx:id="doneBtn" layoutX="303.0" layoutY="379.0" mnemonicParsing="false" onMouseClicked="#updateCustomerDone" prefHeight="23.0" prefWidth="60.0" style="-fx-font-family: Monospaced;" text="Done" textFill="#325e34" />
+      <Button fx:id="cancelBtn" layoutX="380.0" layoutY="379.0" mnemonicParsing="false" onMouseClicked="#cancelCustomer" style="-fx-font-family: Monospaced;" text="Cancel" textFill="#325e34" />
+      <TextField fx:id="streetAddressTxt" layoutX="440.0" layoutY="163.0" prefHeight="23.0" prefWidth="149.0" style="-fx-font-family: Monospaced;" />
+      <TextField fx:id="districtTxt" layoutX="440.0" layoutY="207.0" prefHeight="23.0" prefWidth="149.0" style="-fx-font-family: Monospaced;" />
+      <TextField fx:id="cityTxt" layoutX="440.0" layoutY="251.0" prefHeight="23.0" prefWidth="149.0" style="-fx-font-family: Monospaced;" />
+      <TextField fx:id="postalCodeTxt" layoutX="440.0" layoutY="297.0" prefHeight="23.0" prefWidth="149.0" style="-fx-font-family: Monospaced;" />
+      <Text fill="WHITE" layoutX="440.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Postal Code" wrappingWidth="149.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="440.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="City" wrappingWidth="149.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="440.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="District" wrappingWidth="149.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="599.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Country" wrappingWidth="127.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
