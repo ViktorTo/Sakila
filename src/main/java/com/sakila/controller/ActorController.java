@@ -56,8 +56,14 @@ public class ActorController {
     actor.setFirstName(firstNameTxt.getText());
     actor.setLastName(lastNameTxt.getText());
     actor.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
-    manager.updateActor(actor);
+    manager.createActor(actor);
     sceneChanger.mainScene(event);
+
+   // if (view.equals(SceneView.CREATEACTOR)) {
+    //    sceneChanger.mainScene(event);
+   // } else {
+   //     sceneChanger.changeSceneLogin(event);
+   // }
     }
 
     public void initData(SceneView view, Actor actor) {
