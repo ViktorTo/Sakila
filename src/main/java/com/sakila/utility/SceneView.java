@@ -11,5 +11,8 @@ public enum SceneView {
     UPDATERENTAL,
     CREATEINVENTORY,
     UPDATEINVENTORY,
+    UPDATEACTOR,
+    CREATEACTOR,
+
 
 }

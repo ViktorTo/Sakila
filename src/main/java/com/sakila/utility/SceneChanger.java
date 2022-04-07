@@ -47,6 +47,15 @@ public class SceneChanger {
         stage.show();
     }
 
+    public void mainScene(KeyEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("sakilamain.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void customerScene(MouseEvent event, SceneView view, Customer customer) throws IOException {
         String fxml = "";
         switch (view) {
@@ -145,6 +154,26 @@ public class SceneChanger {
         Parent root = loader.load();
         InfoController controller = loader.getController();
         controller.initFilm(id);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void changeSceneActor(MouseEvent event, SceneView view, Actor actor) throws IOException {
+        String fxml = "";
+        switch (view) {
+            case CREATEACTOR -> {
+                fxml = "sakilacreateactor.fxml";
+            }
+            case UPDATEACTOR -> {
+                fxml = "sakilaupdateactor.fxml";
+            }
+        }
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
+        Parent root = loader.load();
+        ActorController controller = loader.getController();
+        controller.initData(view, actor);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

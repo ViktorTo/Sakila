@@ -34,7 +34,7 @@
                            <children>
                               <HBox alignment="TOP_CENTER" prefHeight="48.0" prefWidth="666.0" spacing="10.0">
                                  <children>
-                                    <TextField fx:id="emailField" prefHeight="25.0" prefWidth="357.0" promptText="Example@gmail.com" style="-fx-font-family: Monospaced;" />
+                                    <TextField fx:id="emailField" onKeyPressed="#customerEmailKeyPressed" prefHeight="25.0" prefWidth="357.0" promptText="Example@gmail.com" style="-fx-font-family: Monospaced;" />
                                     <Button fx:id="customerLoginButton" mnemonicParsing="false" onMouseClicked="#loginClicked" prefHeight="25.0" prefWidth="74.0" style="-fx-font-family: Monospaced;" text="Log in" textFill="#325e34" />
                                  </children>
                               </HBox>
@@ -88,7 +88,7 @@
                               <HBox alignment="CENTER" prefHeight="48.0" prefWidth="666.0" spacing="10.0">
                                  <children>
                                     <Label prefHeight="15.0" prefWidth="84.0" style="-fx-font-family: Monospaced;" text="Username" textFill="WHITE" />
-                                    <TextField fx:id="staffUserField" prefHeight="25.0" prefWidth="335.0" promptText="Mike" style="-fx-font-family: Monospaced;" />
+                                    <TextField fx:id="staffUserField" onKeyPressed="#staffLoginKeyPressed" prefHeight="25.0" prefWidth="335.0" promptText="Mike" style="-fx-font-family: Monospaced;" />
                                  </children>
                               </HBox>
                               <Label fx:id="noEmailLabel1" prefHeight="17.0" prefWidth="209.0" text="No customer with that email found" visible="false" />

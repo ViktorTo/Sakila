@@ -58,9 +58,8 @@
                                     <TableColumn fx:id="filmidCol" prefWidth="53.0" style="-fx-background-color: #749D75;" text="Id" />
                                     <TableColumn fx:id="titleCol" prefWidth="407.0" style="-fx-background-color: #749D75;" text="Title" />
                                     <TableColumn fx:id="lengthCol" prefWidth="152.0" style="-fx-background-color: #749D75;" text="Length" />
-                                    <TableColumn fx:id="releaseCol" prefWidth="116.0" style="-fx-background-color: #749D75;" text="Release Year" />
-                                    <TableColumn fx:id="actorsCol" minWidth="0.0" prefWidth="330.0" style="-fx-background-color: #749D75;" text="Actors" />
-                                    <TableColumn fx:id="lastupdateCol" minWidth="0.0" prefWidth="174.0" style="-fx-background-color: #749D75;" text="Last Update" />
+                                    <TableColumn fx:id="releaseCol" prefWidth="194.0" style="-fx-background-color: #749D75;" text="Release Year" />
+                                    <TableColumn fx:id="lastupdateCol" minWidth="0.0" prefWidth="427.0" style="-fx-background-color: #749D75;" text="Last Update" />
                                  </columns>
                               </TableView>
                            </children>

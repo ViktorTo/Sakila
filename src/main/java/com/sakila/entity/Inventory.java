@@ -71,7 +71,7 @@ public class Inventory {
     @Override
     public String toString() {
         return id + " "
-                + film + " "
-                + "Store: " + store;
+                + film +
+                " Store: " + store;
     }
 }

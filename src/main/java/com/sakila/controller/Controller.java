@@ -31,6 +31,7 @@ public class Controller implements Initializable {
     private final Manager manager = new Manager();
     private final SceneChanger sceneChanger = new SceneChanger();
     private Staff staff;
+    private Film filmSaved;
     private int clickCount = 0;
 
     //Main FXML
@@ -148,7 +149,6 @@ public class Controller implements Initializable {
             titleCol.setCellValueFactory(new PropertyValueFactory<Film, String>("title"));
             lengthCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("length"));
             releaseCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("releaseYear"));
-            actorsCol.setCellValueFactory(new PropertyValueFactory<Film, FilmActor>("filmActors"));
             lastupdateCol.setCellValueFactory(new PropertyValueFactory<Film, Timestamp>("lastUpdate"));
             filmTbl.setItems(manager.getAllFilms());
         }
@@ -232,6 +232,7 @@ public class Controller implements Initializable {
                 Customer customer = customerTbl.getSelectionModel().getSelectedItem();
                 if (customer != null) {
                     manager.deleteCustomer(customer.getId());
+                    changeToCustomerTab();
                 }
 
             }
@@ -239,24 +240,28 @@ public class Controller implements Initializable {
                 Rental rental = rentalTbl.getSelectionModel().getSelectedItem();
                 if (rental != null) {
                     manager.deleteRental(rental.getId());
+                    changeToRentalTab();
                 }
             }
             case 2 -> {
                 Film film = filmTbl.getSelectionModel().getSelectedItem();
                 if (film != null) {
                     manager.deleteFilm(film.getId());
+                    changeToFilmTab();
                 }
             }
             case 3 -> {
                 Staff staff = staffTbl.getSelectionModel().getSelectedItem();
                 if (staff !=  null){
                     manager.deleteStaff(staff.getId());
+                    changeToStaffTab();
                 }
             }
             case 4 -> {
                 Actor actor = actorTbl.getSelectionModel().getSelectedItem();
                 if (actor != null){
                     manager.deleteActor(actor.getId());
+                    changeToActorTab();
                 }
 
             }
@@ -264,6 +269,7 @@ public class Controller implements Initializable {
                 Inventory inventory = inventoryTbl.getSelectionModel().getSelectedItem();
                 if (inventory != null){
                     manager.deleteInventory(inventory.getId());
+                    changeToInventoryTab();
                 }
             }
 
@@ -300,12 +306,12 @@ public class Controller implements Initializable {
 
             }
             case 4 -> {
-          /*      //HÄR
+                //HÄR
                 Actor actor = actorTbl.getSelectionModel().getSelectedItem();
                 if(actor != null) {
                     sceneChanger.changeSceneActor(event, SceneView.UPDATEACTOR, actor);
                 }
-        */
+
             }
             case 5 -> {
                 Inventory inventory = inventoryTbl.getSelectionModel().getSelectedItem();
@@ -315,7 +321,6 @@ public class Controller implements Initializable {
             }
         }
     }
-
 
 
     @FXML
@@ -339,8 +344,7 @@ public class Controller implements Initializable {
 
             }
             case 4 -> {
-                //här
-             //   sceneChanger.changeSceneActor(event, SceneView.CREATEACTOR, new Actor());
+             sceneChanger.changeSceneActor(event, SceneView.CREATEACTOR, new Actor());
 
             }
             case 5 -> {
@@ -374,9 +378,14 @@ public class Controller implements Initializable {
     public void filmTblClicked(MouseEvent event) throws IOException {
         clickCount++;
         Film film = filmTbl.getSelectionModel().getSelectedItem();
-        if(clickCount == 2 && film != null) {
-            sceneChanger.informationScene(event, film.getId());
-            clickCount = 0;
+        if(film == filmSaved) {
+            if (clickCount == 2 && film != null) {
+                sceneChanger.informationScene(event, film.getId());
+                clickCount = 0;
+            }
+        }else {
+            clickCount = 1;
+            filmSaved = film;
         }
     }
 
