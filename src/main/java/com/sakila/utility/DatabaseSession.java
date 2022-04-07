@@ -31,5 +31,4 @@ public class DatabaseSession {
         session.close();
     }
 
-
 }
