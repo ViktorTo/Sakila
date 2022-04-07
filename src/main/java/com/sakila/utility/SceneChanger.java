@@ -47,6 +47,15 @@ public class SceneChanger {
         stage.show();
     }
 
+    public void mainScene(KeyEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("sakilamain.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void customerScene(MouseEvent event, SceneView view, Customer customer) throws IOException {
         String fxml = "";
         switch (view) {
