@@ -148,7 +148,6 @@ public class Controller implements Initializable {
             titleCol.setCellValueFactory(new PropertyValueFactory<Film, String>("title"));
             lengthCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("length"));
             releaseCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("releaseYear"));
-            actorsCol.setCellValueFactory(new PropertyValueFactory<Film, FilmActor>("filmActors"));
             lastupdateCol.setCellValueFactory(new PropertyValueFactory<Film, Timestamp>("lastUpdate"));
             filmTbl.setItems(manager.getAllFilms());
         }
