@@ -1,36 +1,23 @@
 package com.sakila.controller;
 
-import com.sakila.dao.CustomerDAO;
-import com.sakila.dao.FilmDAO;
-import com.sakila.dao.StaffDAO;
 import com.sakila.entity.*;
 import com.sakila.logic.Manager;
-import com.sakila.main.Main;
 import com.sakila.utility.SceneChanger;
 import com.sakila.utility.SceneView;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import javafx.stage.Stage;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.net.URL;
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.util.Optional;
-import java.util.ResourceBundle;
 
 public class Controller {
 
@@ -40,12 +27,8 @@ public class Controller {
     private Film filmSaved;
     private int clickCount = 0;
 
-    //Main FXML
     @FXML
-    private TableColumn<Film, FilmActor> actorsCol;
-
-    @FXML
-    private Tab customerTab, filmTab, staffTab, rentalTab, actorTab;
+    private Tab customerTab, filmTab, staffTab, rentalTab, actorTab, inventoryTab;
 
     @FXML
     private TabPane tabpane;
@@ -54,10 +37,22 @@ public class Controller {
     private TableView<Customer> customerTbl;
 
     @FXML
-    private TableColumn<Customer, Integer> customeridCol;
+    private TableView<Film> filmTbl;
 
     @FXML
-    private TableView<Film> filmTbl;
+    private TableView<Staff> staffTbl;
+
+    @FXML
+    private TableView<Rental> rentalTbl;
+
+    @FXML
+    private TableView<Actor> actorTbl;
+
+    @FXML
+    private TableView<Inventory> inventoryTbl;
+
+    @FXML
+    private TableColumn<Customer, Integer> customeridCol;
 
     @FXML
     private TableColumn<Customer, String> firstnameCol, lastnameCol, mailCol;
@@ -75,31 +70,10 @@ public class Controller {
     private TableColumn<Film, String> titleCol;
 
     @FXML
-    private TableView<Staff> staffTbl;
+    private TableColumn<Staff, String> staffEmailCol, staffUsernameCol, staffFirstNameCol, staffLastNameCol, staffPasswordCol;
 
     @FXML
-    private TableColumn<Staff, Integer> staffAddressCol;
-
-    @FXML
-    private TableColumn<Staff, String> staffEmailCol;
-
-    @FXML
-    private TableColumn<Staff, String> staffFirstNameCol;
-
-    @FXML
-    private TableColumn<Staff, Integer> staffIdCol;
-
-    @FXML
-    private TableColumn<Staff, String> staffLastNameCol;
-
-    @FXML
-    private TableColumn<Staff, String> staffPasswordCol;
-
-    @FXML
-    private TableColumn<Staff, Integer> staffStoreCol;
-
-    @FXML
-    private TableColumn<Staff, String> staffUsernameCol;
+    private TableColumn<Staff, Integer> staffIdCol, staffStoreCol, staffAddressCol;
 
     @FXML
     private TableColumn<Rental, Customer> rentalCustomerIdCol;
@@ -108,25 +82,16 @@ public class Controller {
     private TableColumn<Rental, Integer> rentalIdCol;
 
     @FXML
-    private TableColumn<Rental, Timestamp> rentalLastUpdateCol,rentalRentalDateCol, rentalReturnCol;
+    private TableColumn<Rental, Timestamp> rentalLastUpdateCol, rentalRentalDateCol, rentalReturnCol;
 
     @FXML
     private TableColumn<Rental, Staff> rentalStaffIdCol;
 
     @FXML
-    private TableView<Rental> rentalTbl;
-
-    @FXML
-    private TableColumn<Actor, String> actorFirstNameCol;
+    private TableColumn<Actor, String> actorFirstNameCol, actorLastNameCol;
 
     @FXML
     private TableColumn<Actor, Integer> actorIdCol;
-
-    @FXML
-    private TableColumn<Actor, String> actorLastNameCol;
-
-    @FXML
-    private TableView<Actor> actorTbl;
 
     @FXML
     private TableColumn<Inventory, Film> inventoryFilmCol;
@@ -139,12 +104,6 @@ public class Controller {
 
     @FXML
     private TableColumn<Inventory, Store> inventoryStoreIdCol;
-
-    @FXML
-    private Tab inventoryTab;
-
-    @FXML
-    private TableView<Inventory> inventoryTbl;
 
     @FXML
     private Circle staffImageView;
@@ -183,7 +142,7 @@ public class Controller {
             staffIdCol.setCellValueFactory(new PropertyValueFactory<Staff, Integer>("id"));
             staffFirstNameCol.setCellValueFactory(new PropertyValueFactory<Staff, String>("firstName"));
             staffLastNameCol.setCellValueFactory(new PropertyValueFactory<Staff, String>("lastName"));
- //           staffAddressCol.setCellValueFactory(new PropertyValueFactory<Staff, Integer>("address"));
+            //           staffAddressCol.setCellValueFactory(new PropertyValueFactory<Staff, Integer>("address"));
             staffEmailCol.setCellValueFactory(new PropertyValueFactory<Staff, String>("email"));
 //            staffStoreCol.setCellValueFactory(new PropertyValueFactory<Staff, Integer>("store_id"));
             staffUsernameCol.setCellValueFactory(new PropertyValueFactory<Staff, String>("username"));
@@ -207,7 +166,7 @@ public class Controller {
         }
     }
 
-    public void changeToActorTab(){
+    public void changeToActorTab() {
         //Show data in actor tab
         if (actorTab.isSelected()) {
             actorTbl.getItems().clear();
@@ -220,7 +179,7 @@ public class Controller {
     }
 
     public void changeToInventoryTab() {
-    //Show data in inventory tab
+        //Show data in inventory tab
         if (inventoryTab.isSelected()) {
             inventoryTbl.getItems().clear();
             inventoryIdCol.setCellValueFactory(new PropertyValueFactory<Inventory, Integer>("id"));
@@ -261,14 +220,14 @@ public class Controller {
             }
             case 3 -> {
                 Staff staff = staffTbl.getSelectionModel().getSelectedItem();
-                if (staff !=  null){
+                if (staff != null) {
                     manager.deleteStaff(staff.getId());
                     changeToStaffTab();
                 }
             }
             case 4 -> {
                 Actor actor = actorTbl.getSelectionModel().getSelectedItem();
-                if (actor != null){
+                if (actor != null) {
                     manager.deleteActor(actor.getId());
                     changeToActorTab();
                 }
@@ -276,7 +235,7 @@ public class Controller {
             }
             case 5 -> {
                 Inventory inventory = inventoryTbl.getSelectionModel().getSelectedItem();
-                if (inventory != null){
+                if (inventory != null) {
                     manager.deleteInventory(inventory.getId());
                     changeToInventoryTab();
                 }
@@ -317,7 +276,7 @@ public class Controller {
             case 4 -> {
                 //HÄR
                 Actor actor = actorTbl.getSelectionModel().getSelectedItem();
-                if(actor != null) {
+                if (actor != null) {
                     sceneChanger.changeSceneActor(event, SceneView.UPDATEACTOR, actor);
                 }
 
@@ -353,7 +312,7 @@ public class Controller {
 
             }
             case 4 -> {
-             sceneChanger.changeSceneActor(event, SceneView.CREATEACTOR, new Actor());
+                sceneChanger.changeSceneActor(event, SceneView.CREATEACTOR, new Actor());
 
             }
             case 5 -> {
@@ -364,18 +323,13 @@ public class Controller {
     }
 
     @FXML
-    void rentmovieMouseClick(MouseEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("sakilarentmovie.fxml"));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    void rentmovieMouseClick(MouseEvent event) throws IOException {
+        sceneChanger.changeSceneLogin(event);
     }
 
     public void initData(Staff staff) throws IOException {
         this.staff = staff;
-        if(staff.getPicture() != null) {
+        if (staff.getPicture() != null) {
             ImagePattern image = new ImagePattern(getImage(staff.getPicture()));
             staffImageView.setFill(image);
             staffImageView.setVisible(true);
@@ -383,7 +337,7 @@ public class Controller {
     }
 
     public void initialize() throws IOException {
-        if(staff == null) {
+        if (staff == null) {
             staff = manager.getStaffByUsername("Mike");
             initData(staff);
         }
@@ -393,12 +347,12 @@ public class Controller {
     public void filmTblClicked(MouseEvent event) throws IOException {
         clickCount++;
         Film film = filmTbl.getSelectionModel().getSelectedItem();
-        if(film == filmSaved) {
+        if (film == filmSaved) {
             if (clickCount == 2 && film != null) {
                 sceneChanger.informationScene(event, film.getId());
                 clickCount = 0;
             }
-        }else {
+        } else {
             clickCount = 1;
             filmSaved = film;
         }
