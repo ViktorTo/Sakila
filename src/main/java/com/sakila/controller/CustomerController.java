@@ -120,7 +120,7 @@ public class CustomerController {
     }
     @FXML
     public void cancelCustomer(MouseEvent event) throws IOException {
-        if(view.equals(SceneView.CREATECUSTOMER)) {
+        if(view.equals(SceneView.CREATECUSTOMER) || view.equals(SceneView.UPDATECUSTOMER)) {
             sceneChanger.mainScene(event);
         }else {
             sceneChanger.changeSceneLogin(event);
