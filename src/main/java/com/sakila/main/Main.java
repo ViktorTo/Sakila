@@ -14,7 +14,8 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sakilarentmovie.fxml"));
 
         Scene scene = new Scene(root);
-        primaryStage.setTitle("Hello!");
+        primaryStage.setTitle("Videoteket");
+        primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
