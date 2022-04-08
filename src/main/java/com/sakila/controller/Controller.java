@@ -68,10 +68,13 @@ public class Controller {
     private TableColumn<Film, String> titleCol;
 
     @FXML
-    private TableColumn<Staff, String> staffEmailCol, staffUsernameCol, staffFirstNameCol, staffLastNameCol, staffPasswordCol;
+    private TableColumn<Staff, String> staffEmailCol, staffUsernameCol, staffFirstNameCol, staffLastNameCol;
 
     @FXML
     private TableColumn<Staff, Integer> staffIdCol, staffStoreCol, staffAddressCol;
+
+    @FXML
+    TableColumn<Staff, Timestamp> staffLastUpdateCol;
 
     @FXML
     private TableColumn<Rental, Customer> rentalCustomerIdCol;
@@ -90,6 +93,9 @@ public class Controller {
 
     @FXML
     private TableColumn<Actor, Integer> actorIdCol;
+
+    @FXML
+    private TableColumn<Actor, Timestamp> actorLastUpdateCol;
 
     @FXML
     private TableColumn<Inventory, Film> inventoryFilmCol;
@@ -144,7 +150,7 @@ public class Controller {
             staffEmailCol.setCellValueFactory(new PropertyValueFactory<Staff, String>("email"));
 //            staffStoreCol.setCellValueFactory(new PropertyValueFactory<Staff, Integer>("store_id"));
             staffUsernameCol.setCellValueFactory(new PropertyValueFactory<Staff, String>("username"));
-            staffPasswordCol.setCellValueFactory(new PropertyValueFactory<Staff, String>("password"));
+            staffLastUpdateCol.setCellValueFactory(new PropertyValueFactory<Staff, Timestamp>("lastUpdate"));
             staffTbl.setItems(manager.getAllStaff());
         }
     }
@@ -171,6 +177,7 @@ public class Controller {
             actorIdCol.setCellValueFactory(new PropertyValueFactory<Actor, Integer>("id"));
             actorFirstNameCol.setCellValueFactory(new PropertyValueFactory<Actor, String>("firstName"));
             actorLastNameCol.setCellValueFactory(new PropertyValueFactory<Actor, String>("lastName"));
+            actorLastUpdateCol.setCellValueFactory(new PropertyValueFactory<Actor, Timestamp>("lastUpdate"));
             actorTbl.setItems(manager.getAllActors());
 
         }
