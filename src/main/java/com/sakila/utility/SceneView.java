@@ -13,6 +13,8 @@ public enum SceneView {
     UPDATEINVENTORY,
     UPDATEACTOR,
     CREATEACTOR,
+    CREATESTAFF,
+    UPDATESTAFF
 
 
 }
