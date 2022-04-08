@@ -127,6 +127,6 @@
       <Button fx:id="createBtn" layoutX="524.0" layoutY="657.0" mnemonicParsing="false" onMouseClicked="#createMouseClick" style="-fx-font-family: Monospaced;" text="Create" textFill="#325e34" />
       <Button fx:id="deleteBtn" layoutX="670.0" layoutY="657.0" mnemonicParsing="false" onMouseClicked="#deleteMouseClick" style="-fx-font-family: Monospaced;" text="Delete" textFill="#325e34" />
       <Button fx:id="updateBtn" layoutX="596.0" layoutY="657.0" mnemonicParsing="false" onMouseClicked="#updateMouseClick" style="-fx-font-family: Monospaced;" text="Update" textFill="#325e34" />
-      <Button layoutX="584.0" layoutY="732.0" mnemonicParsing="false" onMouseClicked="#rentmovieMouseClick" style="-fx-font-family: Monospaced;" text="Rent Movie" textFill="#325e34" />
+      <Button layoutX="584.0" layoutY="732.0" mnemonicParsing="false" onMouseClicked="#rentmovieMouseClick" style="-fx-font-family: Monospaced;" text="Log Out" textFill="#325e34" />
    </children>
 </AnchorPane>
