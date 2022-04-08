@@ -45,7 +45,7 @@ public class StaffController {
     private ChoiceBox<Store> storeChoice;
 
     @FXML
-    private TextField username;
+    private TextField userName;
 
     @FXML
     void cancelStaff(MouseEvent event) throws IOException {
@@ -63,7 +63,7 @@ public class StaffController {
         staff.setAddress(addressChoice.getValue());
         staff.setEmail(emailTxt.getText());
         staff.setStore(storeChoice.getValue());
-        staff.setUsername(username.getText());
+        staff.setUsername(userName.getText());
         staff.setPassword(password.getText());
         staff.setActive(true); //behövs denna?
         manager.createStaff(staff);
@@ -83,6 +83,7 @@ public class StaffController {
         public void initData (SceneView view, Staff staff) {
             addressChoice.setItems(manager.getAllAddresses());
             storeChoice.setItems(manager.getAllStores());
+            this.view = view;
             this.staff = staff;
 
             switch (view) {
@@ -96,7 +97,7 @@ public class StaffController {
                     firstnameTxt.setText(staff.getFirstName());
                     lastnameTxt.setText(staff.getLastName());
                     emailTxt.setText(staff.getEmail());
-                    username.setText(staff.getUsername());
+                    userName.setText(staff.getUsername());
                     password.setText(staff.getPassword());
                 }
             }

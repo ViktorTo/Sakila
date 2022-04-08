@@ -55,7 +55,7 @@ public class StaffDAO implements DatabaseAccessObject<Staff>{
     @Override
     public List<Staff> readAll() {
         Session session = databaseSession.startSession();
-        List<Staff> staffList = session.createQuery("FROM Staff ", Staff.class).getResultList();
+        List<Staff> staffList = session.createQuery("FROM Staff s LEFT JOIN FETCH s.address LEFT JOIN FETCH s.store", Staff.class).getResultList();
         databaseSession.endSession(session);
         return staffList;
     }
