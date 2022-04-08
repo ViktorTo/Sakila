@@ -73,7 +73,36 @@ public class StaffController {
         } else {
             sceneChanger.changeSceneLogin(event);
         }
+    }
+
+    @FXML
+    void updateStaffDone(MouseEvent event) throws IOException {
+
+    }
+    
+        public void initData (SceneView view, Staff staff) {
+            addressChoice.setItems(manager.getAllAddresses());
+            storeChoice.setItems(manager.getAllStores());
+            this.staff = staff;
+
+            switch (view) {
+                case CREATESTAFF -> {
+
+                }
+                case UPDATESTAFF -> {
+                    this.staff = staff;
+                    Address address = manager.readAddress(staff.getAddress().getId());
+                    Store store = manager.readStore(staff.getStore().getId());
+                    firstnameTxt.setText(staff.getFirstName());
+                    lastnameTxt.setText(staff.getLastName());
+                    emailTxt.setText(staff.getEmail());
+                    username.setText(staff.getUsername());
+                    password.setText(staff.getPassword());
+                }
+            }
+
+        }
 
     }
 
-}
+
