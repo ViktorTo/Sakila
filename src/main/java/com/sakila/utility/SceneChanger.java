@@ -179,4 +179,24 @@ public class SceneChanger {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void staffScene(MouseEvent event, SceneView view, Staff staff) throws IOException {
+        String fxml = "";
+        switch (view) {
+            case CREATESTAFF -> {
+                fxml = "sakilacreatestaff.fxml";
+            }
+            case UPDATESTAFF -> {
+                fxml = "sakilaupdatestaff.fxml";
+            }
+        }
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
+        Parent root = loader.load();
+        StaffController controller = loader.getController();
+        controller.initData(view, staff);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

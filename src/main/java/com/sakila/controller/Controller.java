@@ -71,7 +71,13 @@ public class Controller {
     private TableColumn<Staff, String> staffEmailCol, staffUsernameCol, staffFirstNameCol, staffLastNameCol;
 
     @FXML
-    private TableColumn<Staff, Integer> staffIdCol, staffStoreCol, staffAddressCol;
+    private TableColumn<Staff, Integer> staffIdCol;
+
+    @FXML
+    private TableColumn<Staff, Store> staffAddressCol;
+
+    @FXML
+    private TableColumn<Staff, Address> staffStoreCol;
 
     @FXML
     TableColumn<Staff, Timestamp> staffLastUpdateCol;
@@ -146,9 +152,9 @@ public class Controller {
             staffIdCol.setCellValueFactory(new PropertyValueFactory<Staff, Integer>("id"));
             staffFirstNameCol.setCellValueFactory(new PropertyValueFactory<Staff, String>("firstName"));
             staffLastNameCol.setCellValueFactory(new PropertyValueFactory<Staff, String>("lastName"));
-            //           staffAddressCol.setCellValueFactory(new PropertyValueFactory<Staff, Integer>("address"));
+            staffAddressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
             staffEmailCol.setCellValueFactory(new PropertyValueFactory<Staff, String>("email"));
-//            staffStoreCol.setCellValueFactory(new PropertyValueFactory<Staff, Integer>("store_id"));
+            staffStoreCol.setCellValueFactory(new PropertyValueFactory<>("id"));
             staffUsernameCol.setCellValueFactory(new PropertyValueFactory<Staff, String>("username"));
             staffLastUpdateCol.setCellValueFactory(new PropertyValueFactory<Staff, Timestamp>("lastUpdate"));
             staffTbl.setItems(manager.getAllStaff());
@@ -275,7 +281,10 @@ public class Controller {
                 }
             }
             case 3 -> {
-
+                Staff staff = staffTbl.getSelectionModel().getSelectedItem();
+                if(staff != null) {
+                    sceneChanger.staffScene(event, SceneView.UPDATESTAFF, staff);
+                }
 
             }
             case 4 -> {
@@ -314,7 +323,7 @@ public class Controller {
                 sceneChanger.changeSceneFilm(event, SceneView.CREATEFILM, new Film());
             }
             case 3 -> {
-
+                    sceneChanger.staffScene(event, SceneView.CREATESTAFF, new Staff());
             }
             case 4 -> {
                 sceneChanger.changeSceneActor(event, SceneView.CREATEACTOR, new Actor());

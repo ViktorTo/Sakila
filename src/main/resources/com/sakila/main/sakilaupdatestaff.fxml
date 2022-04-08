@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="549.0" prefWidth="744.0" style="-fx-background-color: #83B185;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sakila.main.StaffController">
+<AnchorPane prefHeight="549.0" prefWidth="744.0" style="-fx-background-color: #83B185;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sakila.controller.StaffController">
    <children>
       <Text fill="WHITE" layoutX="203.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Update Staff Member" textAlignment="CENTER" wrappingWidth="337.13671875">
          <font>
