@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="549.0" prefWidth="744.0" style="-fx-background-color: #83B185;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sakila.main.StaffController">
+   <children>
+      <Text fill="WHITE" layoutX="203.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Update Staff Member" textAlignment="CENTER" wrappingWidth="337.13671875">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="firstnameTxt" layoutX="302.0" layoutY="136.0" prefHeight="23.0" prefWidth="149.0" style="-fx-font-family: Monospaced;" />
+      <TextField fx:id="lastnameTxt" layoutX="302.0" layoutY="175.0" prefHeight="23.0" prefWidth="149.0" style="-fx-font-family: Monospaced;" />
+      <TextField fx:id="emailTxt" layoutX="302.0" layoutY="259.0" prefHeight="23.0" prefWidth="149.0" style="-fx-font-family: Monospaced;" />
+      <Text fill="WHITE" layoutX="147.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="First name  " textAlignment="RIGHT" wrappingWidth="149.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="147.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Last name  " textAlignment="RIGHT" wrappingWidth="149.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="129.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Address" textAlignment="RIGHT" wrappingWidth="149.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="128.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Email" textAlignment="RIGHT" wrappingWidth="149.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="144.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Store  " textAlignment="RIGHT" wrappingWidth="149.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="storeChoice" layoutX="302.0" layoutY="304.0" prefHeight="19.0" prefWidth="150.0" style="-fx-font-family: Monospaced;" />
+      <ChoiceBox fx:id="addressChoice" layoutX="302.0" layoutY="215.0" prefHeight="19.0" prefWidth="150.0" style="-fx-font-family: Monospaced;" />
+      <Button fx:id="doneBtn" layoutX="308.0" layoutY="456.0" mnemonicParsing="false" onMouseClicked="#updateStaffDone" style="-fx-font-family: Monospaced;" text="Done" textFill="#325e34" />
+      <Button fx:id="cancelBtn" layoutX="388.0" layoutY="456.0" mnemonicParsing="false" onMouseClicked="#cancelStaff" style="-fx-font-family: Monospaced;" text="Cancel" textFill="#325e34" />
+      <TextField fx:id="username" layoutX="303.0" layoutY="350.0" prefHeight="23.0" prefWidth="149.0" style="-fx-font-family: Monospaced;" />
+      <TextField fx:id="password" layoutX="303.0" layoutY="394.0" prefHeight="23.0" prefWidth="149.0" style="-fx-font-family: Monospaced;" />
+      <Text fill="WHITE" layoutX="127.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Username" textAlignment="RIGHT" wrappingWidth="149.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="128.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Monospaced;" text="Password" textAlignment="RIGHT" wrappingWidth="149.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
