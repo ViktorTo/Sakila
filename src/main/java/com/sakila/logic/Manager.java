@@ -140,6 +140,12 @@ public class Manager {
         return FXCollections.observableArrayList(staffDAO.readAll());
     }
 
+    public void createStaff(Staff staff) {
+        if (staff != null) {
+            staffDAO.create(staff);
+        }
+    }
+
     public void deleteStaff(int id){
         Staff staff = staffDAO.read(id);
         if(staff != null){
