@@ -104,7 +104,6 @@ public class RentalController {
             }
             case UPDATERENTAL -> {
                 this.rental = rental;
-                returnDatePicker.setValue(rental.getReturnDate().toLocalDateTime().toLocalDate());
             }
         }
     }
