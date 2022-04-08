@@ -24,8 +24,6 @@ public class Controller {
     private final Manager manager = new Manager();
     private final SceneChanger sceneChanger = new SceneChanger();
     private Staff staff;
-    private Film filmSaved;
-    private int clickCount = 0;
 
     @FXML
     private Tab customerTab, filmTab, staffTab, rentalTab, actorTab, inventoryTab;
@@ -345,16 +343,11 @@ public class Controller {
 
     @FXML
     public void filmTblClicked(MouseEvent event) throws IOException {
-        clickCount++;
-        Film film = filmTbl.getSelectionModel().getSelectedItem();
-        if (film == filmSaved) {
-            if (clickCount == 2 && film != null) {
-                sceneChanger.informationScene(event, film.getId());
-                clickCount = 0;
-            }
-        } else {
-            clickCount = 1;
-            filmSaved = film;
+
+        if (event.getClickCount() == 2) {
+            Film film = filmTbl.getSelectionModel().getSelectedItem();
+            sceneChanger.informationScene(event, film.getId());
+
         }
     }
 
