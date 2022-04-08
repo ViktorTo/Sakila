@@ -109,7 +109,6 @@ public class RentMovieController {
             rental.setRentalDate(rentaldate);
             rental.setInventory(manager.getInventoryFromFilm(film.getId()));
             rental.setCustomer(customer);
-            rental.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
             rental.setStaff(this.staff);
             manager.createRental(rental);
             changeBox(rentBox);
