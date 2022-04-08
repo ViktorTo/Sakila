@@ -257,7 +257,8 @@ public class Manager {
         List<Rental> rentals = new ArrayList<>();
         for(Rental r : customer.getRentals()) {
             if(r.getReturnDate() == null) {
-                rentals.add(r);
+                Rental rental = rentalDAO.readWithInventory(r.getId());
+                rentals.add(rental);
             }
         }
         return rentals;

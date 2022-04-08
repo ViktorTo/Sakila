@@ -24,6 +24,19 @@ public class RentalDAO implements DatabaseAccessObject<Rental> {
         return rental;
     }
 
+
+    public Rental readWithInventory(int id) {
+        Session session = databaseSession.startSession();
+        List<Rental> rentalList = session.createQuery("FROM Rental r LEFT JOIN FETCH r.inventory LEFT JOIN FETCH r.inventory.film WHERE r.id =:id")
+                .setParameter("id", id)
+                        .getResultList();
+        databaseSession.endSession(session);
+        if (rentalList.size() > 0){
+            return rentalList.get(0);
+        }
+        return null;
+    }
+
     @Override
     public void update(Rental data) {
         Session session = databaseSession.startSession();
